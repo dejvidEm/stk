@@ -152,8 +152,8 @@ export default function BookingPage() {
   const updateBookingData = (section: string, data: any) => {
     setBookingData(prev => ({
       ...prev,
-      [section]: typeof prev[section as keyof BookingData] === 'object' 
-        ? { ...prev[section as keyof BookingData], ...data }
+      [section]: typeof prev[section as keyof BookingData] === 'object' && prev[section as keyof BookingData] !== null
+        ? { ...(prev[section as keyof BookingData] as object), ...data }
         : data
     }));
   };
