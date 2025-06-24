@@ -206,15 +206,15 @@ export default function PricingPage() {
                   <div className="mb-4">
                     <div className="flex items-baseline space-x-2">
                       <span className="text-3xl font-bold text-gray-900">
-                        {typeof servicePrice === 'object' ? servicePrice.price : 0}€
+                        {typeof servicePrice === 'object' && !Array.isArray(servicePrice) ? servicePrice.price : 0}€
                       </span>
-                      {typeof servicePrice === 'object' && servicePrice.oldPrice && (
+                      {typeof servicePrice === 'object' && !Array.isArray(servicePrice) && servicePrice.oldPrice && (
                         <span className="text-lg text-gray-500 line-through">
                           {servicePrice.oldPrice}€
                         </span>
                       )}
                     </div>
-                    {typeof servicePrice === 'object' && servicePrice.savings && (
+                    {typeof servicePrice === 'object' && 'savings' in servicePrice && servicePrice.savings && (
                       <div className="text-sm text-green-600 font-medium">
                         Ušetríte {servicePrice.savings}€
                       </div>
@@ -222,7 +222,7 @@ export default function PricingPage() {
                   </div>
                   
                   <p className="text-gray-600 text-sm mb-4">
-                    {typeof servicePrice === 'object' ? servicePrice.description : ''}
+                    {typeof servicePrice === 'object' && !Array.isArray(servicePrice) ? servicePrice.description : ''}
                   </p>
                   
                   <div className="space-y-2">
