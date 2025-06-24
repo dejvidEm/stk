@@ -11,7 +11,12 @@ import {
   Send,
   Facebook,
   Instagram,
-  MessageCircle
+  MessageCircle,
+  Lightbulb,
+  Bus,
+  SquareParking,
+  Accessibility,
+  Wrench
 } from 'lucide-react';
 
 export default function ContactPage() {
@@ -143,13 +148,13 @@ export default function ContactPage() {
                 <p className="text-gray-600 mb-4">821 04 Bratislava, Slovensko</p>
                 <div className="flex flex-wrap gap-2">
                   <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">
-                    🚗 Parkovanie zdarma
+                    <SquareParking className="h-4 w-4 mr-1 inline-block" /> Parkovanie zdarma
                   </span>
                   <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">
-                    ♿ Bezbariérový prístup
+                    <Accessibility className="h-4 w-4 mr-1 inline-block" /> Bezbariérový prístup
                   </span>
                   <span className="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm">
-                    🛠️ Servis na mieste
+                    <Wrench className="h-4 w-4 mr-1 inline-block" /> Servis na mieste
                   </span>
                 </div>
               </div>
@@ -192,7 +197,7 @@ export default function ContactPage() {
 
               <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
                 <p className="text-sm text-blue-800">
-                  <strong>💡 Tip:</strong> V sobotu je väčšinou menší počet zákazníkov. 
+                  <strong> <Lightbulb className="h-5 w-5 text-blue-800 mr-1 inline-block" /> Tip:</strong> V sobotu je väčšinou menší počet zákazníkov. 
                   Rezervujte si termín pre rýchlejšie vybavenie!
                 </p>
               </div>
@@ -363,7 +368,9 @@ export default function ContactPage() {
 
             <div className="text-center">
               <div className="bg-green-100 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-green-600 font-bold">🚌</span>
+                <span className="text-green-600 font-bold">
+                  <Bus className="h-6 w-6 text-green-600" />
+                </span>
               </div>
               <h3 className="font-semibold text-gray-900 mb-2">MHD</h3>
               <p className="text-gray-600 text-sm">
@@ -374,7 +381,9 @@ export default function ContactPage() {
 
             <div className="text-center">
               <div className="bg-orange-100 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-orange-600 font-bold">🚶</span>
+                <span className="text-orange-600 font-bold">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"><path d="M12 4a1 1 0 1 0 2 0a1 1 0 1 0-2 0M7 21l3-4m6 4l-2-4l-3-3l1-6"/><path d="m6 12l2-3l4-1l3 3l3 1"/></g></svg>
+                </span>
               </div>
               <h3 className="font-semibold text-gray-900 mb-2">Pešo</h3>
               <p className="text-gray-600 text-sm">

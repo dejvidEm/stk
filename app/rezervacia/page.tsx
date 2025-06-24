@@ -5,6 +5,8 @@ import {
   Calendar, 
   Clock, 
   Car, 
+  Truck, 
+  Bike,
   User, 
   Phone, 
   Mail, 
@@ -60,8 +62,8 @@ export default function BookingPage() {
 
   const vehicleTypes = [
     { id: 'personal', name: 'Osobné vozidlo', description: 'Kategória M1 do 3,5t', icon: Car },
-    { id: 'truck', name: 'Nákladné vozidlo', description: 'Kategória N nad 3,5t', icon: Car },
-    { id: 'motorcycle', name: 'Motocykel', description: 'Kategória L', icon: Car }
+    { id: 'truck', name: 'Nákladné vozidlo', description: 'Kategória N nad 3,5t', icon: Truck },
+    { id: 'motorcycle', name: 'Motocykel', description: 'Kategória L', icon: Bike }
   ];
 
   const serviceTypes = [

@@ -11,7 +11,9 @@ import {
   AlertCircle,
   FileText,
   CreditCard,
-  Phone
+  Phone,
+  MessageSquare,
+  AtSign
 } from 'lucide-react';
 
 interface FAQ {
@@ -282,14 +284,14 @@ export default function FAQPage() {
               href="mailto:info@stkcentrum.sk"
               className="flex items-center justify-center space-x-2 bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors"
             >
-              <span>📧</span>
+              <AtSign className="h-5 w-5 inline-block" />
               <span>E-mail</span>
             </a>
             <a
               href="/kontakt"
               className="flex items-center justify-center space-x-2 bg-orange-600 text-white px-6 py-3 rounded-lg hover:bg-orange-700 transition-colors"
             >
-              <span>💬</span>
+              <MessageSquare className="h-5 w-5 inline-block" />
               <span>Kontaktný formulár</span>
             </a>
           </div>

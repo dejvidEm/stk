@@ -10,7 +10,8 @@ import {
   Bike,
   CheckCircle,
   Info,
-  Calculator
+  Calculator,
+  BadgePercent
 } from 'lucide-react';
 
 export default function PricingPage() {
@@ -293,7 +294,7 @@ export default function PricingPage() {
                 
                 <div className="text-center p-6 bg-orange-50 rounded-lg border-2 border-orange-200">
                   <div className="text-lg font-semibold text-orange-700 mb-2">
-                    💰 Najlepšia ponuka: STK + EK
+                    <BadgePercent className="inline-block mr-1" /> Najlepšia ponuka: STK + EK
                   </div>
                   <div className="text-4xl font-bold text-gray-900 mb-2">
                     {currentPricing['stk-ek'].price}€
@@ -338,7 +339,7 @@ export default function PricingPage() {
               </div>
               <div className="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
                 <p className="text-sm text-yellow-800">
-                  <strong>Pozor:</strong> Ceny sú platné do 31.12.2024. V prípade neúspešnej kontroly 
+                  <strong>Pozor:</strong> Ceny sú platné do 31.12.2025. V prípade neúspešnej kontroly 
                   sa účtuje plná cena za vykonanú kontrolu. Opakovaná kontrola sa hradí samostatne.
                 </p>
               </div>
