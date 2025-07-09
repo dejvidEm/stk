@@ -35,10 +35,10 @@ export default function Navbar() {
         <div className="flex justify-between items-center">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
-            <div className="bg-blue-600 p-2 rounded-lg">
+            <div className="bg-brand-red-600 p-2 rounded-lg">
               <Car className="h-6 w-6 text-white" />
             </div>
-            <span className="font-bold text-xl text-gray-900">STK Centrum</span>
+            <span className="font-bold text-xl text-brand-gray-900">STK Centrum</span>
           </Link>
 
           {/* Desktop Menu */}
@@ -47,14 +47,14 @@ export default function Navbar() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`font-medium transition-colors hover:text-blue-600 ${
-                  pathname === item.href ? 'text-blue-600' : 'text-gray-700'
+                className={`font-medium transition-colors hover:text-brand-red-600 ${
+                  pathname === item.href ? 'text-brand-red-600' : 'text-brand-gray-700'
                 }`}
               >
                 {item.label}
               </Link>
             ))}
-            <div className="flex items-center space-x-2 text-blue-600 font-semibold">
+            <div className="flex items-center space-x-2 text-brand-green-600 font-semibold">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 56 56"><path fill="currentColor" d="M28 51.906c13.055 0 23.906-10.851 23.906-23.906c0-13.078-10.875-23.906-23.93-23.906C14.899 4.094 4.095 14.922 4.095 28c0 13.055 10.828 23.906 23.906 23.906m-6.117-18.07c-5.813-5.79-9.516-13.172-5.133-17.555c.258-.258.539-.515.797-.773c1.336-1.266 2.625-1.195 3.773.422l3.047 4.336c1.031 1.5.773 2.343-.328 3.515l-.961 1.055c-.351.328-.21.773-.047 1.055c.446.843 1.711 2.343 3.07 3.703c1.407 1.406 2.836 2.601 3.727 3.093c.328.188.797.235 1.102-.046l1.007-.961c1.125-1.102 2.04-1.383 3.493-.352a319 319 0 0 0 4.43 3.094c1.476 1.078 1.827 2.414.327 3.773c-.257.258-.492.54-.75.797c-4.382 4.36-11.742.656-17.554-5.156"/></svg>
               <span>+421 2 1234 5678</span>
             </div>
@@ -78,15 +78,15 @@ export default function Navbar() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`font-medium py-2 transition-colors hover:text-blue-600 ${
-                    pathname === item.href ? 'text-blue-600' : 'text-gray-700'
+                  className={`font-medium py-2 transition-colors hover:text-brand-red-600 ${
+                    pathname === item.href ? 'text-brand-red-600' : 'text-brand-gray-700'
                   }`}
                   onClick={() => setIsOpen(false)}
                 >
                   {item.label}
                 </Link>
               ))}
-              <div className="flex items-center space-x-2 text-blue-600 font-semibold pt-2">
+              <div className="flex items-center space-x-2 text-brand-green-600 font-semibold pt-2">
                 <Phone className="h-4 w-4" />
                 <span>+421 2 1234 5678</span>
               </div>
