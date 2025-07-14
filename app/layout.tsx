@@ -1,7 +1,7 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import Footer from '@/components/layout/Footer';
+import ConditionalFooter from '@/components/layout/ConditionalFooter';
 import ConditionalNavbar from '../components/layout/ConditionalNavbar';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -32,7 +32,7 @@ export default function RootLayout({
         <main className="min-h-screen">
           {children}
         </main>
-        <Footer />
+        <ConditionalFooter />
       </body>
     </html>
   );

@@ -220,7 +220,7 @@ export default function HomePage() {
             <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group">
               <div className="relative h-48 overflow-hidden">
                 <img 
-                  src="https://images.pexels.com/photos/3731256/pexels-photo-3731256.jpeg?auto=compress&cs=tinysrgb&w=800"
+                  src="/images/i4.jpg"
                   alt="Autoumyvárka Námestovo"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
@@ -274,7 +274,7 @@ export default function HomePage() {
             <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group">
               <div className="relative h-48 overflow-hidden">
                 <img 
-                  src="https://images.pexels.com/photos/3731274/pexels-photo-3731274.jpeg?auto=compress&cs=tinysrgb&w=800"
+                  src="/images/i5.jpg"
                   alt="Autoumyvárka Tvrdošín"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
@@ -434,6 +434,21 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Special Footer for Homepage */}
+      <footer className="bg-brand-gray-900 text-white py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+          {/* Bottom Section */}
+          <div className="text-center">
+            <div className="text-center space-y-4 md:space-y-0">
+              <div className="text-brand-gray-400 text-sm">
+                © 2024 STK Centrá Sever Slovenska. Všetky práva vyhradené.
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
