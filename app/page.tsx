@@ -23,7 +23,7 @@ export default function HomePage() {
       phone: '+421 43 123 4567',
       email: 'info@stknamestovo.sk',
       hours: 'Po-Pia: 7:00-18:00, So: 8:00-14:00',
-      image: 'https://images.pexels.com/photos/3807752/pexels-photo-3807752.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image: '/images/i1.jpg',
       description: 'Moderné STK centrum v srdci Oravy s najnovším vybavením.',
       features: ['Online rezervácia', 'Expresné vybavenie', 'Parkovanie zdarma']
     },
@@ -35,7 +35,7 @@ export default function HomePage() {
       phone: '+421 43 765 4321',
       email: 'info@stktvrdosin.sk',
       hours: 'Po-Pia: 7:00-18:00, So: 8:00-14:00',
-      image: 'https://images.pexels.com/photos/3808904/pexels-photo-3808904.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image: '/images/i2.jpg',      
       description: 'Spoľahlivé služby STK a EK v Tvrdošíne s 15-ročnými skúsenosťami.',
       features: ['Víkendové termíny', 'Všetky typy vozidiel', 'Opakované kontroly'],
       isDemo: true
@@ -48,7 +48,7 @@ export default function HomePage() {
       phone: '+421 43 987 6543',
       email: 'info@stklokca.sk',
       hours: 'Po-Pia: 7:00-18:00, So: 8:00-14:00',
-      image: 'https://images.pexels.com/photos/3808871/pexels-photo-3808871.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image: '/images/i3.jpg',       
       description: 'Profesionálne centrum pre technické kontroly v Lokci.',
       features: ['Motocykle a skútre', 'Nákladné vozidlá', 'Rýchle vybavenie']
     }
@@ -62,7 +62,7 @@ export default function HomePage() {
         <div 
           className="absolute inset-0 bg-cover bg-center opacity-10"
           style={{
-            backgroundImage: 'url("https://images.pexels.com/photos/3808904/pexels-photo-3808904.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")'
+            backgroundImage: 'url("/images/bg.jpg")'
           }}
         ></div>
         
