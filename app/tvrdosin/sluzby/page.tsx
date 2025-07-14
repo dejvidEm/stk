@@ -112,7 +112,7 @@ export default function ServicesPage() {
   const IconComponent = currentService.icon;
 
   return (
-    <div className="pt-[20px]">
+    <div>
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-brand-red-600 to-brand-red-800 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

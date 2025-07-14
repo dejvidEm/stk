@@ -1,8 +1,8 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
+import ConditionalNavbar from '../components/layout/ConditionalNavbar';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -28,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="sk">
       <body className={inter.className}>
-        <Navbar />
+        <ConditionalNavbar />
         <main className="min-h-screen">
           {children}
         </main>

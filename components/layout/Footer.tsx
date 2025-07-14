@@ -12,11 +12,11 @@ export default function Footer() {
               <div className="bg-brand-red-600 p-2 rounded-lg">
                 <Car className="h-6 w-6 text-white" />
               </div>
-              <span className="font-bold text-xl">STK Centrum</span>
+              <span className="font-bold text-xl">STK Centrá</span>
             </div>
             <p className="text-brand-gray-300 mb-4">
-              Profesionálna technická kontrola vozidiel s 15-ročnými skúsenosťami. 
-              Rýchlo, spoľahlivo a za najlepšie ceny.
+              Profesionálna technická kontrola vozidiel na troch miestach 
+              na severe Slovenska. Kvalitné služby s 15-ročnými skúsenosťami.
             </p>
             <div className="flex space-x-4">
               <Facebook className="h-5 w-5 text-brand-gray-400 hover:text-brand-red-400 cursor-pointer transition-colors" />
@@ -24,20 +24,31 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Quick Links */}
+          {/* STK Centers Links */}
           <div>
-            <h3 className="font-semibold text-lg mb-4">Rýchle odkazy</h3>
+            <h3 className="font-semibold text-lg mb-4">Naše centrá</h3>
             <ul className="space-y-2">
-              <li><Link href="/sluzby" className="text-brand-gray-300 hover:text-white transition-colors">Naše služby</Link></li>
-              <li><Link href="/cennik" className="text-brand-gray-300 hover:text-white transition-colors">Cenník</Link></li>
-              <li><Link href="/rezervacia" className="text-brand-gray-300 hover:text-white transition-colors">Online rezervácia</Link></li>
-              <li><Link href="/caste-otazky" className="text-brand-gray-300 hover:text-white transition-colors">Často kladené otázky</Link></li>
+              <li><a href="https://www.stknamestovo.sk" target="_blank" rel="noopener noreferrer" className="text-brand-gray-300 hover:text-white transition-colors">STK Námestovo</a></li>
+              <li><Link href="/demo" className="text-brand-gray-300 hover:text-white transition-colors">STK Tvrdošín (Demo)</Link></li>
+              <li><a href="https://www.stklokca.sk" target="_blank" rel="noopener noreferrer" className="text-brand-gray-300 hover:text-white transition-colors">STK Lokca</a></li>
             </ul>
           </div>
 
-          {/* Contact Info */}
+          {/* Quick Links */}
           <div>
-            <h3 className="font-semibold text-lg mb-4">Kontakt</h3>
+            <h3 className="font-semibold text-lg mb-4">Demo služby</h3>
+            <ul className="space-y-2">
+              <li><Link href="/tvrdosin/sluzby" className="text-brand-gray-300 hover:text-white transition-colors">Naše služby</Link></li>
+              <li><Link href="/tvrdosin/cennik" className="text-brand-gray-300 hover:text-white transition-colors">Cenník</Link></li>
+              <li><Link href="/tvrdosin/tim" className="text-brand-gray-300 hover:text-white transition-colors">Náš tím</Link></li>
+              <li><Link href="/tvrdosin/rezervacia" className="text-brand-gray-300 hover:text-white transition-colors">Online rezervácia</Link></li>
+              <li><Link href="/tvrdosin/caste-otazky" className="text-brand-gray-300 hover:text-white transition-colors">Často kladené otázky</Link></li>
+            </ul>
+          </div>
+
+          {/* Contact Info - Tvrdošín as example */}
+          <div>
+            <h3 className="font-semibold text-lg mb-4">Kontakt (Tvrdošín)</h3>
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <Phone className="h-5 w-5 text-brand-green-400" />
@@ -45,13 +56,13 @@ export default function Footer() {
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="h-5 w-5 text-brand-green-400" />
-                <span className="text-brand-gray-300">info@stkcentrum.sk</span>
+                <span className="text-brand-gray-300">info@stktvrdosin.sk</span>
               </div>
               <div className="flex items-start space-x-3">
                 <MapPin className="h-5 w-5 text-brand-green-400 mt-1" />
                 <div className="text-brand-gray-300">
-                  <p>Technická 15</p>
-                  <p>821 04 Bratislava</p>
+                  <p>Hlavná 42</p>
+                  <p>027 44 Tvrdošín</p>
                 </div>
               </div>
             </div>
@@ -74,7 +85,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-brand-gray-800 mt-8 pt-8 text-center text-brand-gray-400">
-          <p>&copy; 2024 STK Centrum. Všetky práva vyhradené.</p>
+          <p>&copy; 2024 STK Centrá. Všetky práva vyhradené.</p>
         </div>
       </div>
     </footer>
