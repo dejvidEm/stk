@@ -6,24 +6,6 @@ export default function Footer() {
     <footer className="bg-brand-gray-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Company Info */}
-          <div>
-            <div className="flex items-center space-x-2 mb-4">
-              <div className="bg-brand-red-600 p-2 rounded-lg">
-                <Car className="h-6 w-6 text-white" />
-              </div>
-              <span className="font-bold text-xl">STK Centrá</span>
-            </div>
-            <p className="text-brand-gray-300 mb-4">
-              Profesionálna technická kontrola vozidiel na troch miestach 
-              na severe Slovenska. Kvalitné služby s 15-ročnými skúsenosťami.
-            </p>
-            <div className="flex space-x-4">
-              <Facebook className="h-5 w-5 text-brand-gray-400 hover:text-brand-red-400 cursor-pointer transition-colors" />
-              <Instagram className="h-5 w-5 text-brand-gray-400 hover:text-brand-green-400 cursor-pointer transition-colors" />
-            </div>
-          </div>
-
           {/* STK Centers Links */}
           <div>
             <h3 className="font-semibold text-lg mb-4">Naše centrá</h3>
@@ -36,7 +18,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="font-semibold text-lg mb-4">Demo služby</h3>
+            <h3 className="font-semibold text-lg mb-4">Služby</h3>
             <ul className="space-y-2">
               <li><Link href="/tvrdosin/sluzby" className="text-brand-gray-300 hover:text-white transition-colors">Naše služby</Link></li>
               <li><Link href="/tvrdosin/cennik" className="text-brand-gray-300 hover:text-white transition-colors">Cenník</Link></li>

@@ -49,7 +49,7 @@ export default function DemoPage() {
         <div 
           className="absolute inset-0 bg-cover bg-center opacity-20"
           style={{
-            backgroundImage: 'url("https://images.pexels.com/photos/3808904/pexels-photo-3808904.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")'
+            backgroundImage: 'url("/images/bg.jpg")',
           }}
         ></div>
         
