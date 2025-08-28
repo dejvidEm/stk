@@ -70,11 +70,10 @@ export default function HomePage() {
           {/* Hero Text */}
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-              STK Centrá
-              <span className="block text-brand-green-400">na severe Slovenska</span>
+              STK Centrum
             </h1>
             <p className="text-xl md:text-2xl mb-8 opacity-90 max-w-3xl mx-auto">
-              Profesionálne služby technickej kontroly vozidiel na troch miestach.
+              Profesionálne služby technickej kontroly vozidiel.
               <span className="block mt-2 text-lg">Vyberte si centrum najbližšie k vám:</span>
             </p>
           </div>
