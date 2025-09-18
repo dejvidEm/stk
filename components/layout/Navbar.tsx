@@ -22,7 +22,6 @@ export default function Navbar() {
     { href: '/tvrdosin', label: 'STK Tvrdošín' },
     { href: '/tvrdosin/sluzby', label: 'Služby' },
     { href: '/tvrdosin/cennik', label: 'Cenník' },
-    { href: '/tvrdosin/tim', label: 'Náš tím' },
     { href: '/tvrdosin/rezervacia', label: 'Rezervácia' },
     { href: '/tvrdosin/kontakt', label: 'Kontakt' },
   ];
