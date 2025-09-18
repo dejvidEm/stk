@@ -12,7 +12,8 @@ import {
   Truck,
   Bike,
   AlertTriangle,
-  Info
+  Info,
+  Settings
 } from 'lucide-react';
 
 export default function ServicesPage() {
@@ -80,6 +81,25 @@ export default function ServicesPage() {
         'Technický preukaz vozidla',
         'Doklad o vykonaných opravách',
         'Doklad o poistení'
+      ]
+    },
+    additional: {
+      title: 'Doplnkové služby',
+      icon: Settings,
+      description: 'Špeciálne služby a expresné vybavenie pre vaše potreby',
+      duration: 'Podľa typu služby',
+      validity: 'Rôzne',
+      checks: [
+        'Expresné vybavenie - prednostné vybavenie nasledujúci kalendárny deň',
+        'Umiestnenie a upevnenie prideleného náhradného VIN čísla',
+        'Razenie VIN čísla pre všetky kategórie vozidiel',
+        'Individuálne riešenia podľa požiadaviek zákazníka'
+      ],
+      requirements: [
+        'Emailový dopyt na emade@emade.sk pre expresné vybavenie',
+        'Príplatok 30€ za expresné vybavenie',
+        'Potrebné doklady podľa typu služby',
+        'Dohodnutie termínu vopred'
       ]
     }
   };
@@ -166,54 +186,165 @@ export default function ServicesPage() {
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               {/* Service Details */}
-              <div className="lg:col-span-2">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                  <div className="bg-gray-50 p-6 rounded-xl">
-                    <div className="flex items-center space-x-2 mb-3">
-                      <Clock className="h-5 w-5 text-blue-600" />
-                      <h3 className="font-semibold text-gray-900">Trvanie</h3>
+              {activeTab === 'additional' ? (
+                <div className="lg:col-span-3">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    {/* Expresné vybavenie */}
+                    <div className="bg-blue-50 border border-blue-200 rounded-xl p-6">
+                      <h3 className="text-xl font-bold text-blue-900 mb-3">Expresné vybavenie</h3>
+                      <p className="text-blue-800 leading-relaxed mb-2">
+                        Nenašli ste termín? Prednostné vybavenie nasledujúci kalendárny deň za príplatok 30,-€.
+                      </p>
+                      <p className="text-blue-800 leading-relaxed">
+                        Na základe emailového dopytu na <a href="mailto:emade@emade.sk" className="text-blue-600 hover:text-blue-700 underline font-semibold">emade@emade.sk</a>
+                      </p>
                     </div>
-                    <p className="text-gray-700">{currentService.duration}</p>
-                  </div>
-                  <div className="bg-gray-50 p-6 rounded-xl">
-                    <div className="flex items-center space-x-2 mb-3">
-                      <Shield className="h-5 w-5 text-green-600" />
-                      <h3 className="font-semibold text-gray-900">Platnosť</h3>
-                    </div>
-                    <p className="text-gray-700">{currentService.validity}</p>
-                  </div>
-                </div>
 
-                <div className="mb-8">
-                  <h3 className="text-xl font-bold text-gray-900 mb-4">Čo kontrolujeme</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                    {currentService.checks.map((check, index) => (
-                      <div key={index} className="flex items-center space-x-3">
-                        <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0" />
-                        <span className="text-gray-700">{check}</span>
+                    {/* VIN číslo */}
+                    <div className="bg-blue-50 border border-blue-200 rounded-xl p-6">
+                      <h3 className="text-xl font-bold text-blue-900 mb-3">Umiestnenie a upevnenie VIN čísla</h3>
+                      <p className="text-blue-800 leading-relaxed">
+                        Tzv. razenie VIN čísla pre všetky kategórie vozidiel.
+                      </p>
+                    </div>
+
+                    {/* STK Parking */}
+                    <div className="bg-blue-50 border border-blue-200 rounded-xl p-6">
+                      <h3 className="text-xl font-bold text-blue-900 mb-3">STK Parking</h3>
+                      <p className="text-blue-800 leading-relaxed mb-3">
+                        Nechajte Vaše vozidlo u nás, kým budete v práci a o všetko sa postaráme.
+                      </p>
+                      <div className="bg-blue-100 p-3 rounded-lg">
+                        <p className="text-blue-900 font-semibold text-sm">
+                          Cena služby: 15,-€ s DPH<br />
+                          <span className="text-blue-700 font-normal">(nezahŕňa cenu za výkon kontroly)</span>
+                        </p>
                       </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
+                    </div>
 
-              {/* Requirements */}
-              <div>
-                <div className="bg-orange-50 border border-orange-200 rounded-xl p-6">
-                  <div className="flex items-center space-x-2 mb-4">
-                    <FileText className="h-5 w-5 text-orange-600" />
-                    <h3 className="font-semibold text-gray-900">Potrebné doklady</h3>
+                    {/* STK Kuriér */}
+                    <div className="bg-blue-50 border border-blue-200 rounded-xl p-6">
+                      <h3 className="text-xl font-bold text-blue-900 mb-3">STK Kuriér</h3>
+                      <p className="text-blue-800 leading-relaxed mb-3">
+                        Vyzdvihneme auto priamo u Vás doma alebo na firme a vykonáme technickú/emisnú kontrolu alebo kontrolu originality.
+                      </p>
+                      <p className="text-blue-800 text-sm mb-3">
+                        Službu je možné využiť iba pre okres Námestovo a Tvrdošín (do 20 km)
+                      </p>
+                      <div className="bg-blue-100 p-3 rounded-lg space-y-1">
+                        <p className="text-blue-900 font-semibold text-sm">
+                          Osobné autá: 30,-€ s DPH
+                        </p>
+                        <p className="text-blue-900 font-semibold text-sm">
+                          Nákladné autá: 50,-€ s DPH
+                        </p>
+                        <p className="text-blue-700 text-xs">
+                          (nezahŕňa cenu za výkon kontroly)
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Umývací program Exkluzív */}
+                    <div className="bg-blue-50 border border-blue-200 rounded-xl p-6">
+                      <h3 className="text-xl font-bold text-blue-900 mb-3">Umývací program Exkluzív</h3>
+                      <p className="text-blue-800 leading-relaxed mb-3">
+                        Umytie vozidla s programom Exkluzív so zľavou 20%.
+                      </p>
+                      <div className="bg-blue-100 p-3 rounded-lg mb-3">
+                        <p className="text-blue-900 font-semibold text-sm">
+                          Cena služby: 7,90€ s DPH<br />
+                          <span className="text-blue-700 font-normal">(nezahŕňa cenu za výkon kontroly)</span>
+                        </p>
+                      </div>
+                      <div className="text-blue-800 text-sm">
+                        <p className="font-semibold mb-1">Program zahŕňa:</p>
+                        <ul className="text-xs space-y-1">
+                          <li>• Vysokotlaké predumytie</li>
+                          <li>• Aktívna pena</li>
+                          <li>• Umytie šampónom</li>
+                          <li>• Umytie kolies</li>
+                          <li>• Vysokotlaké umytie podvozku</li>
+                          <li>• Horúci vosk</li>
+                          <li>• Sušenie</li>
+                        </ul>
+                      </div>
+                    </div>
+
+                    {/* Umývací program Basic */}
+                    <div className="bg-blue-50 border border-blue-200 rounded-xl p-6">
+                      <h3 className="text-xl font-bold text-blue-900 mb-3">Umývací program Basic</h3>
+                      <p className="text-blue-800 leading-relaxed mb-3">
+                        Umytie vozidla s programom Basic so zľavou 20%.
+                      </p>
+                      <div className="bg-blue-100 p-3 rounded-lg mb-3">
+                        <p className="text-blue-900 font-semibold text-sm">
+                          Cena služby: 3,90€ s DPH<br />
+                          <span className="text-blue-700 font-normal">(nezahŕňa cenu za výkon kontroly)</span>
+                        </p>
+                      </div>
+                      <div className="text-blue-800 text-sm">
+                        <p className="font-semibold mb-1">Program zahŕňa:</p>
+                        <ul className="text-xs space-y-1">
+                          <li>• Umytie šampónom</li>
+                          <li>• Umytie kolies</li>
+                          <li>• Sušenie</li>
+                        </ul>
+                      </div>
+                    </div>
                   </div>
-                  <ul className="space-y-2">
-                    {currentService.requirements.map((req, index) => (
-                      <li key={index} className="flex items-start space-x-2">
-                        <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0"></div>
-                        <span className="text-gray-700 text-sm">{req}</span>
-                      </li>
-                    ))}
-                  </ul>
                 </div>
-              </div>
+              ) : (
+                <>
+                  <div className="lg:col-span-2">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                      <div className="bg-gray-50 p-6 rounded-xl">
+                        <div className="flex items-center space-x-2 mb-3">
+                          <Clock className="h-5 w-5 text-blue-600" />
+                          <h3 className="font-semibold text-gray-900">Trvanie</h3>
+                        </div>
+                        <p className="text-gray-700">{currentService.duration}</p>
+                      </div>
+                      <div className="bg-gray-50 p-6 rounded-xl">
+                        <div className="flex items-center space-x-2 mb-3">
+                          <Shield className="h-5 w-5 text-green-600" />
+                          <h3 className="font-semibold text-gray-900">Platnosť</h3>
+                        </div>
+                        <p className="text-gray-700">{currentService.validity}</p>
+                      </div>
+                    </div>
+
+                    <div className="mb-8">
+                      <h3 className="text-xl font-bold text-gray-900 mb-4">Čo kontrolujeme</h3>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        {currentService.checks.map((check, index) => (
+                          <div key={index} className="flex items-center space-x-3">
+                            <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0" />
+                            <span className="text-gray-700">{check}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Requirements */}
+                  <div>
+                    <div className="bg-orange-50 border border-orange-200 rounded-xl p-6">
+                      <div className="flex items-center space-x-2 mb-4">
+                        <FileText className="h-5 w-5 text-orange-600" />
+                        <h3 className="font-semibold text-gray-900">Potrebné doklady</h3>
+                      </div>
+                      <ul className="space-y-2">
+                        {currentService.requirements.map((req, index) => (
+                          <li key={index} className="flex items-start space-x-2">
+                            <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0"></div>
+                            <span className="text-gray-700 text-sm">{req}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </>
+              )}
 
             </div>
 
