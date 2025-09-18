@@ -166,7 +166,7 @@ export default function ContactPage() {
                   <div key={index} className={`flex justify-between items-center p-3 rounded-lg ${
                     schedule.isToday ? 'bg-green-50 border border-green-200' : 'bg-gray-50'
                   }`}>
-                    <span className={`font-medium ${schedule.closed ? 'text-gray-500' : 'text-gray-900'}`}>
+                    <span className="font-medium text-gray-900">
                       {schedule.day}
                       {schedule.isToday && (
                         <span className="ml-2 text-xs bg-green-500 text-white px-2 py-1 rounded-full">
@@ -175,7 +175,7 @@ export default function ContactPage() {
                       )}
                     </span>
                     <span className={`font-semibold ${
-                      schedule.closed ? 'text-red-600' : schedule.isToday ? 'text-green-600' : 'text-gray-700'
+                      schedule.isToday ? 'text-green-600' : 'text-gray-700'
                     }`}>
                       {schedule.time}
                     </span>
