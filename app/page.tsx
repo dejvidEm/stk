@@ -67,12 +67,16 @@ export default function HomePage() {
           }}
         ></div>
         
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 lg:pb-24 pt-10">
           {/* Hero Text */}
           <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-              STK Centrum
-            </h1>
+            <div className="mb-6 flex justify-center">
+              <img 
+                src="/images/brand.png" 
+                alt="STK Centrum" 
+                className="h-8 md:h-10 w-auto mb-6"
+              />
+            </div>
             <p className="text-xl md:text-2xl mb-8 opacity-90 max-w-3xl mx-auto">
               Profesionálne služby technickej kontroly vozidiel.
               <span className="block mt-2 text-lg">Vyberte si centrum najbližšie k vám:</span>
@@ -299,7 +303,7 @@ export default function HomePage() {
           <div className="text-center">
             <div className="text-center space-y-4 md:space-y-0">
               <div className="text-brand-gray-400 text-sm">
-                © 2024 STK Centrá Sever Slovenska. Všetky práva vyhradené.
+                © 2025 EMADE, spol. s r.o. Všetky práva vyhradené.
               </div>
             </div>
           </div>

@@ -36,19 +36,12 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-3">
-            <div className="flex items-center space-x-1">
-              <div className="bg-brand-red-600 p-2 rounded-lg shadow-md">
-                <Car className="h-6 w-6 text-white" />
-              </div>
-              <div className="bg-brand-green-600 p-2 rounded-lg shadow-md">
-                <Car className="h-6 w-6 text-white" />
-              </div>
-            </div>
-            <div className="flex flex-col">
-              <span className="font-bold text-xl text-brand-gray-900">STK Tvrdošín</span>
-              <span className="text-xs text-brand-gray-600 -mt-1">Technické kontroly</span>
-            </div>
+          <Link href="/" className="flex items-center">
+            <img 
+              src="/images/brand_color.png" 
+              alt="STK Tvrdošín" 
+              className="h-6 md:h-8 w-auto"
+            />
           </Link>
 
           {/* Desktop Menu */}

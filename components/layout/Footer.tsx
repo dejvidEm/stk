@@ -64,7 +64,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-brand-gray-800 mt-8 pt-8 text-center text-brand-gray-400">
-          <p>&copy; 2024 STK Centrá. Všetky práva vyhradené.</p>
+          <p>&copy; 2025 EMADE, spol. s r.o. Všetky práva vyhradené.</p>
         </div>
       </div>
     </footer>
