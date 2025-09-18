@@ -48,7 +48,7 @@ export default function HomePage() {
       phone: '+421 43 987 6543',
       email: 'info@stklokca.sk',
       hours: 'Po-Pia: 7:00-18:00, So: 8:00-14:00',
-      image: '/images/namestovo_3.webp',
+      image: '/images/lokca.webp',
       description: 'Profesionálne centrum pre technické kontroly v Lokci.',
       features: ['Motocykle a skútre', 'Nákladné vozidlá', 'Rýchle vybavenie']
     }
