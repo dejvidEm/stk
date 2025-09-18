@@ -12,6 +12,7 @@ import {
   Phone,
   Mail
 } from 'lucide-react';
+import { Kavivanar } from 'next/font/google';
 
 export default function HomePage() {
   const centers = [
@@ -19,38 +20,38 @@ export default function HomePage() {
       id: 'namestovo',
       name: 'STK Námestovo',
       url: '/tvrdosin',
-      address: 'Hlavná 25, 029 01 Námestovo',
-      phone: '+421 43 123 4567',
-      email: 'info@stknamestovo.sk',
-      hours: 'Po-Pia: 7:00-18:00, So: 8:00-14:00',
+      address: 'Za vodou 1068, 029 01 Námestovo',
+      phone: '043 5520390, 0904 386146',
+      email: 'info@emade.sk',
+      hours: 'Po-Pia: 06:00-16:30',
       image: '/images/namestovo.webp',
       description: 'Moderné STK centrum v srdci Oravy s najnovším vybavením.',
-      features: ['Online rezervácia', 'Expresné vybavenie', 'Parkovanie zdarma']
+      features: ['Technické kontroly', 'Emisné kontroly', 'Kontrola originality', 'Autoumyváreň', 'Automat portál 24/7', 'Kaviareň efCafé', 'ecoČistiareň a práčovňa']
     },
     {
       id: 'tvrdosin',
       name: 'STK Tvrdošín',
       url: '/tvrdosin', // Link na STK Tvrdošín stránku
-      address: 'Hlavná 42, 027 44 Tvrdošín',
-      phone: '+421 43 765 4321',
+      address: 'Vojtaššákova 908, 027 44 Tvrdošín',
+      phone: '043 5323499, 0948 032189',
       email: 'info@stktvrdosin.sk',
-      hours: 'Po-Pia: 7:00-18:00, So: 8:00-14:00',
+      hours: 'Po-Pia: 07:00-15:30',
       image: '/images/namestovo_2.webp',
       description: 'Spoľahlivé služby STK a EK v Tvrdošíne s 15-ročnými skúsenosťami.',
-      features: ['Víkendové termíny', 'Všetky typy vozidiel', 'Opakované kontroly'],
+      features: ['Technické kontroly', 'Emisné kontroly', 'Autoumyváreň', 'Kaviareň'],
       isDemo: true
     },
     {
       id: 'lokca',
       name: 'STK Lokca',
       url: '/tvrdosin',
-      address: 'Železničná 18, 029 42 Lokca',
-      phone: '+421 43 987 6543',
+      address: 'Polianka 753, 029 51 Lokca',
+      phone: '0948 422333',
       email: 'info@stklokca.sk',
-      hours: 'Po-Pia: 7:00-18:00, So: 8:00-14:00',
+      hours: 'Po-Pia: 06:00-15:30',
       image: '/images/lokca.webp',
       description: 'Profesionálne centrum pre technické kontroly v Lokci.',
-      features: ['Motocykle a skútre', 'Nákladné vozidlá', 'Rýchle vybavenie']
+      features: ['Technické kontroly', 'Emisné kontroly']
     }
   ];
 
@@ -150,6 +151,17 @@ export default function HomePage() {
                         {center.email}
                       </a>
                     </div>
+                      {/* Features */}
+                        <div className="flex flex-wrap gap-1 pb-3 pt-5">
+                        {center.features.map((feature, index) => (
+                        <span 
+                        key={index}
+                        className="bg-gray-100 text-gray-700 px-2 py-1 rounded-full text-xs font-medium"
+                        >
+                        {feature}
+                        </span>
+                        ))}
+                        </div>
                   </div>
 
                   {/* CTA Buttons */}
