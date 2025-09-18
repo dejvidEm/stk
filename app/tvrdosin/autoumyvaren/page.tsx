@@ -241,36 +241,6 @@ export default function CarWashPage() {
         </div>
       </section>
 
-      {/* Additional Services */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Doplnkové služby
-            </h2>
-            <p className="text-xl text-gray-600">
-              Kompletné služby pre dokonalú čistotu
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {additionalServices.map((service, index) => {
-              const ServiceIcon = service.icon;
-              return (
-                <div key={index} className="bg-gray-50 rounded-xl p-6 hover:shadow-lg transition-shadow">
-                  <div className="bg-blue-100 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                    <ServiceIcon className="h-6 w-6 text-blue-600" />
-                  </div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">{service.title}</h3>
-                  <div className="text-2xl font-bold text-blue-600 mb-2">{service.price}</div>
-                  <p className="text-gray-600 text-sm">{service.description}</p>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
       {/* Features */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -296,69 +266,6 @@ export default function CarWashPage() {
                 </div>
               );
             })}
-          </div>
-        </div>
-      </section>
-
-      {/* Opening Hours & Info */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-12">
-            <div className="bg-blue-50 rounded-xl p-8">
-              <div className="flex items-center gap-3 mb-6">
-                <Clock className="h-8 w-8 text-blue-600" />
-                <h3 className="text-2xl font-bold text-gray-900">Otváracie hodiny</h3>
-              </div>
-              <div className="space-y-3">
-                <div className="flex justify-between">
-                  <span className="font-medium text-gray-900">Pondelok - Piatok:</span>
-                  <span className="text-gray-700">6:00 - 22:00</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="font-medium text-gray-900">Sobota:</span>
-                  <span className="text-gray-700">7:00 - 22:00</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="font-medium text-gray-900">Nedeľa:</span>
-                  <span className="text-gray-700">8:00 - 20:00</span>
-                </div>
-              </div>
-              <div className="mt-6 p-4 bg-white rounded-lg">
-                <p className="text-sm text-gray-600">
-                  <strong>Pozor:</strong> Autoumyváreň je plne automatizovaná a funguje 24/7. 
-                  Uvedené hodiny sú pre technickú podporu a doplňovanie materiálov.
-                </p>
-              </div>
-            </div>
-
-            <div className="bg-green-50 rounded-xl p-8">
-              <div className="flex items-center gap-3 mb-6">
-                <Car className="h-8 w-8 text-green-600" />
-                <h3 className="text-2xl font-bold text-gray-900">Praktické informácie</h3>
-              </div>
-              <ul className="space-y-3">
-                <li className="flex items-center gap-3">
-                  <CheckCircle className="h-5 w-5 text-green-600" />
-                  <span className="text-gray-700">Platba mincami, kartou aj bezkontaktne</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <CheckCircle className="h-5 w-5 text-green-600" />
-                  <span className="text-gray-700">Vhodné pre všetky typy vozidiel</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <CheckCircle className="h-5 w-5 text-green-600" />
-                  <span className="text-gray-700">Osvetlené pre večerné hodiny</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <CheckCircle className="h-5 w-5 text-green-600" />
-                  <span className="text-gray-700">Pokrytie kamerovým systémom</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <CheckCircle className="h-5 w-5 text-green-600" />
-                  <span className="text-gray-700">Prístup priamo z areálu STK</span>
-                </li>
-              </ul>
-            </div>
           </div>
         </div>
       </section>
