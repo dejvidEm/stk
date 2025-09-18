@@ -397,6 +397,28 @@ export default function ServicesPage() {
                 </div>
               </div>
               )}
+
+              {activeTab === 'ek' && (
+              <div className="bg-green-100 border border-green-200 p-4 rounded-lg">
+                <div className="flex items-start space-x-3">
+                  <Leaf className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  <div>
+                    <h4 className="font-semibold text-green-800 mb-2">
+                      Typy kontrolovaných motorov
+                    </h4>
+                    <p className="text-green-800 text-sm mb-2">
+                      V našej prevádzke vykonávame kontrolu emisií všetkých druhov motorových vozidiel:
+                    </p>
+                    <ul className="text-green-800 text-sm space-y-1">
+                      <li>• vozidlá so zážihovým (benzínovým) motorom bez katalyzátora</li>
+                      <li>• vozidlá s dieslovým (naftovým) motorom</li>
+                      <li>• vozidlá s alternatívnym (B+LPG, B+CNG) pohonom</li>
+                      <li>• vozidlá so zážihovým (benzínovým) motorom s katalyzátorom</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              )}
           </div>
         </div>
       </section>
