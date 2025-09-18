@@ -33,7 +33,7 @@ export default function Footer() {
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <Phone className="h-5 w-5 text-brand-green-400" />
-                <span className="text-brand-gray-300">+421 2 1234 5678</span>
+                <span className="text-brand-gray-300">0948 032189, 043 5323499</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="h-5 w-5 text-brand-green-400" />
@@ -42,7 +42,7 @@ export default function Footer() {
               <div className="flex items-start space-x-3">
                 <MapPin className="h-5 w-5 text-brand-green-400 mt-1" />
                 <div className="text-brand-gray-300">
-                  <p>Hlavná 42</p>
+                  <p>Vojtaššákova 908</p>
                   <p>027 44 Tvrdošín</p>
                 </div>
               </div>
@@ -56,9 +56,7 @@ export default function Footer() {
               <div className="flex items-center space-x-3">
                 <Clock className="h-5 w-5 text-brand-green-400" />
                 <div className="text-brand-gray-300">
-                  <p className="font-medium">Po - Pia: 7:00 - 18:00</p>
-                  <p>So: 8:00 - 14:00</p>
-                  <p>Ne: Zatvorené</p>
+                  <p className="font-medium">Po - Pia: 07:00 - 15:30</p>
                 </div>
               </div>
             </div>

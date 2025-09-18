@@ -37,10 +37,10 @@ export default function ServicesPage() {
         'Exhaláty a hlučnosť'
       ],
       requirements: [
-        'Technický preukaz vozidla',
-        'Doklad o poistení',
-        'Platný vodičský preukaz',
-        'Predchádzajúci protokol STK (ak existuje)'
+        'Osvedčenie o technickom preukaze, časť I alebo časť II (papierový alebo kartička)',
+        // 'Doklad o poistení',
+        // 'Platný vodičský preukaz',
+        // 'Predchádzajúci protokol STK (ak existuje)'
       ]
     },
     ek: {
@@ -316,12 +316,27 @@ export default function ServicesPage() {
                 <h3 className="text-xl font-bold text-gray-900 mb-2">Dôležité upozornenie</h3>
                 <p className="text-gray-700 mb-4">
                   Jazda s vozidlom bez platnej STK/EK je porušením zákona a môže viesť k pokute až do výšky 
-                  <strong> 1500 EUR</strong>. Okrem toho poisťovne môžu odmietnuť plnenie v prípade nehody.
+                  <strong> 350 EUR</strong>. Okrem toho poisťovne môžu odmietnuť plnenie v prípade nehody.
                 </p>
-                <div className="bg-red-100 p-4 rounded-lg">
+                <div className="bg-red-100 p-4 rounded-lg mb-4">
                   <p className="text-red-800 font-semibold">
                     Nezabudnite si včas rezervovať termín kontroly pred vypršaním platnosti!
                   </p>
+                </div>
+                
+                <div className="bg-orange-100 border border-orange-200 p-4 rounded-lg">
+                  <div className="flex items-start space-x-3">
+                    <div>
+                      <h4 className="font-semibold text-orange-800 mb-2">
+                        STK po vážnej dopravnej nehode (od 1.1.2022)
+                      </h4>
+                      <p className="text-orange-800 text-sm">
+                        V prípade vážnej dopravnej nehody je povinná technická kontrola, pri ktorej prišlo k poškodeniu 
+                        hlavných bezpečnostných prvkov (zavesenie kolies, deformačné zóny, systémy airbagov, riadenie alebo brzdy). 
+                        Aby vozidlo mohlo byť znovu používané v cestnej doprave, musí úspešne absolvovať technickú kontrolu pravidelnú na STK.
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
