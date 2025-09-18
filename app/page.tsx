@@ -57,7 +57,7 @@ export default function HomePage() {
   return (
     <div>
       {/* Hero Section with Centers Selection */}
-      <section className="relative bg-gradient-to-br from-brand-red-600 to-brand-red-800 text-white">
+      <section className="relative bg-gradient-to-br from-green-600 to-green-800 text-white">
         <div className="absolute inset-0 bg-black/20"></div>
         <div 
           className="absolute inset-0 bg-cover bg-center opacity-10"
