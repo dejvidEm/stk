@@ -23,7 +23,7 @@ export default function HomePage() {
       phone: '+421 43 123 4567',
       email: 'info@stknamestovo.sk',
       hours: 'Po-Pia: 7:00-18:00, So: 8:00-14:00',
-      image: '/images/i1.jpg',
+      image: '/images/namestovo.webp',
       description: 'Moderné STK centrum v srdci Oravy s najnovším vybavením.',
       features: ['Online rezervácia', 'Expresné vybavenie', 'Parkovanie zdarma']
     },
@@ -35,7 +35,7 @@ export default function HomePage() {
       phone: '+421 43 765 4321',
       email: 'info@stktvrdosin.sk',
       hours: 'Po-Pia: 7:00-18:00, So: 8:00-14:00',
-      image: '/images/i2.jpg',      
+      image: '/images/namestovo_2.webp',
       description: 'Spoľahlivé služby STK a EK v Tvrdošíne s 15-ročnými skúsenosťami.',
       features: ['Víkendové termíny', 'Všetky typy vozidiel', 'Opakované kontroly'],
       isDemo: true
@@ -48,7 +48,7 @@ export default function HomePage() {
       phone: '+421 43 987 6543',
       email: 'info@stklokca.sk',
       hours: 'Po-Pia: 7:00-18:00, So: 8:00-14:00',
-      image: '/images/i3.jpg',       
+      image: '/images/namestovo_3.webp',
       description: 'Profesionálne centrum pre technické kontroly v Lokci.',
       features: ['Motocykle a skútre', 'Nákladné vozidlá', 'Rýchle vybavenie']
     }
@@ -197,161 +197,6 @@ export default function HomePage() {
                 </div>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Car Wash Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-4">
-              Autoumyvárne
-            </h2>
-            <p className="text-lg text-brand-gray-600 max-w-3xl mx-auto">
-              Okrem technických kontrol poskytujeme aj služby autoumyvární v dvoch lokalitách.
-              Vaše vozidlo bude vyčistené a pripravené na cestu.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {/* Námestovo Car Wash */}
-            <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group">
-              <div className="relative h-48 overflow-hidden">
-                <img 
-                  src="/images/i4.jpg"
-                  alt="Autoumyvárka Námestovo"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-                <div className="absolute top-4 right-4 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
-                  Autoumyvárka
-                </div>
-              </div>
-              
-              <div className="p-6">
-                <h3 className="text-2xl font-bold text-brand-gray-900 mb-2">
-                  Autoumyvárka Námestovo
-                </h3>
-                <div className="space-y-2 mb-4 text-sm">
-                  <div className="flex items-center text-brand-gray-600">
-                    <MapPin className="h-4 w-4 text-blue-500 mr-2 flex-shrink-0" />
-                    Hlavná 25, 029 01 Námestovo
-                  </div>
-                  <div className="flex items-center text-brand-gray-600">
-                    <Clock className="h-4 w-4 text-brand-green-500 mr-2 flex-shrink-0" />
-                    Po-Ne: 8:00-20:00
-                  </div>
-                  <div className="flex items-center text-brand-gray-600">
-                    <Phone className="h-4 w-4 text-brand-red-500 mr-2 flex-shrink-0" />
-                    <a href="tel:+421431234567" className="hover:text-brand-red-600 transition-colors">
-                      +421 43 123 4567
-                    </a>
-                  </div>
-                </div>
-
-                <div className="mb-4">
-                  <h4 className="font-semibold text-brand-gray-900 mb-2">Služby:</h4>
-                  <ul className="text-sm text-brand-gray-600 space-y-1">
-                    <li>• Vonkajšie umývanie vozidiel</li>
-                    <li>• Vysávanie interiéru</li>
-                    <li>• Voskovanie a leštenie</li>
-                    <li>• Čistenie diskov</li>
-                  </ul>
-                </div>
-
-                <a 
-                  href="tel:+421431234567"
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg font-semibold transition-colors inline-flex items-center justify-center group text-sm"
-                >
-                  <Phone className="h-4 w-4 mr-2" />
-                  Kontaktovať
-                </a>
-              </div>
-            </div>
-
-            {/* Tvrdošín Car Wash */}
-            <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group">
-              <div className="relative h-48 overflow-hidden">
-                <img 
-                  src="/images/i5.jpg"
-                  alt="Autoumyvárka Tvrdošín"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-                <div className="absolute top-4 right-4 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
-                  Autoumyvárka
-                </div>
-              </div>
-              
-              <div className="p-6">
-                <h3 className="text-2xl font-bold text-brand-gray-900 mb-2">
-                  Autoumyvárka Tvrdošín
-                </h3>
-                <div className="space-y-2 mb-4 text-sm">
-                  <div className="flex items-center text-brand-gray-600">
-                    <MapPin className="h-4 w-4 text-blue-500 mr-2 flex-shrink-0" />
-                    Hlavná 42, 027 44 Tvrdošín
-                  </div>
-                  <div className="flex items-center text-brand-gray-600">
-                    <Clock className="h-4 w-4 text-brand-green-500 mr-2 flex-shrink-0" />
-                    Po-Ne: 8:00-20:00
-                  </div>
-                  <div className="flex items-center text-brand-gray-600">
-                    <Phone className="h-4 w-4 text-brand-red-500 mr-2 flex-shrink-0" />
-                    <a href="tel:+421437654321" className="hover:text-brand-red-600 transition-colors">
-                      +421 43 765 4321
-                    </a>
-                  </div>
-                </div>
-
-                <div className="mb-4">
-                  <h4 className="font-semibold text-brand-gray-900 mb-2">Služby:</h4>
-                  <ul className="text-sm text-brand-gray-600 space-y-1">
-                    <li>• Samoobslužné umývanie</li>
-                    <li>• Pena a šampón</li>
-                    <li>• Vysokotlaké umývanie</li>
-                    <li>• Sušenie a leštenie</li>
-                  </ul>
-                </div>
-
-                <a 
-                  href="tel:+421437654321"
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg font-semibold transition-colors inline-flex items-center justify-center group text-sm"
-                >
-                  <Phone className="h-4 w-4 mr-2" />
-                  Kontaktovať
-                </a>
-              </div>
-            </div>
-          </div>
-
-          {/* Benefits */}
-          <div className="mt-12 text-center">
-            <h3 className="text-2xl font-bold text-brand-gray-900 mb-6">
-              Prečo využiť naše autoumyvárne?
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-              <div className="text-center">
-                <div className="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <CheckCircle className="h-6 w-6 text-blue-600" />
-                </div>
-                <h4 className="font-semibold text-brand-gray-900 mb-2">Kvalitné vybavenie</h4>
-                <p className="text-brand-gray-600 text-sm">Moderné zariadenia pre dokonalé výsledky</p>
-              </div>
-              <div className="text-center">
-                <div className="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <Clock className="h-6 w-6 text-blue-600" />
-                </div>
-                <h4 className="font-semibold text-brand-gray-900 mb-2">Flexibilné hodiny</h4>
-                <p className="text-brand-gray-600 text-sm">Otvorené každý deň do 20:00</p>
-              </div>
-              <div className="text-center">
-                <div className="bg-brand-green-100 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <Star className="h-6 w-6 text-brand-green-600" />
-                </div>
-                <h4 className="font-semibold text-brand-gray-900 mb-2">Výhodné ceny</h4>
-                <p className="text-brand-gray-600 text-sm">Konkurencieschopné ceny pre všetky služby</p>
-              </div>
-            </div>
           </div>
         </div>
       </section>
