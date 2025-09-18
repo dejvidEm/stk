@@ -21,6 +21,7 @@ export default function Navbar() {
   const navItems = [
     { href: '/tvrdosin', label: 'STK Tvrdošín' },
     { href: '/tvrdosin/sluzby', label: 'Služby' },
+    { href: '/tvrdosin/autoumyvaren', label: 'Autoumyváreň' },
     { href: '/tvrdosin/cennik', label: 'Cenník' },
     { href: '/tvrdosin/rezervacia', label: 'Rezervácia' },
     { href: '/tvrdosin/kontakt', label: 'Kontakt' },
