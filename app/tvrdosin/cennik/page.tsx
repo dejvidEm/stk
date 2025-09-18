@@ -1,128 +1,9 @@
-'use client';
-
-import { useState } from 'react';
-import { 
-  Shield, 
-  Leaf, 
-  RotateCcw, 
-  Car, 
-  Truck, 
-  Bike,
-  CheckCircle,
-  Info,
-  Calculator,
-  BadgePercent
-} from 'lucide-react';
+import { ArrowLeft, Car, Calculator } from 'lucide-react';
+import Link from 'next/link';
 
 export default function PricingPage() {
-  const [selectedVehicleType, setSelectedVehicleType] = useState('personal');
-
-  const vehicleTypes = [
-    { id: 'personal', name: 'Osobné vozidlá', icon: Car, category: 'M1' },
-    { id: 'truck', name: 'Nákladné vozidlá', icon: Truck, category: 'N2/N3' },
-    { id: 'motorcycle', name: 'Motocykle', icon: Bike, category: 'L' }
-  ];
-
-  const pricing = {
-    personal: {
-      stk: { price: 25, oldPrice: 30, description: 'Technická kontrola osobných vozidiel' },
-      ek: { price: 15, oldPrice: 18, description: 'Emisná kontrola benzín/diesel' },
-      'stk-ek': { price: 35, oldPrice: 45, description: 'Kombinovaná kontrola STK + EK', savings: 10 },
-      recheck: { price: 10, oldPrice: 15, description: 'Opakovaná kontrola závad' },
-      'extra-services': [
-        { name: 'Kontrola v sobotu', price: 5, description: 'Príplatok za víkendovú službu' },
-        { name: 'Expresné vybavenie', price: 10, description: 'Prednostné vybavenie do 20 minút' },
-        { name: 'Výjazd k zákazníkovi', price: 30, description: 'V rámci Tvrdošína a okolia' }
-      ]
-    },
-    truck: {
-      stk: { price: 45, oldPrice: 55, description: 'Technická kontrola nákladných vozidiel' },
-      ek: { price: 25, oldPrice: 30, description: 'Emisná kontrola diesel motory' },
-      'stk-ek': { price: 60, oldPrice: 80, description: 'Kombinovaná kontrola STK + EK', savings: 20 },
-      recheck: { price: 20, oldPrice: 25, description: 'Opakovaná kontrola závad' },
-      'extra-services': [
-        { name: 'Kontrola v sobotu', price: 10, description: 'Príplatok za víkendovú službu' },
-        { name: 'Kontrola návesov', price: 25, description: 'STK pre návesy a prívesy' },
-        { name: 'Tahometrická kontrola', price: 35, description: 'Kontrola tachografu' }
-      ]
-    },
-    motorcycle: {
-      stk: { price: 20, oldPrice: 25, description: 'Technická kontrola motocyklov' },
-      ek: { price: 12, oldPrice: 15, description: 'Emisná kontrola 2T/4T motory' },
-      'stk-ek': { price: 28, oldPrice: 35, description: 'Kombinovaná kontrola STK + EK', savings: 7 },
-      recheck: { price: 8, oldPrice: 12, description: 'Opakovaná kontrola závad' },
-      'extra-services': [
-        { name: 'Kontrola v sobotu', price: 3, description: 'Príplatok za víkendovú službu' },
-        { name: 'Kontrola skútra', price: 15, description: 'STK pre skútre do 50ccm' },
-        { name: 'Historické vozidlá', price: 25, description: 'Špeciálna kontrola veteránov' }
-      ]
-    }
-  };
-
-  const currentPricing = pricing[selectedVehicleType as keyof typeof pricing];
-
-  const mainServices = [
-    {
-      id: 'stk',
-      name: 'Technická kontrola (STK)',
-      icon: Shield,
-      color: 'blue',
-      includes: [
-        'Kontrola brzdového systému',
-        'Kontrola riadenia a podvozku',
-        'Kontrola svetiel a signalizácie',
-        'Kontrola pneumatík a diskov',
-        'Protokol o kontrole',
-        'Nálepka pri úspešnom absolvovaní'
-      ]
-    },
-    {
-      id: 'ek',
-      name: 'Emisná kontrola (EK)',
-      icon: Leaf,
-      color: 'green',
-      includes: [
-        'Meranie emisií CO/HC',
-        'Kontrola lambda sondy',
-        'Meranie nepriesvitnosti (diesel)',
-        'Kontrola katalyzátora',
-        'Protokol o meraniach',
-        'Nálepka pri úspešnom absolvovaní'
-      ]
-    },
-    {
-      id: 'stk-ek',
-      name: 'STK + EK Balík',
-      icon: CheckCircle,
-      color: 'orange',
-      includes: [
-        'Všetky kontroly STK',
-        'Všetky merania EK',
-        'Ušetrený čas',
-        'Zľavnená cena',
-        'Dva protokoly',
-        'Dve nálepky'
-      ],
-      popular: true
-    },
-    {
-      id: 'recheck',
-      name: 'Opakovaná kontrola',
-      icon: RotateCcw,
-      color: 'purple',
-      includes: [
-        'Kontrola odstránenia závad',
-        'Bez čakania v rade',
-        'Do 30 dní od prvej kontroly',
-        'Zľavnená cena',
-        'Nový protokol',
-        'Nálepka pri úspešnom absolvovaní'
-      ]
-    }
-  ];
-
   return (
-    <div>
+    <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-brand-red-600 to-brand-red-800 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -131,222 +12,353 @@ export default function PricingPage() {
               Cenník služieb
             </h1>
             <p className="text-xl md:text-2xl opacity-90 max-w-3xl mx-auto">
-              Transparentné ceny bez skrytých poplatkov. Najlepšie ceny v regióne!
+              Prehľadný cenník všetkých našich služieb a typov vozidiel pre STK v Tvrdošíne
             </p>
           </div>
         </div>
       </section>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        {/* Vehicle Type Selector */}
-        <div className="mb-12">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
-            Vyberte kategóriu vozidla
-          </h2>
-          <div className="flex flex-wrap justify-center gap-4">
-            {vehicleTypes.map((type) => {
-              const IconComponent = type.icon;
-              return (
-                <button
-                  key={type.id}
-                  onClick={() => setSelectedVehicleType(type.id)}
-                  className={`flex items-center space-x-3 px-6 py-4 rounded-xl border-2 transition-all ${
-                    selectedVehicleType === type.id
-                      ? 'border-blue-500 bg-blue-50 text-blue-700'
-                      : 'border-gray-200 hover:border-blue-300 text-gray-700'
-                  }`}
-                >
-                  <IconComponent className="h-6 w-6" />
-                  <div className="text-left">
-                    <div className="font-semibold">{type.name}</div>
-                    <div className="text-sm opacity-75">Kategória {type.category}</div>
-                  </div>
-                </button>
-              );
-            })}
+      {/* Main Pricing Table */}
+      <section className="py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+                Cenník technickej kontroly
+              </h2>
+            </div>
+            <p className="text-xl text-gray-600">
+              Aktuálne ceny pre všetky typy vozidiel a služieb
+            </p>
           </div>
-        </div>
 
-        {/* Main Services Pricing */}
-        <div className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-            Hlavné služby
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {mainServices.map((service) => {
-              const IconComponent = service.icon;
-              const servicePrice = currentPricing[service.id as keyof typeof currentPricing];
-              const colorClasses = {
-                blue: 'bg-blue-100 text-blue-600 border-blue-200',
-                green: 'bg-green-100 text-green-600 border-green-200',
-                orange: 'bg-orange-100 text-orange-600 border-orange-200',
-                purple: 'bg-purple-100 text-purple-600 border-purple-200'
-              };
-
-              return (
-                <div
-                  key={service.id}
-                  className={`relative bg-white rounded-2xl shadow-lg border-2 p-6 hover:shadow-xl transition-shadow ${
-                    service.popular ? 'ring-2 ring-orange-500' : ''
-                  }`}
-                >
-                  {service.popular && (
-                    <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                      <span className="bg-orange-500 text-white px-4 py-1 rounded-full text-sm font-semibold">
-                        Najobľúbenejšie
-                      </span>
-                    </div>
-                  )}
-                  
-                  <div className={`inline-flex p-3 rounded-xl mb-4 ${colorClasses[service.color as keyof typeof colorClasses]}`}>
-                    <IconComponent className="h-6 w-6" />
-                  </div>
-                  
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">{service.name}</h3>
-                  
-                  <div className="mb-4">
-                    <div className="flex items-baseline space-x-2">
-                      <span className="text-3xl font-bold text-gray-900">
-                        {typeof servicePrice === 'object' && !Array.isArray(servicePrice) ? servicePrice.price : 0}€
-                      </span>
-                      {typeof servicePrice === 'object' && !Array.isArray(servicePrice) && servicePrice.oldPrice && (
-                        <span className="text-lg text-gray-500 line-through">
-                          {servicePrice.oldPrice}€
-                        </span>
-                      )}
-                    </div>
-                    {typeof servicePrice === 'object' && 'savings' in servicePrice && servicePrice.savings && (
-                      <div className="text-sm text-green-600 font-medium">
-                        Ušetríte {servicePrice.savings}€
-                      </div>
-                    )}
-                  </div>
-                  
-                  <p className="text-gray-600 text-sm mb-4">
-                    {typeof servicePrice === 'object' && !Array.isArray(servicePrice) ? servicePrice.description : ''}
-                  </p>
-                  
-                  <div className="space-y-2">
-                    <h4 className="font-semibold text-gray-900 text-sm">Služba zahŕňa:</h4>
-                    {service.includes.map((item, index) => (
-                      <div key={index} className="flex items-center space-x-2 text-sm text-gray-600">
-                        <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
-                        <span>{item}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Extra Services */}
-        <div className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-            Doplnkové služby
-          </h2>
-          <div className="bg-white rounded-2xl shadow-lg p-8">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {currentPricing['extra-services'].map((service, index) => (
-                <div key={index} className="flex items-start space-x-4 p-4 rounded-xl bg-gray-50">
-                  <div className="bg-blue-100 p-2 rounded-lg">
-                    <Calculator className="h-5 w-5 text-blue-600" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="font-semibold text-gray-900 mb-1">{service.name}</h3>
-                    <p className="text-sm text-gray-600 mb-2">{service.description}</p>
-                    <div className="text-xl font-bold text-blue-600">+{service.price}€</div>
-                  </div>
-                </div>
-              ))}
+          <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+            <div className="overflow-x-auto">
+              <table className="w-full">
+                <thead className="bg-brand-red-600 text-white">
+                  <tr>
+                    <th className="px-6 py-4 text-left font-semibold">Druh vozidla</th>
+                    <th className="px-6 py-4 text-center font-semibold">Kategória</th>
+                    <th className="px-6 py-4 text-center font-semibold">Pravidelná kontrola</th>
+                    <th className="px-6 py-4 text-center font-semibold">Opakovaná kontrola</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-200">
+                  <tr className="hover:bg-gray-50">
+                    <td className="px-6 py-4 font-medium text-gray-900">Motocykel</td>
+                    <td className="px-6 py-4 text-center text-gray-700">L3, L4, L6</td>
+                    <td className="px-6 py-4 text-center text-gray-900 font-semibold">39,90 €</td>
+                    <td className="px-6 py-4 text-center text-gray-900 font-semibold">20,90 €</td>
+                  </tr>
+                  <tr className="hover:bg-gray-50 bg-red-50">
+                    <td className="px-6 py-4 font-medium text-gray-900">Osobné motorové vozidlo, štvorkolky</td>
+                    <td className="px-6 py-4 text-center text-gray-700">M1, N1, L5e, L7e</td>
+                    <td className="px-6 py-4 text-center text-gray-900 font-semibold">50,90 €</td>
+                    <td className="px-6 py-4 text-center text-gray-900 font-semibold">25,90 €</td>
+                  </tr>
+                  <tr className="hover:bg-gray-50">
+                    <td className="px-6 py-4 font-medium text-gray-900 pl-12">s pohonom plyn, hybrid, elektro</td>
+                    <td className="px-6 py-4 text-center text-gray-700">M1, N1</td>
+                    <td className="px-6 py-4 text-center text-gray-900 font-semibold">61,90 €</td>
+                    <td className="px-6 py-4 text-center text-gray-900 font-semibold">25,90 €</td>
+                  </tr>
+                  <tr className="hover:bg-gray-50 bg-red-50">
+                    <td className="px-6 py-4 font-medium text-gray-900 pl-12">automaticky uznávané výnimky (USA a pod.)</td>
+                    <td className="px-6 py-4 text-center text-gray-700">M1, N1, L5e, L7e</td>
+                    <td className="px-6 py-4 text-center text-gray-900 font-semibold">210,00 €</td>
+                    <td className="px-6 py-4 text-center text-gray-900 font-semibold">129,90 €</td>
+                  </tr>
+                  <tr className="hover:bg-gray-50">
+                    <td className="px-6 py-4 font-medium text-gray-900">Nákladné motorové vozidlo</td>
+                    <td className="px-6 py-4 text-center text-gray-700">N2, N3, M2, M3, PS</td>
+                    <td className="px-6 py-4 text-center text-gray-900 font-semibold">77,90 €</td>
+                    <td className="px-6 py-4 text-center text-gray-900 font-semibold">41,90 €</td>
+                  </tr>
+                  <tr className="hover:bg-gray-50 bg-red-50">
+                    <td className="px-6 py-4 font-medium text-gray-900">Prípojné vozidlá nad 3500 kg</td>
+                    <td className="px-6 py-4 text-center text-gray-700">O3, O4, R2, R3, R4</td>
+                    <td className="px-6 py-4 text-center text-gray-900 font-semibold">54,90 €</td>
+                    <td className="px-6 py-4 text-center text-gray-900 font-semibold">35,90 €</td>
+                  </tr>
+                  <tr className="hover:bg-gray-50">
+                    <td className="px-6 py-4 font-medium text-gray-900 pl-12">do 3500 kg</td>
+                    <td className="px-6 py-4 text-center text-gray-700">O2</td>
+                    <td className="px-6 py-4 text-center text-gray-900 font-semibold">34,90 €</td>
+                    <td className="px-6 py-4 text-center text-gray-900 font-semibold">15,90 €</td>
+                  </tr>
+                  <tr className="hover:bg-gray-50 bg-red-50">
+                    <td className="px-6 py-4 font-medium text-gray-900">Traktor</td>
+                    <td className="px-6 py-4 text-center text-gray-700">T1, T2, T3, T4, T5</td>
+                    <td className="px-6 py-4 text-center text-gray-900 font-semibold">59,90 €</td>
+                    <td className="px-6 py-4 text-center text-gray-900 font-semibold">35,90 €</td>
+                  </tr>
+                  <tr className="hover:bg-gray-50">
+                    <td className="px-6 py-4 font-medium text-gray-900">Vozidlá s obmedzenou prevádzkou, traktor</td>
+                    <td className="px-6 py-4 text-center text-gray-700">Farmárske značky</td>
+                    <td className="px-6 py-4 text-center text-gray-900 font-semibold">85,00 €</td>
+                    <td className="px-6 py-4 text-center text-gray-900 font-semibold">35,90 €</td>
+                  </tr>
+                  <tr className="hover:bg-gray-50 bg-red-50">
+                    <td className="px-6 py-4 font-medium text-gray-900">Prípojné vozidlo s obmedzenou prevádzkou</td>
+                    <td className="px-6 py-4 text-center text-gray-700">Farmárske značky</td>
+                    <td className="px-6 py-4 text-center text-gray-900 font-semibold">65,00 €</td>
+                    <td className="px-6 py-4 text-center text-gray-900 font-semibold">-</td>
+                  </tr>
+                  <tr className="hover:bg-gray-50">
+                    <td className="px-6 py-4 font-medium text-gray-900">Administratívna kontrola zrýchlene*</td>
+                    <td className="px-6 py-4 text-center text-gray-700">Všetky kategórie</td>
+                    <td className="px-6 py-4 text-center text-gray-900 font-semibold">16,00 €</td>
+                    <td className="px-6 py-4 text-center text-gray-900 font-semibold">-</td>
+                  </tr>
+                  <tr className="hover:bg-gray-50 bg-red-50">
+                    <td className="px-6 py-4 font-medium text-gray-900">Administratívna kontrola</td>
+                    <td className="px-6 py-4 text-center text-gray-700">Všetky kategórie</td>
+                    <td className="px-6 py-4 text-center text-gray-900 font-semibold">21,00 €</td>
+                    <td className="px-6 py-4 text-center text-gray-900 font-semibold">-</td>
+                  </tr>
+                  <tr className="hover:bg-gray-50">
+                    <td className="px-6 py-4 font-medium text-gray-900">Zvláštna kontrola</td>
+                    <td className="px-6 py-4 text-center text-gray-700">M1, N1</td>
+                    <td className="px-6 py-4 text-center text-gray-900 font-semibold">26,90 €</td>
+                    <td className="px-6 py-4 text-center text-gray-900 font-semibold">-</td>
+                  </tr>
+                  <tr className="hover:bg-gray-50 bg-red-50">
+                    <td className="px-6 py-4 font-medium text-gray-900">Zvláštna kontrola</td>
+                    <td className="px-6 py-4 text-center text-gray-700">Ostatné kategórie</td>
+                    <td className="px-6 py-4 text-center text-gray-900 font-semibold">41,90 €</td>
+                    <td className="px-6 py-4 text-center text-gray-900 font-semibold">-</td>
+                  </tr>
+                  <tr className="hover:bg-gray-50">
+                    <td className="px-6 py-4 font-medium text-gray-900">Opis protokolu</td>
+                    <td className="px-6 py-4 text-center text-gray-700">Všetky kategórie</td>
+                    <td className="px-6 py-4 text-center text-gray-900 font-semibold">10,00 €</td>
+                    <td className="px-6 py-4 text-center text-gray-900 font-semibold">-</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            
+            <div className="bg-gray-50 px-6 py-4 border-t border-gray-200">
+              <p className="text-sm text-gray-600 italic">
+                * Administratívna kontrola zrýchlene - do 24 hodín
+              </p>
+              <p className="text-sm text-gray-600 mt-2">
+                Všetky ceny sú uvedené s DPH. Ceny platné od 1.1.2024.
+              </p>
             </div>
           </div>
         </div>
+      </section>
 
-        {/* Price Calculator */}
-        <div className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-            Kalkulačka cien
+      {/* Emission Control Pricing Table */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+                Cenník emisnej kontroly
+              </h2>
+            </div>
+            <p className="text-xl text-gray-600">
+              Aktuálne ceny pre emisnú kontrolu všetkých typov vozidiel
+            </p>
+          </div>
+
+          <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+            <div className="overflow-x-auto">
+              <table className="w-full">
+                <thead className="bg-brand-red-600 text-white">
+                  <tr>
+                    <th className="px-6 py-4 text-left font-semibold">Druh vozidla</th>
+                    <th className="px-6 py-4 text-center font-semibold">Kategória</th>
+                    <th className="px-6 py-4 text-center font-semibold">Pravidelná kontrola</th>
+                    <th className="px-6 py-4 text-center font-semibold">Opakovaná kontrola</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-200">
+                  <tr className="hover:bg-gray-50">
+                    <td className="px-6 py-4 font-medium text-gray-900">Osobné vozidlo benzín bez katalyzátora, s RKAT, OBD, Diesel</td>
+                    <td className="px-6 py-4 text-center text-gray-700">M1, N1</td>
+                    <td className="px-6 py-4 text-center text-gray-900 font-semibold">46,90 €</td>
+                    <td className="px-6 py-4 text-center text-gray-900 font-semibold">25,00 €</td>
+                  </tr>
+                  <tr className="hover:bg-gray-50 bg-red-50">
+                    <td className="px-6 py-4 font-medium text-gray-900 pl-12">+ LPG, CNG, Hybrid</td>
+                    <td className="px-6 py-4 text-center text-gray-700">M1, N1</td>
+                    <td className="px-6 py-4 text-center text-gray-900 font-semibold">53,90 €</td>
+                    <td className="px-6 py-4 text-center text-gray-900 font-semibold">30,00 €</td>
+                  </tr>
+                  <tr className="hover:bg-gray-50">
+                    <td className="px-6 py-4 font-medium text-gray-900">Nákladné motorové vozidlo</td>
+                    <td className="px-6 py-4 text-center text-gray-700">N2, N3, M2, M3, PS</td>
+                    <td className="px-6 py-4 text-center text-gray-900 font-semibold">57,90 €</td>
+                    <td className="px-6 py-4 text-center text-gray-900 font-semibold">35,00 €</td>
+                  </tr>
+                  <tr className="hover:bg-gray-50 bg-red-50">
+                    <td className="px-6 py-4 font-medium text-gray-900 pl-12">+ LPG, CNG</td>
+                    <td className="px-6 py-4 text-center text-gray-700">N2, N3, M2, M3, PS</td>
+                    <td className="px-6 py-4 text-center text-gray-900 font-semibold">63,90 €</td>
+                    <td className="px-6 py-4 text-center text-gray-900 font-semibold">40,00 €</td>
+                  </tr>
+                  <tr className="hover:bg-gray-50">
+                    <td className="px-6 py-4 font-medium text-gray-900">Traktor</td>
+                    <td className="px-6 py-4 text-center text-gray-700">T1, T2, T3, T4, T5</td>
+                    <td className="px-6 py-4 text-center text-gray-900 font-semibold">47,90 €</td>
+                    <td className="px-6 py-4 text-center text-gray-900 font-semibold">25,00 €</td>
+                  </tr>
+                  <tr className="hover:bg-gray-50 bg-red-50">
+                    <td className="px-6 py-4 font-medium text-gray-900">Administratívna kontrola zrýchlene*</td>
+                    <td className="px-6 py-4 text-center text-gray-700">Všetky kategórie</td>
+                    <td className="px-6 py-4 text-center text-gray-900 font-semibold">15,00 €</td>
+                    <td className="px-6 py-4 text-center text-gray-900 font-semibold">-</td>
+                  </tr>
+                  <tr className="hover:bg-gray-50">
+                    <td className="px-6 py-4 font-medium text-gray-900">Administratívna kontrola</td>
+                    <td className="px-6 py-4 text-center text-gray-700">Všetky kategórie</td>
+                    <td className="px-6 py-4 text-center text-gray-900 font-semibold">20,00 €</td>
+                    <td className="px-6 py-4 text-center text-gray-900 font-semibold">-</td>
+                  </tr>
+                  <tr className="hover:bg-gray-50 bg-red-50">
+                    <td className="px-6 py-4 font-medium text-gray-900">Zvláštna kontrola</td>
+                    <td className="px-6 py-4 text-center text-gray-700">M1, N1</td>
+                    <td className="px-6 py-4 text-center text-gray-900 font-semibold">25,00 €</td>
+                    <td className="px-6 py-4 text-center text-gray-900 font-semibold">-</td>
+                  </tr>
+                  <tr className="hover:bg-gray-50">
+                    <td className="px-6 py-4 font-medium text-gray-900">Zvláštna kontrola</td>
+                    <td className="px-6 py-4 text-center text-gray-700">Ostatné kategórie</td>
+                    <td className="px-6 py-4 text-center text-gray-900 font-semibold">40,00 €</td>
+                    <td className="px-6 py-4 text-center text-gray-900 font-semibold">-</td>
+                  </tr>
+                  <tr className="hover:bg-gray-50 bg-red-50">
+                    <td className="px-6 py-4 font-medium text-gray-900">Opis protokolu</td>
+                    <td className="px-6 py-4 text-center text-gray-700">Všetky kategórie</td>
+                    <td className="px-6 py-4 text-center text-gray-900 font-semibold">10,00 €</td>
+                    <td className="px-6 py-4 text-center text-gray-900 font-semibold">-</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            
+            <div className="bg-gray-50 px-6 py-4 border-t border-gray-200">
+              <p className="text-sm text-gray-600 italic">
+                * Administratívna kontrola zrýchlene - do 24 hodín
+              </p>
+              <p className="text-sm text-gray-600 mt-2">
+                <strong>Osvedčenie o technickej/emisnej kontrole</strong> slúži ako doklad na preukázanie platnosti TK/EK pri kontrole v cestnej premávke.
+              </p>
+              <p className="text-sm text-gray-600 mt-1">
+                Opakovaná technická/emisná kontrola sa musí vykonať do 60 kalendárnych dní od pravidelnej kontroly.
+              </p>
+              <p className="text-sm text-gray-600 mt-1">
+                * Pravidelná kontrola vykonaná na našom pracovisku
+              </p>
+              <p className="text-sm text-gray-600 mt-2">
+                Všetky ceny sú uvedené s DPH. Ceny platné od 1.1.2024.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Additional Services Section */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Doplnkové služby
+            </h2>
+            <p className="text-xl text-gray-600">
+              Kompletné služby pre vaše pohodlie
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="bg-gray-50 rounded-xl p-6 hover:shadow-lg transition-shadow">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="bg-brand-red-100 p-2 rounded-lg">
+                  <Car className="h-6 w-6 text-brand-red-600" />
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900">Express vystavenie</h3>
+              </div>
+              <p className="text-gray-600 mb-4">
+                Rýchle spracovanie a vystavenie protokolu do 1 hodiny.
+              </p>
+              <div className="text-2xl font-bold text-brand-red-600">+ 5,00 €</div>
+            </div>
+
+            <div className="bg-gray-50 rounded-xl p-6 hover:shadow-lg transition-shadow">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="bg-brand-red-100 p-2 rounded-lg">
+                  <Car className="h-6 w-6 text-brand-red-600" />
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900">VIN očíslovanie</h3>
+              </div>
+              <p className="text-gray-600 mb-4">
+                Odborné vykonanie VIN označenia vozidla.
+              </p>
+              <div className="text-2xl font-bold text-brand-red-600">20,00 €</div>
+            </div>
+
+            <div className="bg-gray-50 rounded-xl p-6 hover:shadow-lg transition-shadow">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="bg-brand-red-100 p-2 rounded-lg">
+                  <Car className="h-6 w-6 text-brand-red-600" />
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900">Zabezpečené parkovanie</h3>
+              </div>
+              <p className="text-gray-600 mb-4">
+                Bezpečné strážené parkovisko pre vaše vozidlo.
+              </p>
+              <div className="text-2xl font-bold text-brand-red-600">Zdarma</div>
+            </div>
+
+            <div className="bg-gray-50 rounded-xl p-6 hover:shadow-lg transition-shadow">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="bg-brand-red-100 p-2 rounded-lg">
+                  <Car className="h-6 w-6 text-brand-red-600" />
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900">Kuriérska služba</h3>
+              </div>
+              <p className="text-gray-600 mb-4">
+                Donáška dokumentov priamo k vám domov alebo do práce.
+              </p>
+              <div className="text-2xl font-bold text-brand-red-600">Na vyžiadanie</div>
+            </div>
+
+            <div className="bg-gray-50 rounded-xl p-6 hover:shadow-lg transition-shadow">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="bg-brand-red-100 p-2 rounded-lg">
+                  <Car className="h-6 w-6 text-brand-red-600" />
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900">Mycí programy</h3>
+              </div>
+              <p className="text-gray-600 mb-4">
+                Kompletné umytie vozidla počas kontroly.
+              </p>
+              <div className="text-2xl font-bold text-brand-red-600">Na vyžiadanie</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact for Pricing */}
+      <section className="py-16 bg-brand-red-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            Potrebujete individuálnu ponuku?
           </h2>
-          <div className="bg-gradient-to-br from-blue-50 to-orange-50 rounded-2xl p-8">
-            <div className="max-w-2xl mx-auto">
-              <div className="text-center mb-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-2">
-                  Orientačná cena pre váš typ vozidla
-                </h3>
-                <p className="text-gray-600">
-                  Vyberte si služby a získajte orientačný odhad ceny
-                </p>
-              </div>
-              
-              <div className="bg-white rounded-xl p-6 shadow-lg">
-                <div className="grid grid-cols-2 gap-4 mb-6">
-                  <div className="text-center p-4 bg-blue-50 rounded-lg">
-                    <div className="text-2xl font-bold text-blue-600 mb-1">STK</div>
-                    <div className="text-3xl font-bold text-gray-900">{currentPricing.stk.price}€</div>
-                  </div>
-                  <div className="text-center p-4 bg-green-50 rounded-lg">
-                    <div className="text-2xl font-bold text-green-600 mb-1">EK</div>
-                    <div className="text-3xl font-bold text-gray-900">{currentPricing.ek.price}€</div>
-                  </div>
-                </div>
-                
-                <div className="text-center p-6 bg-orange-50 rounded-lg border-2 border-orange-200">
-                  <div className="text-lg font-semibold text-orange-700 mb-2">
-                    <BadgePercent className="inline-block mr-1" /> Najlepšia ponuka: STK + EK
-                  </div>
-                  <div className="text-4xl font-bold text-gray-900 mb-2">
-                    {currentPricing['stk-ek'].price}€
-                  </div>
-                  <div className="text-sm text-gray-600">
-                    Namiesto {currentPricing.stk.price + currentPricing.ek.price}€ samostatne
-                  </div>
-                  <div className="text-green-600 font-semibold">
-                    Ušetríte {(currentPricing.stk.price + currentPricing.ek.price) - currentPricing['stk-ek'].price}€
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <p className="text-xl text-gray-600 mb-8">
+            Kontaktujte nás pre špeciálne cenové podmienky pre flotily a firemných klientov.
+          </p>
+          <Link
+            href="/tvrdosin/kontakt"
+            className="inline-flex items-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-brand-red-600 hover:bg-brand-red-700 transition-colors"
+          >
+            Kontaktovať nás
+          </Link>
         </div>
-
-        {/* Important Information */}
-        <div className="bg-blue-50 border border-blue-200 rounded-2xl p-8">
-          <div className="flex items-start space-x-4">
-            <Info className="h-6 w-6 text-blue-600 flex-shrink-0 mt-1" />
-            <div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Dôležité informácie</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <h4 className="font-semibold text-gray-900 mb-2">Platobné možnosti</h4>
-                  <ul className="space-y-1 text-gray-700">
-                    <li>• Hotovosť</li>
-                    <li>• Platobná karta</li>
-                    <li>• Bankový prevod</li>
-                    <li>• QR platba</li>
-                  </ul>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-gray-900 mb-2">Zľavy a akcie</h4>
-                  <ul className="space-y-1 text-gray-700">
-                    <li>• 🎂 Narodeniny: 10% zľava</li>
-                    <li>• 👥 Rodinný balík: 15% zľava od 3. vozidla</li>
-                    <li>• 🏢 Firemné vozidlá: 20% zľava od 5 vozidiel</li>
-                    <li>• 🎓 Študenti: 5% zľava s preukazom</li>
-                  </ul>
-                </div>
-              </div>
-              <div className="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
-                <p className="text-sm text-yellow-800">
-                  <strong>Pozor:</strong> Ceny sú platné do 31.12.2025. V prípade neúspešnej kontroly 
-                  sa účtuje plná cena za vykonanú kontrolu. Opakovaná kontrola sa hradí samostatne.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      </section>
     </div>
   );
 }
