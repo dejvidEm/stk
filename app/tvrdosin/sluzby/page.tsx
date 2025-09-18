@@ -349,17 +349,34 @@ export default function ServicesPage() {
             </div>
 
               {activeTab === 'stk' && (
-              <div className="bg-orange-100 border border-orange-200 p-4 rounded-lg">
-                <div className="flex items-start space-x-3">
-                  <div>
-                    <h4 className="font-semibold text-orange-800 mb-2">
-                      STK po vážnej dopravnej nehode (od 1.1.2022)
-                    </h4>
-                    <p className="text-orange-800 text-sm">
-                      V prípade vážnej dopravnej nehody je povinná technická kontrola, pri ktorej prišlo k poškodeniu 
-                      hlavných bezpečnostných prvkov (zavesenie kolies, deformačné zóny, systémy airbagov, riadenie alebo brzdy). 
-                      Aby vozidlo mohlo byť znovu používané v cestnej doprave, musí úspešne absolvovať technickú kontrolu pravidelnú na STK.
-                    </p>
+              <div className="space-y-4">
+                <div className="bg-blue-100 border border-blue-200 p-4 rounded-lg">
+                  <div className="flex items-start space-x-3">
+                    <Info className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                    <div>
+                      <h4 className="font-semibold text-blue-800 mb-2">
+                        Prvá STK
+                      </h4>
+                      <p className="text-blue-800 text-sm">
+                        Prvá STK po 4 rokoch od prvej evidencie vozidla (výroby).
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="bg-orange-100 border border-orange-200 p-4 rounded-lg">
+                  <div className="flex items-start space-x-3">
+                    <AlertTriangle className="h-5 w-5 text-orange-600 flex-shrink-0 mt-0.5" />
+                    <div>
+                      <h4 className="font-semibold text-orange-800 mb-2">
+                        STK po vážnej dopravnej nehode (od 1.1.2022)
+                      </h4>
+                      <p className="text-orange-800 text-sm">
+                        V prípade vážnej dopravnej nehody je povinná technická kontrola, pri ktorej prišlo k poškodeniu 
+                        hlavných bezpečnostných prvkov (zavesenie kolies, deformačné zóny, systémy airbagov, riadenie alebo brzdy). 
+                        Aby vozidlo mohlo byť znovu používané v cestnej doprave, musí úspešne absolvovať technickú kontrolu pravidelnú na STK.
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
