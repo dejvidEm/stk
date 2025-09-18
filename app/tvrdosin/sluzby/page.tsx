@@ -214,7 +214,25 @@ export default function ServicesPage() {
                   </ul>
                 </div>
               </div>
+
             </div>
+
+              {activeTab === 'stk' && (
+              <div className="bg-orange-100 border border-orange-200 p-4 rounded-lg">
+                <div className="flex items-start space-x-3">
+                  <div>
+                    <h4 className="font-semibold text-orange-800 mb-2">
+                      STK po vážnej dopravnej nehode (od 1.1.2022)
+                    </h4>
+                    <p className="text-orange-800 text-sm">
+                      V prípade vážnej dopravnej nehody je povinná technická kontrola, pri ktorej prišlo k poškodeniu 
+                      hlavných bezpečnostných prvkov (zavesenie kolies, deformačné zóny, systémy airbagov, riadenie alebo brzdy). 
+                      Aby vozidlo mohlo byť znovu používané v cestnej doprave, musí úspešne absolvovať technickú kontrolu pravidelnú na STK.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              )}
           </div>
         </div>
       </section>
@@ -324,20 +342,6 @@ export default function ServicesPage() {
                   </p>
                 </div>
                 
-                <div className="bg-orange-100 border border-orange-200 p-4 rounded-lg">
-                  <div className="flex items-start space-x-3">
-                    <div>
-                      <h4 className="font-semibold text-orange-800 mb-2">
-                        STK po vážnej dopravnej nehode (od 1.1.2022)
-                      </h4>
-                      <p className="text-orange-800 text-sm">
-                        V prípade vážnej dopravnej nehody je povinná technická kontrola, pri ktorej prišlo k poškodeniu 
-                        hlavných bezpečnostných prvkov (zavesenie kolies, deformačné zóny, systémy airbagov, riadenie alebo brzdy). 
-                        Aby vozidlo mohlo byť znovu používané v cestnej doprave, musí úspešne absolvovať technickú kontrolu pravidelnú na STK.
-                      </p>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
