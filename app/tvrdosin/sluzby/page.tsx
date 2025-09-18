@@ -77,10 +77,8 @@ export default function ServicesPage() {
         'Vydanie nálepky pri úspešnom absolvovaní'
       ],
       requirements: [
-        'Protokol z prvej kontroly',
-        'Technický preukaz vozidla',
-        'Doklad o vykonaných opravách',
-        'Doklad o poistení'
+        'Pôvodný protokol z pravidelnej kontroly',
+        'Osvedčenie o technickom preukaze, časť I alebo časť II (papierový alebo kartička)'
       ]
     },
     additional: {
@@ -304,13 +302,15 @@ export default function ServicesPage() {
                         </div>
                         <p className="text-gray-700">{currentService.duration}</p>
                       </div>
-                      <div className="bg-gray-50 p-6 rounded-xl">
-                        <div className="flex items-center space-x-2 mb-3">
-                          <Shield className="h-5 w-5 text-green-600" />
-                          <h3 className="font-semibold text-gray-900">Platnosť</h3>
+                      {activeTab !== 'recheck' && (
+                        <div className="bg-gray-50 p-6 rounded-xl">
+                          <div className="flex items-center space-x-2 mb-3">
+                            <Shield className="h-5 w-5 text-green-600" />
+                            <h3 className="font-semibold text-gray-900">Platnosť</h3>
+                          </div>
+                          <p className="text-gray-700">{currentService.validity}</p>
                         </div>
-                        <p className="text-gray-700">{currentService.validity}</p>
-                      </div>
+                      )}
                     </div>
 
                     <div className="mb-8">
@@ -359,6 +359,22 @@ export default function ServicesPage() {
                       V prípade vážnej dopravnej nehody je povinná technická kontrola, pri ktorej prišlo k poškodeniu 
                       hlavných bezpečnostných prvkov (zavesenie kolies, deformačné zóny, systémy airbagov, riadenie alebo brzdy). 
                       Aby vozidlo mohlo byť znovu používané v cestnej doprave, musí úspešne absolvovať technickú kontrolu pravidelnú na STK.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              )}
+
+              {activeTab === 'recheck' && (
+              <div className="bg-red-100 border border-red-200 p-4 rounded-lg">
+                <div className="flex items-start space-x-3">
+                  <AlertTriangle className="h-5 w-5 text-red-600 flex-shrink-0 mt-0.5" />
+                  <div>
+                    <h4 className="font-semibold text-red-800 mb-2">
+                      Dôležité upozornenie
+                    </h4>
+                    <p className="text-red-800 text-sm">
+                      Treba ju vykonať do 60 kalendárnych dní.
                     </p>
                   </div>
                 </div>
