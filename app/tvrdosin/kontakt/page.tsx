@@ -75,12 +75,8 @@ export default function ContactPage() {
             <h3 className="text-xl font-bold text-gray-900 mb-4">Telefón</h3>
             <div className="space-y-2">
               <div>
-                <p className="text-2xl font-bold text-blue-600">+421 2 1234 5678</p>
+                <p className="text-2xl font-bold text-blue-600">043 5323499<br/>0948 032189</p>
                 <p className="text-sm text-gray-600">Hlavná linka</p>
-              </div>
-              <div>
-                <p className="text-lg font-semibold text-gray-700">+421 905 123 456</p>
-                <p className="text-sm text-gray-600">Mobil (SMS/WhatsApp)</p>
               </div>
             </div>
             <p className="text-gray-600 mt-4">
@@ -99,10 +95,6 @@ export default function ContactPage() {
                 <p className="text-xl font-bold text-green-600">info@stktvrdosin.sk</p>
                 <p className="text-sm text-gray-600">Všeobecné otázky</p>
               </div>
-              <div>
-                <p className="text-lg font-semibold text-gray-700">rezervacia@stktvrdosin.sk</p>
-                <p className="text-sm text-gray-600">Online rezervácie</p>
-              </div>
             </div>
             <p className="text-gray-600 mt-4">
               Odpovedáme do 24 hodín
@@ -117,14 +109,10 @@ export default function ContactPage() {
             <h3 className="text-xl font-bold text-gray-900 mb-4">Adresa</h3>
             <div className="space-y-2">
               <p className="text-lg font-semibold text-gray-900">STK Tvrdošín</p>
-              <p className="text-gray-700">Hlavná 42</p>
+              <p className="text-gray-700">Vojtaššákova 908</p>
               <p className="text-gray-700">027 44 Tvrdošín</p>
               <p className="text-gray-700">Slovenská republika</p>
             </div>
-            <button className="mt-4 text-orange-600 font-semibold hover:text-orange-700 flex items-center justify-center mx-auto">
-              <Navigation className="h-4 w-4 mr-1" />
-              Navigovať
-            </button>
           </div>
         </div>
 
@@ -133,19 +121,21 @@ export default function ContactPage() {
           <div>
             <h2 className="text-3xl font-bold text-gray-900 mb-6">Kde nás nájdete</h2>
             <div className="bg-white rounded-2xl shadow-lg overflow-hidden mb-8">
-              <div className="h-80 bg-gray-200 relative">
-                {/* Placeholder for Google Maps */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center">
-                    <MapPin className="h-16 w-16 text-gray-400 mx-auto mb-4" />
-                    <p className="text-gray-600">Interaktívna mapa</p>
-                    <p className="text-sm text-gray-500">Google Maps integrácia</p>
-                  </div>
-                </div>
+              <div className="h-80 relative">
+                <iframe
+                  src="https://www.google.com/maps?q=Vojtaššákova+908,+027+44+Tvrdošín,+Slovensko&output=embed"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="STK Tvrdošín - Vojtaššákova 908, 027 44 Tvrdošín"
+                  className="rounded-t-2xl"
+                ></iframe>
               </div>
               <div className="p-6">
-                <h3 className="font-bold text-gray-900 mb-2">STK Tvrdošín - Hlavná 42</h3>
-                <p className="text-gray-600 mb-4">027 44 Tvrdošín, Slovensko</p>
+                <h3 className="font-bold text-gray-900 mb-2">STK Tvrdošín, Vojtaššákova 908, 027 44 Tvrdošín, Slovensko</h3>
                 <div className="flex flex-wrap gap-2">
                   <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">
                     <SquareParking className="h-4 w-4 mr-1 inline-block" /> Parkovanie zdarma
@@ -171,9 +161,7 @@ export default function ContactPage() {
               
               <div className="space-y-3">
                 {[
-                  { day: 'Pondelok - Piatok', time: '07:00 - 18:00', isToday: true },
-                  { day: 'Sobota', time: '08:00 - 14:00', isToday: false },
-                  { day: 'Nedeľa', time: 'Zatvorené', isToday: false, closed: true }
+                  { day: 'Pondelok - Piatok', time: '07:00 - 15:30', isToday: true },
                 ].map((schedule, index) => (
                   <div key={index} className={`flex justify-between items-center p-3 rounded-lg ${
                     schedule.isToday ? 'bg-green-50 border border-green-200' : 'bg-gray-50'
@@ -195,12 +183,6 @@ export default function ContactPage() {
                 ))}
               </div>
 
-              <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-                <p className="text-sm text-blue-800">
-                  <strong> <Lightbulb className="h-5 w-5 text-blue-800 mr-1 inline-block" /> Tip:</strong> V sobotu je väčšinou menší počet zákazníkov. 
-                  Rezervujte si termín pre rýchlejšie vybavenie!
-                </p>
-              </div>
             </div>
           </div>
 
@@ -349,50 +331,6 @@ export default function ContactPage() {
           </div>
         </div>
 
-        {/* Directions */}
-        <div className="mt-16 bg-gray-50 rounded-2xl p-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
-            Ako sa k nám dostanete
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Car className="h-6 w-6 text-blue-600" />
-              </div>
-              <h3 className="font-semibold text-gray-900 mb-2">Autom</h3>
-              <p className="text-gray-600 text-sm">
-                Parkovanie priamo pred budovou zdarma. 
-                V centre Tvrdošína, ľahko dostupné z hlavnej cesty.
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="bg-green-100 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-green-600 font-bold">
-                  <Bus className="h-6 w-6 text-green-600" />
-                </span>
-              </div>
-              <h3 className="font-semibold text-gray-900 mb-2">Autobus</h3>
-              <p className="text-gray-600 text-sm">
-                Autobusová stanica Tvrdošín - 3 min chôdze
-                po Hlavnej ulici.
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="bg-orange-100 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-orange-600 font-bold">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"><path d="M12 4a1 1 0 1 0 2 0a1 1 0 1 0-2 0M7 21l3-4m6 4l-2-4l-3-3l1-6"/><path d="m6 12l2-3l4-1l3 3l3 1"/></g></svg>
-                </span>
-              </div>
-              <h3 className="font-semibold text-gray-900 mb-2">Pešo</h3>
-              <p className="text-gray-600 text-sm">
-                Z centra Bratislavy 15 min chôdze. 
-                Bezbariérové chodníky po celej trase.
-              </p>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   );
