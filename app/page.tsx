@@ -84,7 +84,7 @@ export default function HomePage() {
             {centers.map((center) => (
               <div 
                 key={center.id} 
-                className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden group hover:scale-105"
+                className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden group hover:scale-105 flex flex-col h-full"
               >
                 {/* Image */}
                 <div className="relative h-32 overflow-hidden">
@@ -101,7 +101,7 @@ export default function HomePage() {
                 </div>
 
                 {/* Content */}
-                <div className="p-4 text-brand-gray-900">
+                <div className="p-4 text-brand-gray-900 flex flex-col flex-grow">
                   <div className="flex items-center justify-between mb-2">
                     <h3 className="text-lg font-bold">{center.name}</h3>
                     {center.isDemo ? (
@@ -124,7 +124,7 @@ export default function HomePage() {
                   </div>
 
                   {/* Contact Info */}
-                  <div className="space-y-1 mb-3 text-sm">
+                  <div className="space-y-1 mb-3 text-sm flex-grow">
                     <div className="flex items-center text-brand-gray-600">
                       <MapPin className="h-3 w-3 text-brand-red-500 mr-1 flex-shrink-0" />
                       {center.address}
@@ -165,7 +165,7 @@ export default function HomePage() {
                   </div>
 
                   {/* CTA Buttons */}
-                  <div className="space-y-2">
+                  <div className="space-y-2 mt-auto">
                     {center.isDemo ? (
                       <>
                         <Link 
