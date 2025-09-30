@@ -165,7 +165,7 @@ export default function CarWashPage() {
       </section>
 
       {/* Wash Programs */}
-      <section className="py-16">
+      {/* <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -204,7 +204,7 @@ export default function CarWashPage() {
           </div>
 
           {/* Selected Program Details */}
-          <div className="bg-white rounded-xl shadow-lg p-8">
+          {/* <div className="bg-white rounded-xl shadow-lg p-8">
             <div className="flex items-center gap-4 mb-6">
               <div className={`bg-${currentProgram.color}-100 w-16 h-16 rounded-xl flex items-center justify-center`}>
                 <IconComponent className={`h-8 w-8 text-${currentProgram.color}-600`} />
@@ -239,7 +239,7 @@ export default function CarWashPage() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Features */}
       <section className="py-16 bg-gray-50">
