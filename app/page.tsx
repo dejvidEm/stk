@@ -223,7 +223,7 @@ export default function HomePage() {
               <div className="bg-brand-green-100 p-4 rounded-full mb-4">
                 <CheckCircle className="h-8 w-8 text-brand-green-600" />
               </div>
-              <div className="text-3xl font-bold text-brand-gray-900 mb-2">15+</div>
+              <div className="text-3xl font-bold text-brand-gray-900 mb-2">14+</div>
               <div className="text-brand-gray-600">rokov skúseností</div>
             </div>
             <div className="flex flex-col items-center">

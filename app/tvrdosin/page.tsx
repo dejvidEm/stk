@@ -90,14 +90,14 @@ export default function DemoPage() {
               <div className="bg-brand-red-100 p-4 rounded-full mb-4">
                 <Award className="h-8 w-8 text-brand-red-600" />
               </div>
-              <div className="text-3xl font-bold text-brand-gray-900 mb-2">15+</div>
+              <div className="text-3xl font-bold text-brand-gray-900 mb-2">14+</div>
               <div className="text-brand-gray-600">rokov skúseností</div>
             </div>
             <div className="flex flex-col items-center">
               <div className="bg-brand-green-100 p-4 rounded-full mb-4">
                 <CheckCircle className="h-8 w-8 text-brand-green-600" />
               </div>
-              <div className="text-3xl font-bold text-brand-gray-900 mb-2">50,000+</div>
+              <div className="text-3xl font-bold text-brand-gray-900 mb-2">500 000+</div>
               <div className="text-brand-gray-600">úspešných kontrol</div>
             </div>
             <div className="flex flex-col items-center">
