@@ -130,10 +130,6 @@ export default function HomePage() {
                       {center.address}
                     </div>
                     <div className="flex items-center text-brand-gray-600">
-                      <Clock className="h-3 w-3 text-brand-green-500 mr-1 flex-shrink-0" />
-                      {center.hours}
-                    </div>
-                    <div className="flex items-center text-brand-gray-600">
                       <Phone className="h-3 w-3 text-brand-red-500 mr-1 flex-shrink-0" />
                       <a 
                         href={`tel:${center.phone}`}
@@ -141,6 +137,10 @@ export default function HomePage() {
                       >
                         {center.phone}
                       </a>
+                    </div>
+                    <div className="flex items-center text-brand-gray-600">
+                      <Clock className="h-3 w-3 text-brand-green-500 mr-1 flex-shrink-0" />
+                      {center.hours}
                     </div>
                     <div className="flex items-center text-brand-gray-600">
                       <Mail className="h-3 w-3 text-brand-green-500 mr-1 flex-shrink-0" />
@@ -151,6 +151,17 @@ export default function HomePage() {
                         {center.email}
                       </a>
                     </div>
+
+                    <a 
+                      href={`${center.url}/rezervacia`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full bg-brand-green-600 !mt-5 hover:bg-brand-green-700 text-white py-2 px-3 rounded-lg font-semibold transition-colors inline-flex items-center justify-center group text-sm"
+                    >
+                      Rezervácia termínu
+                      <ExternalLink className="ml-1 h-3 w-3 group-hover:translate-x-1 transition-transform" />
+                    </a>
+
                       {/* Features */}
                         <div className="flex flex-wrap gap-1 pb-3 pt-5">
                         {center.features.map((feature, index) => (
@@ -175,13 +186,6 @@ export default function HomePage() {
                           Navštíviť stránku
                           <ArrowRight className="ml-1 h-3 w-3 group-hover:translate-x-1 transition-transform" />
                         </Link>
-                        <Link 
-                          href="/tvrdosin/rezervacia"
-                          className="w-full bg-brand-green-600 hover:bg-brand-green-700 text-white py-2 px-3 rounded-lg font-semibold transition-colors inline-flex items-center justify-center group text-sm"
-                        >
-                          Rezervácia termínu
-                          <ArrowRight className="ml-1 h-3 w-3 group-hover:translate-x-1 transition-transform" />
-                        </Link>
                       </>
                     ) : (
                       <>
@@ -192,15 +196,6 @@ export default function HomePage() {
                           className="w-full bg-brand-red-600 hover:bg-brand-red-700 text-white py-2 px-3 rounded-lg font-semibold transition-colors inline-flex items-center justify-center group text-sm"
                         >
                           Navštíviť stránku
-                          <ExternalLink className="ml-1 h-3 w-3 group-hover:translate-x-1 transition-transform" />
-                        </a>
-                        <a 
-                          href={`${center.url}/rezervacia`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="w-full bg-brand-green-600 hover:bg-brand-green-700 text-white py-2 px-3 rounded-lg font-semibold transition-colors inline-flex items-center justify-center group text-sm"
-                        >
-                          Rezervácia termínu
                           <ExternalLink className="ml-1 h-3 w-3 group-hover:translate-x-1 transition-transform" />
                         </a>
                       </>
