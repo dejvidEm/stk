@@ -22,6 +22,7 @@ export default function Footer() {
             <ul className="space-y-2">
               <li><Link href="/tvrdosin/sluzby" className="text-brand-gray-300 hover:text-white transition-colors">Naše služby</Link></li>
               <li><Link href="/tvrdosin/autoumyvaren" className="text-brand-gray-300 hover:text-white transition-colors">Autoumyváreň</Link></li>
+              <li><Link href="/tvrdosin/galeria" className="text-brand-gray-300 hover:text-white transition-colors">Galéria</Link></li>
               <li><Link href="/tvrdosin/cennik" className="text-brand-gray-300 hover:text-white transition-colors">Cenník</Link></li>
               <li><Link href="/tvrdosin/rezervacia" className="text-brand-gray-300 hover:text-white transition-colors">Online rezervácia</Link></li>
               <li><Link href="/tvrdosin/certifikaty" className="text-brand-gray-300 hover:text-white transition-colors">Certifikáty</Link></li>

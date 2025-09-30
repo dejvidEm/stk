@@ -22,6 +22,7 @@ export default function Navbar() {
     { href: '/tvrdosin', label: 'STK Tvrdošín' },
     { href: '/tvrdosin/sluzby', label: 'Služby' },
     { href: '/tvrdosin/autoumyvaren', label: 'Autoumyváreň' },
+    { href: '/tvrdosin/galeria', label: 'Galéria' },
     { href: '/tvrdosin/cennik', label: 'Cenník' },
     { href: '/tvrdosin/rezervacia', label: 'Rezervácia' },
     { href: '/tvrdosin/kontakt', label: 'Kontakt' },
