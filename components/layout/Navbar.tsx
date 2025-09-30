@@ -38,11 +38,9 @@ export default function Navbar() {
         <div className="flex justify-between items-center">
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            <img 
-              src="/images/brand_color.png" 
-              alt="STK Tvrdošín" 
-              className="h-6 md:h-8 w-auto"
-            />
+            <span className="text-xl md:text-2xl font-bold text-brand-gray-900 hover:text-brand-red-600 transition-colors">
+              STK Tvrdošín
+            </span>
           </Link>
 
           {/* Desktop Menu */}
