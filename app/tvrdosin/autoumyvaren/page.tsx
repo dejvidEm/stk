@@ -158,7 +158,7 @@ export default function CarWashPage() {
               </h1>
             </div>
             <p className="text-xl md:text-2xl opacity-90 max-w-3xl mx-auto">
-              Moderná samoobslužná autoumyváreň s najnovšími technológiami
+              Nonstop umývacie boxy.
             </p>
           </div>
         </div>
@@ -398,11 +398,11 @@ export default function CarWashPage() {
             <div className="flex justify-center items-center gap-8 flex-wrap">
               <div className="flex items-center gap-2">
                 <div className="w-8 h-8 bg-blue-500 rounded"></div>
-                <span className="text-gray-700">Bezkontaktne</span>
+                <span className="text-gray-700">Karta</span>
               </div>
               <div className="flex items-center gap-2">
                 <div className="w-8 h-8 bg-gray-500 rounded"></div>
-                <span className="text-gray-700">Mince</span>
+                <span className="text-gray-700">Hotovosť</span>
               </div>
               <div className="flex items-center gap-2">
                 <div className="w-8 h-8 bg-green-500 rounded"></div>
@@ -411,6 +411,10 @@ export default function CarWashPage() {
               <div className="flex items-center gap-2">
                 <div className="w-8 h-8 bg-black rounded"></div>
                 <span className="text-gray-700">Apple Pay</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 bg-red-500 rounded"></div>
+                <span className="text-gray-700">Predplatená karta</span>
               </div>
             </div>
           </div>

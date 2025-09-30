@@ -39,8 +39,8 @@ export default function ServicesPage() {
       ],
       requirements: [
         'Osvedčenie o technickom preukaze, časť I alebo časť II (papierový alebo kartička)',
-        // 'Doklad o poistení',
-        // 'Platný vodičský preukaz',
+        'Doklad o poistení (platná zelená karta)',
+        'Občiansky preukaz',
         // 'Predchádzajúci protokol STK (ak existuje)'
       ]
     },
