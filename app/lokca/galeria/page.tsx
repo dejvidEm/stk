@@ -20,59 +20,80 @@ export default function GalleryPage() {
   const galleryImages = [
     {
       id: 1,
-      src: '/tvrdosin/exterier/WhatsApp Image 2026-01-15 at 10.01.03.jpeg',
-      title: 'STK Tvrdošín - Exteriér',
+      src: '/images/lokca.webp',
+      title: 'Exteriér STK centra',
       category: 'exterior',
-      description: 'Moderný exteriér nášho STK centra v Tvrdošíne'
+      description: 'Moderný exteriér nášho STK centra v Lokci'
     },
     {
       id: 2,
-      src: '/tvrdosin/exterier/WhatsApp Image 2026-01-15 at 10.01.04 (1).jpeg',
-      title: 'STK Tvrdošín - Areál',
+      src: '/images/lokca.webp',
+      title: 'Hlavný vchod',
       category: 'exterior',
-      description: 'Pohľad na areál STK centra s parkovacími miestami'
+      description: 'Hlavný vchod do STK centra s parkoviskom pre zákazníkov'
     },
     {
       id: 3,
-      src: '/tvrdosin/exterier/WhatsApp Image 2026-01-15 at 10.01.04.jpeg',
-      title: 'STK Tvrdošín - Budova',
+      src: '/images/lokca.webp',
+      title: 'Areál STK',
       category: 'exterior',
-      description: 'Profesionálna budova STK centra v Tvrdošíne'
+      description: 'Pohľad na celý areál STK s parkovacími miestami'
     },
     {
       id: 4,
-      src: '/tvrdosin/exterier/WhatsApp Image 2026-01-15 at 10.01.05 (1).jpeg',
-      title: 'STK Tvrdošín - Vchod',
-      category: 'exterior',
-      description: 'Hlavný vchod do STK centra'
-    },
-    {
-      id: 5,
-      src: '/tvrdosin/exterier/WhatsApp Image 2026-01-15 at 10.01.05.jpeg',
-      title: 'STK Tvrdošín - Exteriér centra',
+      src: '/images/u5546862511_modern_car_inspection_station_building_exterior_S_a306ea55-3462-4e35-91bf-366d476c627e_2.png',
+      title: 'Moderné STK centrum',
       category: 'exterior',
       description: 'Moderné STK centrum s najnovším vybavením'
     },
     {
-      id: 6,
-      src: '/tvrdosin/exterier/WhatsApp Image 2026-01-15 at 10.01.06 (1).jpeg',
-      title: 'STK Tvrdošín - Areál a parkovisko',
+      id: 5,
+      src: '/images/u5546862511_modern_car_inspection_station_building_exterior_S_a306ea55-3462-4e35-91bf-366d476c627e_3.png',
+      title: 'STK budova',
       category: 'exterior',
-      description: 'Parkovisko a areál STK centra'
+      description: 'Profesionálna budova STK centra'
+    },
+    {
+      id: 6,
+      src: '/images/i1.jpg',
+      title: 'Technické vybavenie',
+      category: 'equipment',
+      description: 'Moderne technické vybavenie pre kontroly vozidiel'
     },
     {
       id: 7,
-      src: '/tvrdosin/exterier/WhatsApp Image 2026-01-15 at 10.01.06 (2).jpeg',
-      title: 'STK Tvrdošín - Exteriér',
-      category: 'exterior',
-      description: 'Pohľad na exteriér STK centra'
+      src: '/images/i2.jpg',
+      title: 'Diagnostické zariadenia',
+      category: 'equipment',
+      description: 'Profesionálne diagnostické zariadenia'
     },
     {
       id: 8,
-      src: '/tvrdosin/exterier/WhatsApp Image 2026-01-15 at 10.01.06.jpeg',
-      title: 'STK Tvrdošín - Budova a okolie',
-      category: 'exterior',
-      description: 'STK centrum v Tvrdošíne s okolím'
+      src: '/images/i3.jpg',
+      title: 'Kontrolná linka',
+      category: 'equipment',
+      description: 'Kontrolná linka pre technické kontroly'
+    },
+    {
+      id: 9,
+      src: '/images/i4.jpg',
+      title: 'Emisné meranie',
+      category: 'equipment',
+      description: 'Zariadenie pre emisné kontroly vozidiel'
+    },
+    {
+      id: 10,
+      src: '/images/i5.jpg',
+      title: 'Technická kontrola',
+      category: 'services',
+      description: 'Proces technickej kontroly vozidla'
+    },
+    {
+      id: 11,
+      src: '/images/lokca.webp',
+      title: 'STK Lokca',
+      category: 'network',
+      description: 'Naše STK centrum v Lokci'
     }
   ];
 
@@ -180,7 +201,7 @@ export default function GalleryPage() {
               >
                 <div className="aspect-square overflow-hidden">
                   <img
-                    src={encodeURI(image.src)}
+                    src={image.src}
                     alt={image.title}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
@@ -239,7 +260,7 @@ export default function GalleryPage() {
 
             {/* Image */}
             <img
-              src={encodeURI(selectedImageData.src)}
+              src={selectedImageData.src}
               alt={selectedImageData.title}
               className="max-w-full max-h-full object-contain rounded-lg"
             />
@@ -264,13 +285,13 @@ export default function GalleryPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="/tvrdosin/kontakt"
+              href="/lokca/kontakt"
               className="inline-flex items-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-brand-red-600 hover:bg-brand-red-700 transition-colors"
             >
               Kontakt a adresa
             </a>
             <a
-              href="/tvrdosin/rezervacia"
+              href="/lokca/rezervacia"
               className="inline-flex items-center px-8 py-3 border-2 border-brand-red-600 text-base font-medium rounded-md text-brand-red-600 hover:bg-brand-red-600 hover:text-white transition-colors"
             >
               Rezervovať termín

@@ -58,30 +58,30 @@ export default function DemoPage() {
         <div 
           className="absolute inset-0 bg-cover bg-center opacity-20"
           style={{
-            backgroundImage: `url("/tvrdosin/exterier/${encodeURIComponent('WhatsApp Image 2026-01-15 at 10.01.03.jpeg')}")`,
+            backgroundImage: 'url("/images/lokca.webp")',
           }}
         ></div>
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32 -mt-4">
           <div className="max-w-3xl">
             <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-              STK Tvrdošín
+              STK Lokca
               <span className="block text-brand-green-400">rýchlo a spoľahlivo</span>
             </h1>
             <p className="text-xl md:text-2xl mb-8 opacity-90">
-              Profesionálne služby STK a EK v Tvrdošíne fungujúce od roku 2011. 
+              Profesionálne služby STK a EK v Lokci fungujúce od roku 2024. 
               Rezervujte si termín online a ušetrite čas.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link 
-                href="/tvrdosin/rezervacia"
+                href="/lokca/rezervacia"
                 className="bg-brand-green-500 hover:bg-brand-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors inline-flex items-center justify-center group"
               >
                 Rezervovať termín
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link 
-                href="/tvrdosin/cennik"
+                href="/lokca/cennik"
                 className="border-2 border-white hover:bg-white hover:text-brand-red-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors inline-flex items-center justify-center"
               >
                 Zobraziť cenník
@@ -111,7 +111,7 @@ export default function DemoPage() {
             </div>
             <div className="flex items-center gap-4">
               <Link 
-                href="/tvrdosin/autoumyvaren"
+                href="/lokca/autoumyvaren"
                 className="bg-white text-yellow-700 px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-100 transition-colors cursor-pointer shadow-lg"
               >
                 Zistiť viac
@@ -136,9 +136,9 @@ export default function DemoPage() {
               <div className="bg-brand-red-100 p-4 rounded-full mb-4">
                 <Award className="h-8 w-8 text-brand-red-600" />
               </div>
-              <div className="text-3xl font-bold text-brand-gray-900 mb-2">2011</div>
+              <div className="text-3xl font-bold text-brand-gray-900 mb-2">2024</div>
               <div className="text-brand-gray-600">funguje od roku</div>
-              <div className="text-sm text-brand-gray-500 mt-1">(Námestovo 2002, Lokca 2024)</div>
+              <div className="text-sm text-brand-gray-500 mt-1">(Námestovo 2002, Tvrdošín 2011)</div>
             </div>
             <div className="flex flex-col items-center">
               <div className="bg-brand-green-100 p-4 rounded-full mb-4">
@@ -203,7 +203,7 @@ export default function DemoPage() {
                 </li>
               </ul>
               <Link 
-                href="/tvrdosin/sluzby"
+                href="/lokca/sluzby"
                 className="text-brand-red-600 font-semibold hover:text-brand-red-700 inline-flex items-center"
               >
                 Viac informácií
@@ -237,7 +237,7 @@ export default function DemoPage() {
                 </li>
               </ul>
               <Link 
-                href="/tvrdosin/sluzby"
+                href="/lokca/sluzby"
                 className="text-brand-red-600 font-semibold hover:text-brand-red-700 inline-flex items-center"
               >
                 Viac informácií
@@ -269,7 +269,7 @@ export default function DemoPage() {
                 </li>
               </ul>
               <Link 
-                href="/tvrdosin/sluzby"
+                href="/lokca/sluzby"
                 className="text-brand-red-600 font-semibold hover:text-brand-red-700 inline-flex items-center"
               >
                 Viac informácií
@@ -353,7 +353,7 @@ export default function DemoPage() {
                 Odporúčané pre všetky vozidlá. Alternatívou môže byť opravná sada alebo kompresor.
               </p>
               <div className="flex items-center text-sm text-brand-gray-500">
-                <Info className="h-4 w-4 text-brand-blue-500 mr-2" />
+                <Info className="h-4 w-4 text-blue-500 mr-2" />
                 <span>Odporúčané</span>
               </div>
             </div>
@@ -574,7 +574,7 @@ export default function DemoPage() {
           {/* CTA */}
           <div className="mt-8 text-center">
             <Link 
-              href="/tvrdosin/kontakt"
+              href="/lokca/kontakt"
               className="inline-flex items-center px-8 py-4 bg-brand-red-600 hover:bg-brand-red-700 text-white font-semibold rounded-lg transition-colors"
             >
               Kontaktovať nás pre kontrolu originality
@@ -627,13 +627,13 @@ export default function DemoPage() {
       <section className="py-16 bg-brand-red-600 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Pripravený na technickú kontrolu v Tvrdošíne?
+            Pripravený na technickú kontrolu v Lokci?
           </h2>
           <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-            Rezervujte si termín v STK Tvrdošín online a ušetrite čas. Naši experti sa postarajú o váš vozidlo.
+            Rezervujte si termín v STK Lokca online a ušetrite čas. Naši experti sa postarajú o váš vozidlo.
           </p>
           <Link 
-            href="/tvrdosin/rezervacia"
+            href="/lokca/rezervacia"
             className="bg-brand-green-500 hover:bg-brand-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors inline-flex items-center group"
           >
             Rezervovať termín

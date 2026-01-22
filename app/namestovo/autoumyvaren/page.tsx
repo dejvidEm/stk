@@ -152,7 +152,7 @@ export default function CarWashPage() {
         <div 
           className="absolute inset-0 bg-cover bg-center opacity-20"
           style={{
-            backgroundImage: `url("/tvrdosin/exterier/${encodeURIComponent('WhatsApp Image 2026-01-15 at 10.01.03.jpeg')}")`,
+            backgroundImage: 'url("/images/namestovo_2.webp")',
           }}
         ></div>
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-red-600/20"></div>
@@ -486,13 +486,13 @@ export default function CarWashPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="/tvrdosin/kontakt"
+              href="/namestovo/kontakt"
               className="inline-flex items-center px-8 py-3 border border-transparent text-base font-medium rounded-md bg-white text-blue-600 hover:bg-gray-50 transition-colors"
             >
               Ako sa k nám dostať
             </a>
             <a
-              href="/tvrdosin/sluzby"
+              href="/namestovo/sluzby"
               className="inline-flex items-center px-8 py-3 border-2 border-white text-base font-medium rounded-md text-white hover:bg-white hover:text-blue-600 transition-colors"
             >
               Všetky naše služby

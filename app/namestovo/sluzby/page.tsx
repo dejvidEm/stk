@@ -17,8 +17,7 @@ import {
   Heart,
   Highlighter,
   Wrench,
-  Flame,
-  X
+  Flame
 } from 'lucide-react';
 import {
   Dialog,

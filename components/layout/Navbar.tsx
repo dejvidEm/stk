@@ -18,14 +18,36 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Determine which center we're on based on pathname
+  const getCenterInfo = () => {
+    if (pathname?.startsWith('/namestovo')) {
+      return {
+        name: 'STK Námestovo',
+        basePath: '/namestovo'
+      };
+    } else if (pathname?.startsWith('/lokca')) {
+      return {
+        name: 'STK Lokca',
+        basePath: '/lokca'
+      };
+    } else {
+      return {
+        name: 'STK Tvrdošín',
+        basePath: '/tvrdosin'
+      };
+    }
+  };
+
+  const centerInfo = getCenterInfo();
+
   const navItems = [
-    { href: '/tvrdosin', label: 'STK Tvrdošín' },
-    { href: '/tvrdosin/sluzby', label: 'Služby' },
-    { href: '/tvrdosin/autoumyvaren', label: 'Autoumyváreň' },
-    { href: '/tvrdosin/galeria', label: 'Galéria' },
-    { href: '/tvrdosin/cennik', label: 'Cenník' },
-    { href: '/tvrdosin/rezervacia', label: 'Rezervácia' },
-    { href: '/tvrdosin/kontakt', label: 'Kontakt' },
+    { href: centerInfo.basePath, label: centerInfo.name },
+    { href: `${centerInfo.basePath}/sluzby`, label: 'Služby' },
+    { href: `${centerInfo.basePath}/autoumyvaren`, label: 'Autoumyváreň' },
+    { href: `${centerInfo.basePath}/galeria`, label: 'Galéria' },
+    { href: `${centerInfo.basePath}/cennik`, label: 'Cenník' },
+    { href: `${centerInfo.basePath}/rezervacia`, label: 'Rezervácia' },
+    { href: `${centerInfo.basePath}/kontakt`, label: 'Kontakt' },
   ];
 
   return (
@@ -37,9 +59,9 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           {/* Logo */}
-          <Link href="/" className="flex items-center">
+          <Link href={centerInfo.basePath} className="flex items-center">
             <span className="text-xl md:text-2xl font-bold text-brand-gray-900 hover:text-brand-red-600 transition-colors">
-              STK Tvrdošín
+              {centerInfo.name}
             </span>
           </Link>
 
