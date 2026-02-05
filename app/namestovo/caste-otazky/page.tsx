@@ -153,6 +153,7 @@ export default function FAQPage() {
         </div>
       </section>
 
+
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Search and Filter */}
         <div className="mb-12">

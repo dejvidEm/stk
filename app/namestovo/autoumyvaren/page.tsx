@@ -171,6 +171,7 @@ export default function CarWashPage() {
         </div>
       </section>
 
+
       {/* Prepaid Card Promotion Banner */}
       <section className="bg-gradient-to-r from-yellow-600 via-amber-500 to-yellow-600 text-white py-8 shadow-xl relative overflow-visible">
         <div className="absolute inset-0 bg-black/10"></div>

@@ -13,6 +13,7 @@ import {
   Calculator,
   BadgePercent
 } from 'lucide-react';
+import STKPriceCalculator from '@/components/STKPriceCalculator';
 
 export default function PricingPage() {
   const [selectedVehicleType, setSelectedVehicleType] = useState('personal');
@@ -266,48 +267,8 @@ export default function PricingPage() {
 
         {/* Price Calculator */}
         <div className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-            Kalkulačka cien
-          </h2>
-          <div className="bg-gradient-to-br from-blue-50 to-orange-50 rounded-2xl p-8">
-            <div className="max-w-2xl mx-auto">
-              <div className="text-center mb-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-2">
-                  Orientačná cena pre váš typ vozidla
-                </h3>
-                <p className="text-gray-600">
-                  Vyberte si služby a získajte orientačný odhad ceny
-                </p>
-              </div>
-              
-              <div className="bg-white rounded-xl p-6 shadow-lg">
-                <div className="grid grid-cols-2 gap-4 mb-6">
-                  <div className="text-center p-4 bg-blue-50 rounded-lg">
-                    <div className="text-2xl font-bold text-blue-600 mb-1">STK</div>
-                    <div className="text-3xl font-bold text-gray-900">{currentPricing.stk.price}€</div>
-                  </div>
-                  <div className="text-center p-4 bg-green-50 rounded-lg">
-                    <div className="text-2xl font-bold text-green-600 mb-1">EK</div>
-                    <div className="text-3xl font-bold text-gray-900">{currentPricing.ek.price}€</div>
-                  </div>
-                </div>
-                
-                <div className="text-center p-6 bg-orange-50 rounded-lg border-2 border-orange-200">
-                  <div className="text-lg font-semibold text-orange-700 mb-2">
-                    <BadgePercent className="inline-block mr-1" /> Najlepšia ponuka: STK + EK
-                  </div>
-                  <div className="text-4xl font-bold text-gray-900 mb-2">
-                    {currentPricing['stk-ek'].price}€
-                  </div>
-                  <div className="text-sm text-gray-600">
-                    Namiesto {currentPricing.stk.price + currentPricing.ek.price}€ samostatne
-                  </div>
-                  <div className="text-green-600 font-semibold">
-                    Ušetríte {(currentPricing.stk.price + currentPricing.ek.price) - currentPricing['stk-ek'].price}€
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div className="max-w-4xl mx-auto">
+            <STKPriceCalculator />
           </div>
         </div>
 

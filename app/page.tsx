@@ -15,12 +15,40 @@ import {
   Facebook,
   Instagram,
   Coffee,
-  UtensilsCrossed
+  UtensilsCrossed,
+  Calendar
 } from 'lucide-react';
 import { Kavivanar } from 'next/font/google';
 import CarwashBanner from '@/components/CarwashBanner';
+import SaturdayInfoBanner from '@/components/SaturdayInfoBanner';
+import STKReminderLeadMagnet from '@/components/STKReminderLeadMagnet';
+import STKPriceCalculator from '@/components/STKPriceCalculator';
+import MainFAQ from '@/components/MainFAQ';
+import LocationFAQ from '@/components/LocationFAQ';
+import { format } from 'date-fns';
+import { sk } from 'date-fns/locale/sk';
 
 export default function HomePage() {
+  // Helper function to get next few Saturdays
+  const getNextSaturdays = (count: number = 3): Date[] => {
+    const saturdays: Date[] = [];
+    const today = new Date();
+    const currentDay = today.getDay();
+    const daysUntilSaturday = (6 - currentDay + 7) % 7 || 7;
+    
+    let nextSaturday = new Date(today);
+    nextSaturday.setDate(today.getDate() + daysUntilSaturday);
+    
+    for (let i = 0; i < count; i++) {
+      const saturday = new Date(nextSaturday);
+      saturday.setDate(nextSaturday.getDate() + (i * 7));
+      saturdays.push(saturday);
+    }
+    
+    return saturdays;
+  };
+
+  const upcomingSaturdays = getNextSaturdays(3);
   const centers = [
     {
       id: 'namestovo',
@@ -141,13 +169,13 @@ export default function HomePage() {
                 <div className="p-4 text-brand-gray-900 flex flex-col flex-grow">
 
                   {/* Contact Info */}
-                  <div className="space-y-1 mb-3 text-sm flex-grow">
-                    <div className="flex items-center text-brand-gray-600">
-                      <MapPin className="h-3 w-3 text-brand-red-500 mr-1 flex-shrink-0" />
-                      {center.address}
+                  <div className="space-y-2 mb-3 text-sm flex-grow">
+                    <div className="flex items-start text-brand-gray-600">
+                      <MapPin className="h-4 w-4 text-brand-red-500 mr-2 mt-0.5 flex-shrink-0" />
+                      <span className="flex-1">{center.address}</span>
                     </div>
                     <div className="flex items-center text-brand-gray-600">
-                      <Phone className="h-3 w-3 text-brand-red-500 mr-1 flex-shrink-0" />
+                      <Phone className="h-4 w-4 text-brand-red-500 mr-2 flex-shrink-0" />
                       <a 
                         href={`tel:${center.phone}`}
                         className="hover:text-brand-red-600 transition-colors"
@@ -156,14 +184,14 @@ export default function HomePage() {
                       </a>
                     </div>
                     <div className="flex items-center text-brand-gray-600">
-                      <Clock className="h-3 w-3 text-brand-green-500 mr-1 flex-shrink-0" />
+                      <Clock className="h-4 w-4 text-brand-green-500 mr-2 flex-shrink-0" />
                       {center.hours}
                     </div>
                     <div className="flex items-center text-brand-gray-600">
-                      <Mail className="h-3 w-3 text-brand-green-500 mr-1 flex-shrink-0" />
+                      <Mail className="h-4 w-4 text-brand-green-500 mr-2 flex-shrink-0" />
                       <a 
                         href={`mailto:${center.email}`}
-                        className="hover:text-brand-green-600 transition-colors"
+                        className="hover:text-brand-green-600 transition-colors break-all"
                       >
                         {center.email}
                       </a>
@@ -176,7 +204,7 @@ export default function HomePage() {
                       className="w-full bg-brand-green-600 !mt-5 hover:bg-brand-green-700 text-white py-2 px-3 rounded-lg font-semibold transition-colors inline-flex items-center justify-center group text-sm"
                     >
                       Rezervácia termínu
-                      <ExternalLink className="ml-1 h-3 w-3 group-hover:translate-x-1 transition-transform" />
+                      <ExternalLink className="ml-1 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                     </a>
 
                       {/* Features */}
@@ -201,7 +229,7 @@ export default function HomePage() {
                           className="w-full bg-brand-red-600 hover:bg-brand-red-700 text-white py-2 px-3 rounded-lg font-semibold transition-colors inline-flex items-center justify-center group text-sm"
                         >
                           Navštíviť stránku
-                          <ArrowRight className="ml-1 h-3 w-3 group-hover:translate-x-1 transition-transform" />
+                          <ArrowRight className="ml-1 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                         </Link>
                       </>
                     ) : (
@@ -213,7 +241,7 @@ export default function HomePage() {
                           className="w-full bg-brand-red-600 hover:bg-brand-red-700 text-white py-2 px-3 rounded-lg font-semibold transition-colors inline-flex items-center justify-center group text-sm"
                         >
                           Navštíviť stránku
-                          <ExternalLink className="ml-1 h-3 w-3 group-hover:translate-x-1 transition-transform" />
+                          <ExternalLink className="ml-1 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                         </a>
                       </>
                     )}
@@ -225,11 +253,14 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Saturday Info Banner */}
+      <SaturdayInfoBanner />
+
       {/* Carwash Banner */}
       <CarwashBanner />
 
       {/* Coffee Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             {/* Image Side */}
@@ -255,33 +286,33 @@ export default function HomePage() {
                   <div className="bg-amber-100 p-3 rounded-lg">
                     <Coffee className="h-8 w-8 text-amber-600" />
                   </div>
-                  <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900">
+                  <h2 className="text-3xl md:text-4xl font-bold text-white">
                     efCafé Kaviareň
                   </h2>
                 </div>
-                <p className="text-lg text-brand-gray-600 mb-6">
+                <p className="text-lg text-gray-300 mb-6">
                   Počas čakania na technickú kontrolu si môžete vychutnať kvalitnú kávu a občerstvenie 
                   v našej útulnej kaviarni. Moderné prostredie s bezplatným Wi-Fi pripojením.
                 </p>
               </div>
 
               {/* Opening Hours */}
-              <div className="bg-brand-gray-50 rounded-xl p-6 border border-brand-gray-200">
+              <div className="bg-gray-900 rounded-xl p-6 border border-gray-800">
                 <div className="flex items-center gap-3 mb-4">
                   <Clock className="h-6 w-6 text-brand-red-600" />
-                  <h3 className="text-xl font-bold text-brand-gray-900">Otváracie hodiny</h3>
+                  <h3 className="text-xl font-bold text-white">Otváracie hodiny</h3>
                 </div>
                 <div className="space-y-3">
-                  <div className="flex justify-between items-center p-3 bg-white rounded-lg">
-                    <span className="font-medium text-brand-gray-900">Pondelok - Piatok</span>
-                    <span className="font-semibold text-brand-gray-700">06:00 - 16:30</span>
+                  <div className="flex justify-between items-center p-3 bg-gray-800 rounded-lg">
+                    <span className="font-medium text-white">Pondelok - Piatok</span>
+                    <span className="font-semibold text-gray-300">06:00 - 16:30</span>
                   </div>
-                  <div className="flex justify-between items-center p-3 bg-white rounded-lg">
-                    <span className="font-medium text-brand-gray-900">Sobota</span>
-                    <span className="font-semibold text-brand-gray-700">08:00 - 12:00</span>
+                  <div className="flex justify-between items-center p-3 bg-gray-800 rounded-lg">
+                    <span className="font-medium text-white">Sobota</span>
+                    <span className="font-semibold text-gray-300">08:00 - 12:00</span>
                   </div>
-                  <div className="flex justify-between items-center p-3 bg-white rounded-lg">
-                    <span className="font-medium text-brand-gray-500">Nedeľa</span>
+                  <div className="flex justify-between items-center p-3 bg-gray-800 rounded-lg">
+                    <span className="font-medium text-gray-400">Nedeľa</span>
                     <span className="font-semibold text-red-600">Zatvorené</span>
                   </div>
                 </div>
@@ -289,21 +320,21 @@ export default function HomePage() {
 
               {/* Features */}
               <div className="grid grid-cols-2 gap-4">
-                <div className="bg-white rounded-lg p-4 border border-brand-gray-200 flex items-center gap-3">
+                <div className="bg-gray-900 rounded-lg p-4 border border-gray-800 flex items-center gap-3">
                   <UtensilsCrossed className="h-5 w-5 text-amber-600" />
-                  <span className="text-sm font-medium text-brand-gray-700">Občerstvenie</span>
+                  <span className="text-sm font-medium text-white">Občerstvenie</span>
                 </div>
-                <div className="bg-white rounded-lg p-4 border border-brand-gray-200 flex items-center gap-3">
+                <div className="bg-gray-900 rounded-lg p-4 border border-gray-800 flex items-center gap-3">
                   <Coffee className="h-5 w-5 text-amber-600" />
-                  <span className="text-sm font-medium text-brand-gray-700">Kvalitná káva</span>
+                  <span className="text-sm font-medium text-white">Kvalitná káva</span>
                 </div>
-                <div className="bg-white rounded-lg p-4 border border-brand-gray-200 flex items-center gap-3">
+                <div className="bg-gray-900 rounded-lg p-4 border border-gray-800 flex items-center gap-3">
                   <CheckCircle className="h-5 w-5 text-brand-green-600" />
-                  <span className="text-sm font-medium text-brand-gray-700">Wi-Fi zdarma</span>
+                  <span className="text-sm font-medium text-white">Wi-Fi zdarma</span>
                 </div>
-                <div className="bg-white rounded-lg p-4 border border-brand-gray-200 flex items-center gap-3">
+                <div className="bg-gray-900 rounded-lg p-4 border border-gray-800 flex items-center gap-3">
                   <Star className="h-5 w-5 text-amber-500" />
-                  <span className="text-sm font-medium text-brand-gray-700">Príjemné prostredie</span>
+                  <span className="text-sm font-medium text-white">Príjemné prostredie</span>
                 </div>
               </div>
 
@@ -360,6 +391,15 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Price Calculator Section */}
+      <section className="py-16 bg-gradient-to-br from-brand-gray-50 to-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto">
+            <STKPriceCalculator />
+          </div>
+        </div>
+      </section>
+
       {/* About Section */}
       <section className="py-16 bg-brand-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -398,6 +438,127 @@ export default function HomePage() {
                 <p className="text-brand-gray-600">Rezervujte si termín online 24/7 a ušetrite čas čakania.</p>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* STK Reminder Lead Magnet */}
+      <STKReminderLeadMagnet />
+
+      {/* Main FAQ Section */}
+      <MainFAQ
+        faqs={[
+          {
+            question: 'Ako často musím absolvovať technickú kontrolu?',
+            answer: 'Frekvencia technickej kontroly závisí od typu vozidla: Osobné vozidlá (M1) - každé 2 roky, prvá kontrola po 4 rokoch od prvej registrácie. Nákladné vozidlá (N2, N3) - každý rok, prvá kontrola po 1 roku. Motocykle (L) - každé 2 roky, prvá kontrola po 4 rokoch.'
+          },
+          {
+            question: 'Môžem si rezervovať termín online?',
+            answer: 'Áno, online rezervácia je dostupná 24/7 na našej webstránke. Vyberte si typ vozidla, službu, dátum a čas. Potvrdenie rezervácie dostanete na e-mail a SMS. Rezerváciu môžete zrušiť alebo zmeniť najneskôr 24 hodín pred termínom.'
+          },
+          {
+            question: 'Aké doklady si mám priniesť na STK?',
+            answer: 'Pre technickú kontrolu potrebujete: Malý technický preukaz vozidla, doklad o poistení zodpovednosti, platný vodičský preukaz, predchádzajúci protokol STK (ak máte). Pre firemné vozidlá navyše výpis z obchodného registra.'
+          },
+          {
+            question: 'Koľko stojí technická kontrola?',
+            answer: 'Ceny sa líšia podľa typu vozidla: Osobné vozidlá: STK 25€, EK 15€, STK+EK 35€. Nákladné vozidlá: STK 45€, EK 25€, STK+EK 60€. Motocykle: STK 20€, EK 12€, STK+EK 28€. Opakovaná kontrola má zľavnené ceny.'
+          },
+          {
+            question: 'Čo ak môj vozidlo neprejde kontrolou?',
+            answer: 'Pri neúspešnej kontrole dostanete protokol s uvedenými závadami. Závady rozdelujeme na malé (1 mesiac na opravu) a veľké (ihneď zakázanie prevádzky). Po oprave môžete absolvovať opakovanú kontrolu za zľavnenú cenu do 30 dní.'
+          },
+          {
+            question: 'Ako dlho trvá technická kontrola?',
+            answer: 'Doba kontroly závisí od typu: STK osobné vozidlo: 30-45 minút, EK: 15-20 minút, STK+EK: 45-60 minút. Nákladné vozidlá trvajú o 15-20 minút dlhšie. Expresné vybavenie je možné za príplatok 10€ (do 20 minút).'
+          }
+        ]}
+      />
+
+      {/* Location-specific FAQ Section */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-3">
+              FAQ pre jednotlivé pobočky
+            </h2>
+            <p className="text-lg text-brand-gray-600 max-w-2xl mx-auto">
+              Špecifické otázky a odpovede pre každú z našich prevádzok
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {/* STK Námestovo FAQ */}
+            <LocationFAQ
+              locationName="STK Námestovo"
+              locationAddress="Za vodou 1068, 029 01 Námestovo"
+              faqs={[
+                {
+                  question: 'Máte v Námestove kaviareň?',
+                  answer: 'Áno, v našej prevádzke v Námestove máme kaviareň efCafé, kde si môžete počas čakania vychutnať kvalitnú kávu a občerstvenie. Kaviareň je otvorená Po-Pia: 06:00-16:30 a So: 08:00-12:00.'
+                },
+                {
+                  question: 'Je v Námestove dostupné parkovanie?',
+                  answer: 'Áno, máme vlastné parkovisko s dostatočnou kapacitou. Parkovanie je pre našich zákazníkov bezplatné počas doby kontroly.'
+                },
+                {
+                  question: 'Máte v Námestove autoumyváreň?',
+                  answer: 'Áno, v areáli STK Námestovo máme modernú autoumyváreň s automatickým portálom, ktorý je dostupný 24/7. Okrem toho ponúkame aj ecoČistiareň a práčovňu.'
+                },
+                {
+                  question: 'Ako dlho trvá cesta z centra Námestova?',
+                  answer: 'Naša prevádzka sa nachádza len 5 minút autom od centra Námestova. Je ľahko dostupná aj pešo alebo na bicykli.'
+                }
+              ]}
+            />
+
+            {/* STK Tvrdošín FAQ */}
+            <LocationFAQ
+              locationName="STK Tvrdošín"
+              locationAddress="Vojtaššákova 908, 027 44 Tvrdošín"
+              faqs={[
+                {
+                  question: 'Aké sú otváracie hodiny v Tvrdošíne?',
+                  answer: 'Naša prevádzka v Tvrdošíne je otvorená Po-Pia: 07:00-15:30. V sobotu pracujeme podľa dohody. Odporúčame rezerváciu vopred, najmä v dopoludňajších hodinách.'
+                },
+                {
+                  question: 'Je v Tvrdošíne možné expresné vybavenie?',
+                  answer: 'Áno, ponúkame expresné vybavenie do 20 minút za príplatok 10€. Táto služba je ideálna pre zaneprázdnených zákazníkov. Rezerváciu je potrebné urobiť vopred.'
+                },
+                {
+                  question: 'Máte v Tvrdošíne autoumyváreň?',
+                  answer: 'Áno, v areáli máme autoumyváreň s automatickým portálom. Okrem toho máme aj kaviareň, kde si môžete počkať počas kontroly.'
+                },
+                {
+                  question: 'Ako sa dostanem k STK Tvrdošín?',
+                  answer: 'Naša prevádzka sa nachádza na Vojtaššákovej ulici v Tvrdošíne, ľahko dostupná z hlavnej cesty. Máme vlastné parkovisko pre zákazníkov.'
+                }
+              ]}
+            />
+
+            {/* STK Lokca FAQ */}
+            <LocationFAQ
+              locationName="STK Lokca"
+              locationAddress="Polianka 753, 029 51 Lokca"
+              faqs={[
+                {
+                  question: 'Aké služby poskytujete v Lokci?',
+                  answer: 'V našej prevádzke v Lokci poskytujeme technické kontroly (STK) a emisné kontroly (EK) pre všetky typy vozidiel. Máme moderné vybavenie a skúsený personál.'
+                },
+                {
+                  question: 'Je v Lokci možné rezervovať termín?',
+                  answer: 'Áno, rezerváciu môžete urobiť online cez našu webstránku alebo telefonicky na čísle 0948 422333. Odporúčame rezerváciu vopred, najmä v dopoludňajších hodinách.'
+                },
+                {
+                  question: 'Aké sú otváracie hodiny v Lokci?',
+                  answer: 'Naša prevádzka v Lokci je otvorená Po-Pia: 06:00-15:30. V sobotu a nedeľu máme zatvorené. Pre sobotné služby kontaktujte našu prevádzku v Námestove.'
+                },
+                {
+                  question: 'Máte v Lokci parkovanie?',
+                  answer: 'Áno, máme vlastné parkovisko s dostatočnou kapacitou. Parkovanie je pre našich zákazníkov bezplatné počas doby kontroly.'
+                }
+              ]}
+            />
           </div>
         </div>
       </section>
@@ -459,6 +620,25 @@ export default function HomePage() {
                       <Clock className="h-5 w-5 text-brand-green-400 flex-shrink-0" />
                       <span className="text-brand-gray-300 text-sm">Po-Pia: 06:00-16:30</span>
                     </div>
+                    
+                    <div className="mt-4 pt-3 border-t border-brand-gray-800">
+                      <div className="flex items-start space-x-3 mb-2">
+                        <Calendar className="h-4 w-4 text-brand-green-400 flex-shrink-0 mt-0.5" />
+                        <div className="flex-1">
+                          <span className="text-brand-gray-300 text-xs italic block mb-2">Sobotné rezervácie čoskoro dostupné</span>
+                          <div className="flex flex-wrap gap-1.5">
+                            {upcomingSaturdays.map((date, idx) => (
+                              <span 
+                                key={idx}
+                                className="inline-flex items-center px-2 py-0.5 rounded bg-brand-green-500/20 text-brand-green-300 text-[10px] font-medium"
+                              >
+                                {format(date, 'd.M.', { locale: sk })}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
@@ -507,6 +687,25 @@ export default function HomePage() {
                     <div className="flex items-center space-x-3">
                       <Clock className="h-5 w-5 text-brand-green-400 flex-shrink-0" />
                       <span className="text-brand-gray-300 text-sm">Po-Pia: 07:00-15:30</span>
+                    </div>
+                    
+                    <div className="mt-4 pt-3 border-t border-brand-gray-800">
+                      <div className="flex items-start space-x-3 mb-2">
+                        <Calendar className="h-4 w-4 text-brand-green-400 flex-shrink-0 mt-0.5" />
+                        <div className="flex-1">
+                          <span className="text-brand-gray-300 text-xs italic block mb-2">Sobotné rezervácie čoskoro dostupné</span>
+                          <div className="flex flex-wrap gap-1.5">
+                            {upcomingSaturdays.map((date, idx) => (
+                              <span 
+                                key={idx}
+                                className="inline-flex items-center px-2 py-0.5 rounded bg-brand-green-500/20 text-brand-green-300 text-[10px] font-medium"
+                              >
+                                {format(date, 'd.M.', { locale: sk })}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -558,6 +757,25 @@ export default function HomePage() {
                     <div className="flex items-center space-x-3">
                       <Clock className="h-5 w-5 text-brand-green-400 flex-shrink-0" />
                       <span className="text-brand-gray-300 text-sm">Po-Pia: 06:00-15:30</span>
+                    </div>
+                    
+                    <div className="mt-4 pt-3 border-t border-brand-gray-800">
+                      <div className="flex items-start space-x-3 mb-2">
+                        <Calendar className="h-4 w-4 text-brand-green-400 flex-shrink-0 mt-0.5" />
+                        <div className="flex-1">
+                          <span className="text-brand-gray-300 text-xs italic block mb-2">Sobotné rezervácie čoskoro dostupné</span>
+                          <div className="flex flex-wrap gap-1.5">
+                            {upcomingSaturdays.map((date, idx) => (
+                              <span 
+                                key={idx}
+                                className="inline-flex items-center px-2 py-0.5 rounded bg-brand-green-500/20 text-brand-green-300 text-[10px] font-medium"
+                              >
+                                {format(date, 'd.M.', { locale: sk })}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>

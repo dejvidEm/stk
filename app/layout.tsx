@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import ConditionalFooter from '@/components/layout/ConditionalFooter';
 import ConditionalNavbar from '../components/layout/ConditionalNavbar';
+import BackToHomeButton from '@/components/BackToHomeButton';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -29,6 +30,7 @@ export default function RootLayout({
     <html lang="sk">
       <body className={inter.className}>
         <ConditionalNavbar />
+        <BackToHomeButton />
         <main className="min-h-screen">
           {children}
         </main>

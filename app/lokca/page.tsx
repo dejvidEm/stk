@@ -21,6 +21,7 @@ import {
   FileCheck,
   Fingerprint
 } from 'lucide-react';
+import SaturdayCalendarBanner from '@/components/SaturdayCalendarBanner';
 
 export default function DemoPage() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -90,6 +91,9 @@ export default function DemoPage() {
           </div>
         </div>
       </section>
+
+      {/* Saturday Calendar Banner */}
+      <SaturdayCalendarBanner locationName="STK Lokca" />
 
       {/* Prepaid Card Promotion Banner */}
       <section className="bg-gradient-to-r from-yellow-600 via-amber-500 to-yellow-600 text-white py-8 shadow-xl relative overflow-visible">

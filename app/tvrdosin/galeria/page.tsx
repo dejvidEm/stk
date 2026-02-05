@@ -134,6 +134,7 @@ export default function GalleryPage() {
         </div>
       </section>
 
+
       {/* Category Filter */}
       <section className="py-8 bg-white shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
