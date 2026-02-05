@@ -16,8 +16,6 @@ import {
 } from 'lucide-react';
 
 export default function ServicesPage() {
-
-export default function ServicesPage() {
   const [activeTab, setActiveTab] = useState('stk');
 
   const services = {
