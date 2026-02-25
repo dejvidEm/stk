@@ -115,7 +115,7 @@ function ReviewCard({ review }: { review: Review }) {
 }
 
 export default function ReviewsSlider() {
-  const [api, setApi] = useState<CarouselApi>(null);
+  const [api, setApi] = useState<CarouselApi | null>(null);
 
   useEffect(() => {
     if (!api) return;
