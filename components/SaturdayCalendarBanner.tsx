@@ -14,11 +14,17 @@ interface SaturdayCalendarBannerProps {
   saturdayDates?: Date[];
 }
 
+const SATURDAY_TIME_SLOTS = [
+  '08:00', '08:30', '09:00', '09:30', '10:00', '10:30',
+  '11:00', '11:30', '12:00', '12:30', '13:00', '13:30', '14:00'
+];
+
 export default function SaturdayCalendarBanner({ 
   locationName,
   saturdayDates = []
 }: SaturdayCalendarBannerProps) {
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined);
+  const [selectedTime, setSelectedTime] = useState<string>('');
   const [isOpen, setIsOpen] = useState(false);
 
   // Get next 12 Saturdays if no dates provided
@@ -52,14 +58,15 @@ export default function SaturdayCalendarBanner({
   const handleDateSelect = (date: Date | undefined) => {
     if (date && isSaturday(date)) {
       setSelectedDate(date);
+      setSelectedTime('');
       setIsOpen(false);
     }
   };
 
   const handleReserve = () => {
-    if (selectedDate) {
+    if (selectedDate && selectedTime) {
       // TODO: Implement reservation logic
-      alert(`Rezervácia pre ${format(selectedDate, 'd. M. yyyy', { locale: sk })} bude čoskoro dostupná.`);
+      alert(`Rezervácia pre ${format(selectedDate, 'd. M. yyyy', { locale: sk })} o ${selectedTime} bude čoskoro dostupná.`);
     }
   };
 
@@ -100,11 +107,11 @@ export default function SaturdayCalendarBanner({
                     <Button
                       variant="outline"
                       className={cn(
-                        "w-full justify-start text-left font-normal bg-white hover:bg-gray-50",
+                        "w-full justify-start text-left font-normal bg-white hover:bg-gray-50 text-gray-900",
                         !selectedDate && "text-muted-foreground"
                       )}
                     >
-                      <Calendar className="mr-2 h-4 w-4" />
+                      <Calendar className="mr-2 h-4 w-4 text-gray-700" />
                       {selectedDate ? (
                         format(selectedDate, 'd. M. yyyy', { locale: sk })
                       ) : (
@@ -131,19 +138,45 @@ export default function SaturdayCalendarBanner({
               </div>
 
               {selectedDate && (
-                <div className="bg-white/20 rounded-lg p-3">
-                  <div className="flex items-center gap-2 text-white">
-                    <Clock className="h-4 w-4" />
-                    <span className="text-sm">
-                      Vybraný termín: {format(selectedDate, 'EEEE, d. M. yyyy', { locale: sk })}
-                    </span>
+                <>
+                  <div>
+                    <label className="block text-sm font-semibold text-white mb-2">
+                      Vyberte čas:
+                    </label>
+                    <div className="grid grid-cols-4 sm:grid-cols-5 gap-1.5">
+                      {SATURDAY_TIME_SLOTS.map((time) => (
+                        <button
+                          key={time}
+                          type="button"
+                          onClick={() => setSelectedTime(time)}
+                          className={cn(
+                            'py-2 rounded-md text-xs font-medium transition-colors min-w-0',
+                            selectedTime === time
+                              ? 'bg-white text-brand-green-600'
+                              : 'bg-white/20 text-white hover:bg-white/30'
+                          )}
+                        >
+                          {time}
+                        </button>
+                      ))}
+                    </div>
                   </div>
-                </div>
+
+                  <div className="bg-white/20 rounded-lg p-3">
+                    <div className="flex items-center gap-2 text-white">
+                      <Clock className="h-4 w-4 shrink-0" />
+                      <span className="text-sm">
+                        Vybraný termín: {format(selectedDate, 'EEEE, d. M. yyyy', { locale: sk })}
+                        {selectedTime && <span className="font-semibold"> o {selectedTime}</span>}
+                      </span>
+                    </div>
+                  </div>
+                </>
               )}
 
               <Button
                 onClick={handleReserve}
-                disabled={!selectedDate}
+                disabled={!selectedDate || !selectedTime}
                 className="w-full bg-white text-brand-green-600 hover:bg-gray-100 font-semibold py-6 text-lg disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 Rezervovať termín

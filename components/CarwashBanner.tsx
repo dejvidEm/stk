@@ -110,11 +110,11 @@ export default function CarwashBanner() {
 
                 <div className="grid grid-cols-1 gap-3">
                   {[
-                    { name: 'Basic', price: '6,00 €', time: '8-12 min', color: 'bg-blue-500' },
-                    { name: 'Standard', price: '7,00 €', time: '12-16 min', color: 'bg-green-500' },
-                    { name: 'Wax', price: '9,00 €', time: '15-18 min', color: 'bg-purple-500' },
+                    { name: 'Platinum', price: '14,00 €', time: '22-25 min', color: 'bg-yellow-500' },
                     { name: 'Exclusive', price: '12,00 €', time: '18-22 min', color: 'bg-orange-500' },
-                    { name: 'Platinum', price: '14,00 €', time: '22-25 min', color: 'bg-yellow-500' }
+                    { name: 'Wax', price: '9,00 €', time: '15-18 min', color: 'bg-purple-500' },
+                    { name: 'Standard', price: '7,00 €', time: '12-16 min', color: 'bg-green-500' },
+                    { name: 'Basic', price: '6,00 €', time: '8-12 min', color: 'bg-blue-500' }
                   ].map((program, index) => (
                     <div 
                       key={index}

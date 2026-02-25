@@ -1,5 +1,27 @@
+'use client';
+
 import Link from 'next/link';
 import { Car, Phone, Mail, MapPin, Clock, Facebook, Instagram, ExternalLink, Globe } from 'lucide-react';
+
+/** Display email without @ to reduce bot harvesting; mailto is built on click. */
+function ObfuscatedEmail({ user, domain }: { user: string; domain: string }) {
+  const handleClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    window.location.href = `mailto:${user}@${domain}`;
+  };
+  return (
+    <a
+      href="#"
+      onClick={handleClick}
+      className="text-brand-gray-300 hover:text-white transition-colors text-sm break-all"
+      aria-label={`E-mail: ${user} (at) ${domain}`}
+    >
+      {user}
+      <span aria-hidden="true"> (at) </span>
+      {domain}
+    </a>
+  );
+}
 
 export default function Footer() {
   const centers = [
@@ -7,7 +29,8 @@ export default function Footer() {
       name: 'STK Námestovo',
       address: 'Za vodou 1068, 029 01 Námestovo',
       phone: '043 5520390, 0904 386146',
-      email: 'info@emade.sk',
+      emailUser: 'info',
+      emailDomain: 'emade.sk',
       hours: 'Po-Pia: 06:00-16:30',
       url: 'https://www.stknamestovo.sk',
       isExternal: true
@@ -16,7 +39,8 @@ export default function Footer() {
       name: 'STK Tvrdošín',
       address: 'Vojtaššákova 908, 027 44 Tvrdošín',
       phone: '043 5323499, 0948 032189',
-      email: 'info@stktvrdosin.sk',
+      emailUser: 'info',
+      emailDomain: 'stktvrdosin.sk',
       hours: 'Po-Pia: 07:00-15:30',
       url: '/tvrdosin',
       isExternal: false
@@ -25,7 +49,8 @@ export default function Footer() {
       name: 'STK Lokca',
       address: 'Polianka 753, 029 51 Lokca',
       phone: '0948 422333',
-      email: 'info@stklokca.sk',
+      emailUser: 'info',
+      emailDomain: 'stklokca.sk',
       hours: 'Po-Pia: 06:00-15:30',
       url: 'https://www.stklokca.sk',
       isExternal: true
@@ -87,12 +112,7 @@ export default function Footer() {
                     
                     <div className="flex items-center space-x-3">
                       <Mail className="h-5 w-5 text-brand-green-400 flex-shrink-0" />
-                      <a 
-                        href={`mailto:${center.email}`}
-                        className="text-brand-gray-300 hover:text-white transition-colors text-sm break-all"
-                      >
-                        {center.email}
-                      </a>
+                      <ObfuscatedEmail user={center.emailUser} domain={center.emailDomain} />
                     </div>
                     
                     <div className="flex items-center space-x-3">

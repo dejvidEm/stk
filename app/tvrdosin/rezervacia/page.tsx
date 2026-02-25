@@ -17,6 +17,7 @@ import {
   Leaf,
   RotateCcw
 } from 'lucide-react';
+import SaturdayAlternativeBanner from '@/components/SaturdayAlternativeBanner';
 
 interface BookingData {
   vehicleType: string;
@@ -294,6 +295,11 @@ export default function BookingPage() {
           {currentStep === 2 && (
             <div>
               <h2 className="text-2xl font-bold text-gray-900 mb-6">Vyberte dátum a čas</h2>
+
+              <SaturdayAlternativeBanner
+                currentLocationId="tvrdosin"
+                availableDateStrings={availableDates.map((d) => d.date)}
+              />
               
               <div className="mb-8">
                 <h3 className="text-lg font-semibold text-gray-900 mb-4">Dostupné dátumy</h3>

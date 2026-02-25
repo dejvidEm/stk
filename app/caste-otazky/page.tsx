@@ -15,6 +15,15 @@ import {
   MessageSquare,
   AtSign
 } from 'lucide-react';
+import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import SaturdayCalendarBanner from '@/components/SaturdayCalendarBanner';
+
+const CALENDAR_LOCATIONS = [
+  { id: 'namestovo', name: 'STK Námestovo', shortName: 'Námestovo' },
+  { id: 'tvrdosin', name: 'STK Tvrdošín', shortName: 'Tvrdošín' },
+  { id: 'lokca', name: 'STK Lokca', shortName: 'Lokca' },
+] as const;
+type CalendarLocationId = (typeof CALENDAR_LOCATIONS)[number]['id'];
 
 interface FAQ {
   id: number;
@@ -28,6 +37,7 @@ export default function FAQPage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
+  const [calendarLocationId, setCalendarLocationId] = useState<CalendarLocationId>('tvrdosin');
 
   const categories = [
     { id: 'all', name: 'Všetky otázky', icon: HelpCircle },
@@ -324,6 +334,27 @@ export default function FAQPage() {
               Nezabudnite na príplatok 5€ za víkendové služby.
             </p>
           </div>
+        </div>
+
+        {/* Sobotné termíny – rovnaký formulár ako na kontakte */}
+        <div className="mt-12">
+          <p className="text-sm font-medium text-gray-700 mb-3">Vyberte prevádzku pre zobrazenie sobotných termínov:</p>
+          <Tabs value={calendarLocationId} onValueChange={(v) => setCalendarLocationId(v as CalendarLocationId)} className="w-full">
+            <TabsList className="grid w-full grid-cols-3 mb-4 h-auto p-1 gap-1 bg-gray-100">
+              {CALENDAR_LOCATIONS.map((loc) => (
+                <TabsTrigger
+                  key={loc.id}
+                  value={loc.id}
+                  className="data-[state=active]:bg-white data-[state=active]:shadow-sm py-2.5 text-sm font-medium"
+                >
+                  {loc.shortName}
+                </TabsTrigger>
+              ))}
+            </TabsList>
+            <SaturdayCalendarBanner
+              locationName={CALENDAR_LOCATIONS.find((l) => l.id === calendarLocationId)?.name}
+            />
+          </Tabs>
         </div>
       </div>
     </div>

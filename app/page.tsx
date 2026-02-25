@@ -25,6 +25,7 @@ import STKReminderLeadMagnet from '@/components/STKReminderLeadMagnet';
 import STKPriceCalculator from '@/components/STKPriceCalculator';
 import MainFAQ from '@/components/MainFAQ';
 import LocationFAQ from '@/components/LocationFAQ';
+import ReviewsSlider from '@/components/ReviewsSlider';
 import { format } from 'date-fns';
 import { sk } from 'date-fns/locale/sk';
 
@@ -70,7 +71,7 @@ export default function HomePage() {
       phone: '043 5323499, 0948 032189',
       email: 'info@stktvrdosin.sk',
       hours: 'Po-Pia: 07:00-15:30',
-      image: '/images/namestovo_2.webp',
+      image: '/images/tvrdosin.png',
       description: 'Spoľahlivé služby STK a EK v Tvrdošíne s 15-ročnými skúsenosťami.',
       features: ['Technické kontroly', 'Emisné kontroly', 'Autoumyváreň', 'Kaviareň'],
       isDemo: true
@@ -114,14 +115,14 @@ export default function HomePage() {
           </div>
 
           {/* Centers Cards in Hero */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-7xl mx-auto">
             {centers.map((center) => (
               <div 
                 key={center.id} 
                 className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden group hover:scale-105 flex flex-col h-full"
               >
                 {/* Image */}
-                <div className="relative h-56 overflow-hidden">
+                <div className="relative h-64 overflow-hidden">
                   <img 
                     src={center.image} 
                     alt={center.name}
@@ -158,15 +159,10 @@ export default function HomePage() {
                     )}
                   </div>
                   
-                  {center.isDemo && (
-                    <div className="absolute top-2 left-2 bg-brand-green-500 text-white px-2 py-1 rounded-full text-xs font-semibold z-10">
-                      STK
-                    </div>
-                  )}
                 </div>
 
                 {/* Content */}
-                <div className="p-4 text-brand-gray-900 flex flex-col flex-grow">
+                <div className="p-5 text-brand-gray-900 flex flex-col flex-grow">
 
                   {/* Contact Info */}
                   <div className="space-y-2 mb-3 text-sm flex-grow">
@@ -197,53 +193,56 @@ export default function HomePage() {
                       </a>
                     </div>
 
-                    <a 
-                      href={`${center.url}/rezervacia`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-full bg-brand-green-600 !mt-5 hover:bg-brand-green-700 text-white py-2 px-3 rounded-lg font-semibold transition-colors inline-flex items-center justify-center group text-sm"
-                    >
-                      Rezervácia termínu
-                      <ExternalLink className="ml-1 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                    </a>
-
-                      {/* Features */}
-                        <div className="flex flex-wrap gap-1 pb-3 pt-5">
-                        {center.features.map((feature, index) => (
-                        <span 
-                        key={index}
-                        className="bg-gray-100 text-gray-700 px-2 py-1 rounded-full text-xs font-medium"
-                        >
-                        {feature}
-                        </span>
-                        ))}
-                        </div>
                   </div>
 
-                  {/* CTA Buttons */}
-                  <div className="space-y-2 mt-auto">
+                  {/* Rezervácia button */}
+                  <a 
+                    href={`${center.url}/rezervacia`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full h-11 !mt-5 bg-brand-green-600 hover:bg-brand-green-700 text-white rounded-lg font-semibold transition-colors inline-flex items-center justify-center group text-sm shrink-0"
+                  >
+                    Rezervácia termínu
+                    <ExternalLink className="ml-1 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                  </a>
+
+                  {/* One line of badges */}
+                  <div className="flex flex-wrap gap-1.5 justify-center py-3">
+                    {(center.id === 'namestovo'
+                      ? center.features.slice(-3)
+                      : center.id === 'tvrdosin'
+                        ? center.features.slice(2)
+                        : center.features
+                    ).map((feature, index) => (
+                      <span
+                        key={index}
+                        className="bg-gray-100 text-gray-700 px-2 py-1 rounded-full text-xs font-medium"
+                      >
+                        {feature}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Navštíviť stránku button */}
+                  <div className="mt-auto">
                     {center.isDemo ? (
-                      <>
-                        <Link 
-                          href={center.url}
-                          className="w-full bg-brand-red-600 hover:bg-brand-red-700 text-white py-2 px-3 rounded-lg font-semibold transition-colors inline-flex items-center justify-center group text-sm"
-                        >
-                          Navštíviť stránku
-                          <ArrowRight className="ml-1 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                        </Link>
-                      </>
+                      <Link 
+                        href={center.url}
+                        className="w-full h-11 bg-brand-red-600 hover:bg-brand-red-700 text-white rounded-lg font-semibold transition-colors inline-flex items-center justify-center group text-sm shrink-0"
+                      >
+                        Navštíviť stránku
+                        <ArrowRight className="ml-1 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                      </Link>
                     ) : (
-                      <>
-                        <a 
-                          href={center.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="w-full bg-brand-red-600 hover:bg-brand-red-700 text-white py-2 px-3 rounded-lg font-semibold transition-colors inline-flex items-center justify-center group text-sm"
-                        >
-                          Navštíviť stránku
-                          <ExternalLink className="ml-1 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                        </a>
-                      </>
+                      <a 
+                        href={center.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full h-11 bg-brand-red-600 hover:bg-brand-red-700 text-white rounded-lg font-semibold transition-colors inline-flex items-center justify-center group text-sm shrink-0"
+                      >
+                        Navštíviť stránku
+                        <ExternalLink className="ml-1 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                      </a>
                     )}
                   </div>
                 </div>
@@ -255,6 +254,9 @@ export default function HomePage() {
 
       {/* Saturday Info Banner */}
       <SaturdayInfoBanner />
+
+      {/* Reviews Slider */}
+      <ReviewsSlider />
 
       {/* Carwash Banner */}
       <CarwashBanner />
