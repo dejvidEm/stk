@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Car, Phone, Mail, MapPin, Clock, Facebook, Instagram, ExternalLink, Globe } from 'lucide-react';
 
 /** Display email without @ to reduce bot harvesting; mailto is built on click. */
@@ -24,6 +25,15 @@ function ObfuscatedEmail({ user, domain }: { user: string; domain: string }) {
 }
 
 export default function Footer() {
+  const pathname = usePathname();
+
+  const faqHref = (() => {
+    if (pathname.startsWith('/namestovo')) return '/namestovo/caste-otazky';
+    if (pathname.startsWith('/tvrdosin')) return '/tvrdosin/caste-otazky';
+    if (pathname.startsWith('/lokca')) return '/lokca/caste-otazky';
+    return '/caste-otazky';
+  })();
+
   const handleFooterLinkClickCapture = (e: React.MouseEvent<HTMLElement>) => {
     const target = e.target as HTMLElement;
     const anchor = target.closest('a');
@@ -192,7 +202,7 @@ export default function Footer() {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/caste-otazky" className="text-brand-gray-300 hover:text-white transition-colors text-sm">
+                    <Link href={faqHref} className="text-brand-gray-300 hover:text-white transition-colors text-sm">
                       Časté otázky
                     </Link>
                   </li>

@@ -400,14 +400,14 @@ export default function HomePage() {
               <div className="bg-brand-green-100 p-4 rounded-full mb-4">
                 <CheckCircle className="h-8 w-8 text-brand-green-600" />
               </div>
-              <div className="text-3xl font-bold text-brand-gray-900 mb-2">14+</div>
+              <div className="text-3xl font-bold text-brand-gray-900 mb-2">24+</div>
               <div className="text-brand-gray-600">rokov skúseností</div>
             </div>
             <div className="flex flex-col items-center">
               <div className="bg-brand-gray-100 p-4 rounded-full mb-4">
                 <Clock className="h-8 w-8 text-brand-gray-600" />
               </div>
-              <div className="text-3xl font-bold text-brand-gray-900 mb-2">30 min</div>
+              <div className="text-3xl font-bold text-brand-gray-900 mb-2">45 min</div>
               <div className="text-brand-gray-600">priemerný čas</div>
             </div>
             <div className="flex flex-col items-center">
@@ -493,15 +493,15 @@ export default function HomePage() {
           },
           {
             question: 'Aké doklady si mám priniesť na STK?',
-            answer: 'Pre technickú kontrolu potrebujete: Malý technický preukaz vozidla, doklad o poistení zodpovednosti, platný vodičský preukaz, predchádzajúci protokol STK (ak máte). Pre firemné vozidlá navyše výpis z obchodného registra.'
+            answer: 'Doklady od vozidla: Osvedčenie o technickom preukaze, časť I alebo časť II (papierový alebo kartička). Vozidlo s pohonom na plyn (LPG, CNG): Protokol o montáži plynového zariadenia, ak bola montáž vykonaná v rámci prestavby vozidla. Ak je technický preukaz stratený: Výpis z karty vozidla vydaný orgánom Policajného zboru. Ak bol technický preukaz zadržaný: Potvrdenie o zadržaní TP Policajným zborom.'
           },
           {
             question: 'Koľko stojí technická kontrola?',
             answer: 'Ceny sa líšia podľa kategórie vozidla a typu paliva. Osobné vozidlá (M1, N1, L5e, L7e): STK 50,90 €, EK od 46,90 €. Nákladné motorové vozidlá (N2, N3, M2, M3, PS): STK 77,90 €, EK od 57,90 €. Motocykle (L3, L4, L6): STK 39,90 €, EK sa nevykonáva. Opakovaná kontrola (STK): osobné 25,90 €, nákladné 41,90 €, motocykle 20,90 €.'
           },
           {
-            question: 'Čo ak môj vozidlo neprejde kontrolou?',
-            answer: 'Pri neúspešnej kontrole dostanete protokol s uvedenými závadami. Závady rozdelujeme na malé (1 mesiac na opravu) a veľké (ihneď zakázanie prevádzky). Po oprave môžete absolvovať opakovanú kontrolu za zľavnenú cenu do 30 dní.'
+            question: 'Čo ak moje vozidlo neprejde kontrolou?',
+            answer: 'Spôsobilé: Ak sa technickou kontrolou nezistili žiadne chyby alebo sa zistili len ľahké chyby. Ak sa technickou kontrolou zistili ľahké chyby, prevádzkovateľ vozidla je povinný ich odstrániť. Ľahké chyby nemajú výrazný vplyv na bezpečnosť vozidla ani na životné prostredie, ako aj iné menej významné prípady nezhody. Dočasne spôsobilé: Ak sa technickou kontrolou zistila vážna chyba, prevádzkovateľ vozidla je povinný do 60 kalendárnych dní podrobiť vozidlo opakovanej technickej kontrole. Závažné chyby môžu ovplyvniť bezpečnosť vozidla alebo životné prostredie, alebo ohroziť iných účastníkov cestnej premávky. Nespôsobilé: Ak sa technickou kontrolou zistila nebezpečná chyba, do odstránenia chyby sa vozidlo nesmie používať na cestných komunikáciách. Nebezpečné chyby predstavujú priame a bezprostredné riziko pre bezpečnosť cestnej premávky alebo majú vplyv na životné prostredie a je potrebné zakázať používanie vozidla v cestnej premávke.'
           },
           {
             question: 'Ako dlho trvá technická kontrola?',

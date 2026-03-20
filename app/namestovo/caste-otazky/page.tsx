@@ -56,7 +56,7 @@ export default function FAQPage() {
     {
       id: 3,
       question: 'Aké doklady si mám priniesť na STK?',
-      answer: 'Pre technickú kontrolu potrebujete: Malý technický preukaz vozidla, doklad o poistení zodpovednosti, platný vodičský preukaz, predchádzajúci protokol STK (ak máte). Pre firemné vozidlá navyše výpis z obchodného registra.',
+      answer: 'Doklady od vozidla: Osvedčenie o technickom preukaze, časť I alebo časť II (papierový alebo kartička). Vozidlo s pohonom na plyn (LPG, CNG): Protokol o montáži plynového zariadenia, ak bola montáž vykonaná v rámci prestavby vozidla. Ak je technický preukaz stratený: Výpis z karty vozidla vydaný orgánom Policajného zboru. Ak bol technický preukaz zadržaný: Potvrdenie o zadržaní TP Policajným zborom.',
       category: 'documents',
       tags: ['doklady', 'technický preukaz', 'poistenie', 'vodičský preukaz']
     },
@@ -69,8 +69,8 @@ export default function FAQPage() {
     },
     {
       id: 5,
-      question: 'Čo ak môj vozidlo neprejde kontrolou?',
-      answer: 'Pri neúspešnej kontrole dostanete protokol s uvedenými závadami. Závady rozdelujeme na malé (1 mesiac na opravu) a veľké (ihneď zakázanie prevádzky). Po oprave môžete absolvovať opakovanú kontrolu za zľavnenú cenu do 30 dní.',
+      question: 'Čo ak moje vozidlo neprejde kontrolou?',
+      answer: 'Spôsobilé: Ak sa technickou kontrolou nezistili žiadne chyby alebo sa zistili len ľahké chyby. Ak sa technickou kontrolou zistili ľahké chyby, prevádzkovateľ vozidla je povinný ich odstrániť. Ľahké chyby nemajú výrazný vplyv na bezpečnosť vozidla ani na životné prostredie, ako aj iné menej významné prípady nezhody. Dočasne spôsobilé: Ak sa technickou kontrolou zistila vážna chyba, prevádzkovateľ vozidla je povinný do 60 kalendárnych dní podrobiť vozidlo opakovanej technickej kontrole. Závažné chyby môžu ovplyvniť bezpečnosť vozidla alebo životné prostredie, alebo ohroziť iných účastníkov cestnej premávky. Nespôsobilé: Ak sa technickou kontrolou zistila nebezpečná chyba, do odstránenia chyby sa vozidlo nesmie používať na cestných komunikáciách. Nebezpečné chyby predstavujú priame a bezprostredné riziko pre bezpečnosť cestnej premávky alebo majú vplyv na životné prostredie a je potrebné zakázať používanie vozidla v cestnej premávke.',
       category: 'stk',
       tags: ['neúspešná', 'závady', 'opakovaná kontrola', 'oprava']
     },
@@ -87,6 +87,20 @@ export default function FAQPage() {
       answer: 'Rezerváciu môžete zrušiť alebo zmeniť najneskôr 24 hodím pred termínom cez náš online systém alebo telefonicky. Pri zrušení menej ako 24 hodín vopred sa účtuje storno poplatok 5€. Zmena termínu je bezplatná.',
       category: 'booking',
       tags: ['zrušenie', 'zmena', 'storno', 'poplatok']
+    },
+    {
+      id: 13,
+      question: 'Doklady na KO',
+      answer: 'Osvedčenie o evidencii, doklad o nadobudnutí vozidla, doklad totožnosti vodiča',
+      category: 'documents',
+      tags: ['doklady', 'ko', 'evidencia', 'vodič']
+    },
+    {
+      id: 14,
+      question: 'Povinná výbava osobného automobilu?',
+      answer: 'POVINNÁ VÝBAVA OSOBNÉHO AUTOMOBILU: Autolekárnička (musí obsahovať kartičku prvej pomoci). Bezpečnostný reflexný odev (musí byť umiestnený v dosahu priamo zo sedadla vozidla). Prenosný výstražný trojuholník. Náhradné koleso s diskom a s náhradnou pneumatikou, kľúč na matice alebo na skrutky kolies a príručný zdvihák. Výnimka, kedy nemusíte mať náhradné koleso: ak je vozidlo vybavené prostriedkami na bezdemontážnu opravu poškodenej pneumatiky (napr. defekt sprej); alebo ak máte pneumatiky, ktoré sú schopné pri defekte alebo strate tlaku pokračovať ďalej v dočasnej jazde (pneumatiky označované Runflat).',
+      category: 'documents',
+      tags: ['povinná výbava', 'autolekárnička', 'trojuholník', 'reflexný odev', 'náhradné koleso']
     },
     {
       id: 8,

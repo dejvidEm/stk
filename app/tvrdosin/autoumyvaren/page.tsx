@@ -167,7 +167,7 @@ export default function CarWashPage() {
                 </h1>
               </div>
               <p className="text-xl md:text-2xl opacity-90 max-w-3xl mx-auto lg:mx-0">
-                NON-STOP umývacie boxy dostupné 24/7. Samoobslužné umývacie boxy s moderným vybavením.
+                NON-STOP umývací portál dostupný 24/7. Samoobslužný umývací portál s moderným vybavením.
               </p>
             </div>
             <aside
