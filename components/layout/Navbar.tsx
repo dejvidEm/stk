@@ -40,10 +40,22 @@ export default function Navbar() {
 
   const centerInfo = getCenterInfo();
 
+  const handleNavLinkClickCapture = (e: React.MouseEvent<HTMLElement>) => {
+    const target = e.target as HTMLElement;
+    const anchor = target.closest('a');
+    if (!anchor) return;
+    const href = anchor.getAttribute('href') ?? '';
+    if (href.startsWith('/')) {
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+    }
+  };
+
   const navItems = [
     { href: centerInfo.basePath, label: centerInfo.name },
     { href: `${centerInfo.basePath}/sluzby`, label: 'Služby' },
-    { href: `${centerInfo.basePath}/autoumyvaren`, label: 'Autoumyváreň' },
+    ...(centerInfo.basePath !== '/lokca'
+      ? [{ href: `${centerInfo.basePath}/autoumyvaren`, label: 'Autoumyváreň' as const }]
+      : []),
     { href: `${centerInfo.basePath}/galeria`, label: 'Galéria' },
     { href: `${centerInfo.basePath}/cennik`, label: 'Cenník' },
     { href: `${centerInfo.basePath}/rezervacia`, label: 'Rezervácia' },
@@ -51,11 +63,12 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${
-      isScrolled 
-        ? 'bg-white shadow-lg py-2' 
-        : 'bg-white shadow-md py-4'
-    }`}>
+    <nav
+      className={`fixed w-full z-50 transition-all duration-300 ${
+        isScrolled ? 'bg-white shadow-lg py-2' : 'bg-white shadow-md py-4'
+      }`}
+      onClickCapture={handleNavLinkClickCapture}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           {/* Logo */}

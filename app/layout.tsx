@@ -4,6 +4,7 @@ import { Inter } from 'next/font/google';
 import ConditionalFooter from '@/components/layout/ConditionalFooter';
 import ConditionalNavbar from '../components/layout/ConditionalNavbar';
 import BackToHomeButton from '@/components/BackToHomeButton';
+import ScrollToTop from '@/components/ScrollToTop';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -29,6 +30,7 @@ export default function RootLayout({
   return (
     <html lang="sk">
       <body className={inter.className}>
+        <ScrollToTop />
         <ConditionalNavbar />
         <BackToHomeButton />
         <main className="min-h-screen">

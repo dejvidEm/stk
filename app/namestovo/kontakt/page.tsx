@@ -67,7 +67,7 @@ export default function ContactPage() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Contact Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           {/* Phone */}
           <div className="bg-white rounded-2xl shadow-lg p-8 text-center hover:shadow-xl transition-shadow">
             <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -76,7 +76,7 @@ export default function ContactPage() {
             <h3 className="text-xl font-bold text-gray-900 mb-4">Telefón</h3>
             <div className="space-y-2">
               <div>
-                <p className="text-2xl font-bold text-blue-600">043 5323499<br/>0948 032189</p>
+                  <p className="text-2xl font-bold text-blue-600">043 552 0390<br/>0903 386 146</p>
                 <p className="text-sm text-gray-600">Hlavná linka</p>
               </div>
             </div>
@@ -93,7 +93,7 @@ export default function ContactPage() {
             <h3 className="text-xl font-bold text-gray-900 mb-4">E-mail</h3>
             <div className="space-y-2">
               <div>
-                <p className="text-xl font-bold text-green-600">info@stktvrdosin.sk</p>
+                  <p className="text-xl font-bold text-green-600">info[at]emade.sk</p>
                 <p className="text-sm text-gray-600">Všeobecné otázky</p>
               </div>
             </div>
@@ -109,10 +109,47 @@ export default function ContactPage() {
             </div>
             <h3 className="text-xl font-bold text-gray-900 mb-4">Adresa</h3>
             <div className="space-y-2">
-              <p className="text-lg font-semibold text-gray-900">STK Tvrdošín</p>
-              <p className="text-gray-700">Vojtaššákova 908</p>
-              <p className="text-gray-700">027 44 Tvrdošín</p>
+                <p className="text-lg font-semibold text-gray-900">STK Námestovo</p>
+                <p className="text-gray-700">Za vodou 1068</p>
+                <p className="text-gray-700">029 01 Námestovo</p>
               <p className="text-gray-700">Slovenská republika</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-white rounded-2xl shadow-lg p-8 text-center hover:shadow-xl transition-shadow mb-12">
+          <h3 className="text-xl font-bold text-gray-900 mb-4">Kedy netreba STK</h3>
+          <div className="text-sm text-gray-700 space-y-2">
+            <p>O1 – prípojné vozidlo do 750 kg (nebrzdené)</p>
+            <p>R1 – prípojné vozidlo za traktor do 1500 kg</p>
+            <p>L1e – motorky so zdvihovým objemom do 50 cm³ a s konštrukčnou rýchlosťou do 45 km/hod</p>
+            <p>L2e – trojkolesový moped so zdvihovým objemom do 50 cm³ a s konštrukčnou rýchlosťou do 45 km/hod</p>
+          </div>
+        </div>
+
+        <div className="bg-white rounded-2xl shadow-lg p-8 text-left hover:shadow-xl transition-shadow mb-12">
+          <h3 className="text-xl font-bold text-gray-900 mb-4">Doklady potrebné ku STK/EK</h3>
+          <div className="text-sm text-gray-700 space-y-3 leading-relaxed">
+            <p className="font-semibold text-gray-900">Doklady potrebné ku STK / EK</p>
+
+            <div className="space-y-2">
+              <p className="font-semibold text-gray-900">Doklady od vozidla</p>
+              <p>Osvědčenie o technickom preukaze, časť I alebo časť II (papierový alebo kartička)</p>
+            </div>
+
+            <div className="space-y-2">
+              <p className="font-semibold text-gray-900">Vozidlo s pohonom na plyn (LPG, CNG)</p>
+              <p>Protokol o montáži plynového zariadenia, ak bola montáž vykonaná v rámci prestavby vozidla</p>
+            </div>
+
+            <div className="space-y-2">
+              <p className="font-semibold text-gray-900">Ak je technický preukaz stratený</p>
+              <p>Výpis z karty vozidla vydaný orgánom Policajného zboru</p>
+            </div>
+
+            <div className="space-y-2">
+              <p className="font-semibold text-gray-900">Ak bol technický preukaz zadržaný</p>
+              <p>Potvrdenie o zadržaní TP Policajným zborom</p>
             </div>
           </div>
         </div>
@@ -124,19 +161,19 @@ export default function ContactPage() {
             <div className="bg-white rounded-2xl shadow-lg overflow-hidden mb-8">
               <div className="h-80 relative">
                 <iframe
-                  src="https://www.google.com/maps?q=Vojtaššákova+908,+027+44+Tvrdošín,+Slovensko&output=embed"
+                  src="https://www.google.com/maps?q=Za+vodou+1068,+029+01+N%C3%A1mestovo,+Slovensko&output=embed"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="STK Tvrdošín - Vojtaššákova 908, 027 44 Tvrdošín"
+                  title="STK Námestovo - Za vodou 1068, 029 01 Námestovo"
                   className="rounded-t-2xl"
                 ></iframe>
               </div>
               <div className="p-6">
-                <h3 className="font-bold text-gray-900 mb-2">STK Tvrdošín, Vojtaššákova 908, 027 44 Tvrdošín, Slovensko</h3>
+                <h3 className="font-bold text-gray-900 mb-2">STK Námestovo, Za vodou 1068, 029 01 Námestovo, Slovensko</h3>
                 <div className="flex flex-wrap gap-2">
                   <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">
                     <SquareParking className="h-4 w-4 mr-1 inline-block" /> Parkovanie zdarma
@@ -162,7 +199,8 @@ export default function ContactPage() {
               
               <div className="space-y-3">
                 {[
-                  { day: 'Pondelok - Piatok', time: '07:00 - 15:30', isToday: true },
+                  { day: 'Pondelok - Piatok', time: '06:00 - 16:30', isToday: true },
+                  { day: 'Sobota', time: '07:00 - 11:00', isToday: false },
                 ].map((schedule, index) => (
                   <div key={index} className={`flex justify-between items-center p-3 rounded-lg ${
                     schedule.isToday ? 'bg-green-50 border border-green-200' : 'bg-gray-50'

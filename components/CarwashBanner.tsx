@@ -105,28 +105,64 @@ export default function CarwashBanner() {
                     <Droplets className="h-10 w-10 text-blue-600" />
                   </div>
                   <h3 className="text-2xl font-bold mb-2 text-gray-900">5 umývacích programov</h3>
-                  <p className="text-lg text-gray-600">Od základného po prémiový</p>
+                  <p className="text-sm text-gray-600">
+                    Platí na umývacích boxoch Námestovo, Tvrdošín a umývací portál Námestovo
+                  </p>
                 </div>
 
                 <div className="grid grid-cols-1 gap-3">
                   {[
-                    { name: 'Platinum', price: '14,00 €', time: '22-25 min', color: 'bg-yellow-500' },
-                    { name: 'Exclusive', price: '12,00 €', time: '18-22 min', color: 'bg-orange-500' },
-                    { name: 'Wax', price: '9,00 €', time: '15-18 min', color: 'bg-purple-500' },
-                    { name: 'Standard', price: '7,00 €', time: '12-16 min', color: 'bg-green-500' },
-                    { name: 'Basic', price: '6,00 €', time: '8-12 min', color: 'bg-blue-500' }
+                    {
+                      name: 'Platinum',
+                      price: '14,00 €',
+                      color: 'bg-yellow-500',
+                      description:
+                        'vysokotlakové predumytie, aktívna pena, šampón, umytie kolies, vysokotlakové umytie podvozku, penový vosk + zaleštenie, sušenie, 10–12 minút',
+                    },
+                    {
+                      name: 'Exclusive',
+                      price: '12,00 €',
+                      color: 'bg-orange-500',
+                      description:
+                        'vysokotlakové predumytie, aktívna pena, šampón, umytie kolies, vysokotlakové umytie podvozku, sušenie, 9–11 minút',
+                    },
+                    {
+                      name: 'Wax',
+                      price: '9,00 €',
+                      color: 'bg-purple-500',
+                      description:
+                        'vysokotlakové predumytie, šampón, umytie kolies, vysokotlakové umytie podvozku, vosk, sušenie, 9–11 minút',
+                    },
+                    {
+                      name: 'Standard',
+                      price: '7,00 €',
+                      color: 'bg-green-500',
+                      description:
+                        'vysokotlakové predumytie, šampón, umytie kolies, vysokotlakové umytie podvozku, sušenie, 8–10 minút',
+                    },
+                    {
+                      name: 'Basic',
+                      price: '6,00 €',
+                      color: 'bg-blue-500',
+                      description:
+                        'vysokotlakové predumytie, šampón, umytie kolies, sušenie, 7–9 minút',
+                    },
                   ].map((program, index) => (
-                    <div 
+                    <div
                       key={index}
-                      className="bg-white/80 backdrop-blur-sm rounded-lg p-3 flex items-center justify-between border border-gray-200/50 hover:bg-white transition-colors shadow-sm"
+                      className="bg-white/80 backdrop-blur-sm rounded-lg p-3 border border-gray-200/50 hover:bg-white transition-colors shadow-sm"
                     >
-                      <div className="flex items-center gap-3">
-                        <div className={`w-3 h-3 rounded-full ${program.color}`}></div>
-                        <span className="font-semibold text-gray-900">{program.name}</span>
-                      </div>
-                      <div className="text-right">
-                        <div className="font-bold text-gray-900">{program.price}</div>
-                        <div className="text-xs text-gray-600">{program.time}</div>
+                      <div className="flex gap-3 items-start justify-between">
+                        <div className={`mt-1.5 w-3 h-3 rounded-full shrink-0 ${program.color}`} />
+                        <div className="min-w-0 flex-1">
+                          <span className="font-semibold text-gray-900">{program.name}</span>
+                          <p className="text-[11px] sm:text-xs text-gray-600 mt-1 leading-snug">
+                            {program.description}
+                          </p>
+                        </div>
+                        <div className="text-right shrink-0 pt-0.5">
+                          <div className="font-bold text-gray-900 whitespace-nowrap">{program.price}</div>
+                        </div>
                       </div>
                     </div>
                   ))}

@@ -294,6 +294,13 @@ export default function BookingPage() {
             <div>
               <h2 className="text-2xl font-bold text-gray-900 mb-6">Vyberte dátum a čas</h2>
               
+              <div className="mb-6 bg-blue-50 border border-blue-100 text-blue-800 rounded-lg p-4 flex items-start space-x-2">
+                <Clock className="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" />
+                <p className="text-sm">
+                  Zrušenie termínu bez poplatku: termín môžete zrušiť najneskôr <strong>12 hodín</strong> pred začiatkom.
+                </p>
+              </div>
+              
               <div className="mb-8">
                 <h3 className="text-lg font-semibold text-gray-900 mb-4">Dostupné dátumy</h3>
                 <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-7 gap-3">

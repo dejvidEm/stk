@@ -11,6 +11,12 @@ import {
   Car,
   Truck,
   Bike,
+  Tractor,
+  Bus,
+  Container,
+  Zap,
+  Award,
+  Fuel,
   AlertTriangle,
   Info
 } from 'lucide-react';
@@ -105,6 +111,48 @@ export default function ServicesPage() {
       description: 'Vozidlá kategórie L',
       frequency: 'Každé 2 roky',
       note: 'Prvá STK po 4 rokoch od výroby'
+    },
+    {
+      type: 'Traktor',
+      icon: Tractor,
+      description: 'Vozidlá kategórie T',
+      frequency: 'Podľa použitia (často každý rok)',
+      note: 'Platí pre traktory zaradené do premávky na pozemných komunikáciách.'
+    },
+    {
+      type: 'Autobus',
+      icon: Bus,
+      description: 'Autobusy kategórií M2 a M3',
+      frequency: 'Každý rok',
+      note: 'Prvá STK po 1 roku od výroby'
+    },
+    {
+      type: 'Príves/Náves',
+      icon: Container,
+      description: 'Prípojné vozidlá kategórie O',
+      frequency: 'Každé 2 roky (bežné prívesy)',
+      note: 'Interval podľa celkovej hmotnostnej kategórie prívesu alebo návesu.'
+    }
+  ];
+
+  const vehiclesWithoutEk = [
+    {
+      type: 'Plne elektrické vozidlá',
+      icon: Zap,
+      description: 'Vozidlá výhradne s elektrickým pohonom (bez spaľovacieho motora).',
+      note: 'Emisná kontrola (EK) sa nevyžaduje — technická kontrola (STK) podľa kategórie vozidla áno.'
+    },
+    {
+      type: 'Veterány',
+      icon: Award,
+      description: 'Historické a zberateľské vozidlá podľa zákona.',
+      note: 'Emisná kontrola sa u nich nevyžaduje v bežnom režime ako pri štandardných vozidlách.'
+    },
+    {
+      type: 'Benzínové vozidlá s r. v. pred 1971',
+      icon: Fuel,
+      description: 'Vozidlá so zážihovým motorom s rokom výroby pred rokom 1971.',
+      note: 'Z rozsahu povinnej emisnej kontroly vylúčené — STK podľa pravidiel pre danú kategóriu.'
     }
   ];
 
@@ -231,7 +279,7 @@ export default function ServicesPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {vehicleTypes.map((vehicle, index) => {
               const VehicleIcon = vehicle.icon;
               return (
@@ -246,6 +294,37 @@ export default function ServicesPage() {
                   </div>
                   <div className="flex items-start space-x-2">
                     <Info className="h-4 w-4 text-blue-500 mt-1 flex-shrink-0" />
+                    <p className="text-sm text-gray-600 text-left">{vehicle.note}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          <div className="mt-16 text-center mb-12">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+              Vozidlá bez povinnej emisnej kontroly (EK)
+            </h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Pri týchto vozidlách sa emisná kontrola nevykonáva — technická kontrola (STK) môže byť stále povinná podľa kategórie.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {vehiclesWithoutEk.map((vehicle, index) => {
+              const VehicleIcon = vehicle.icon;
+              return (
+                <div key={`no-ek-${index}`} className="bg-white rounded-xl shadow-lg p-8 text-center hover:shadow-xl transition-shadow border border-green-100">
+                  <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <VehicleIcon className="h-8 w-8 text-green-700" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">{vehicle.type}</h3>
+                  <p className="text-gray-600 mb-4">{vehicle.description}</p>
+                  <div className="bg-green-50 rounded-lg p-4 mb-4">
+                    <p className="font-semibold text-green-900">EK sa nevyžaduje</p>
+                  </div>
+                  <div className="flex items-start space-x-2">
+                    <Leaf className="h-4 w-4 text-green-600 mt-1 flex-shrink-0" />
                     <p className="text-sm text-gray-600 text-left">{vehicle.note}</p>
                   </div>
                 </div>

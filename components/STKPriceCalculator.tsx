@@ -1,47 +1,49 @@
 'use client';
 
 import { useState } from 'react';
-import { Calculator, Car, Truck, Bike, Shield, Leaf, CheckCircle, MapPin, AlertTriangle, Calendar } from 'lucide-react';
+import { Calculator, Car, Truck, Bike, Shield, Leaf, CheckCircle, MapPin, AlertTriangle, Calendar, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import Link from 'next/link';
 
 interface PricingConfig {
   personal: {
     stk: number;
     ek: number;
-    'stk-ek': number;
   };
   truck: {
     stk: number;
     ek: number;
-    'stk-ek': number;
   };
   motorcycle: {
     stk: number;
     ek: number;
-    'stk-ek': number;
   };
 }
 
+/** Ceny sa pri výbere STK + EK sčítavajú (žiadny zvýhodnený balík). */
 const pricing: PricingConfig = {
   personal: {
-    stk: 25,
-    ek: 15,
-    'stk-ek': 35,
+    stk: 31.6,
+    ek: 46.9,
   },
   truck: {
-    stk: 45,
-    ek: 25,
-    'stk-ek': 60,
+    stk: 48.5,
+    ek: 57.9,
   },
+  /** Motocykel — v UI len STK; ek zostáva 0 pre typ. */
   motorcycle: {
-    stk: 20,
-    ek: 12,
-    'stk-ek': 28,
+    stk: 39.9,
+    ek: 0,
   },
 };
+
+function formatSkEur(value: number): string {
+  return value.toLocaleString('sk-SK', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
+}
 
 const locations = [
   { id: 'all', name: 'Všetky pobočky', url: '/' },
@@ -72,33 +74,14 @@ export default function STKPriceCalculator() {
     if (selectedServices.stk) {
       totalPrice += vehiclePricing.stk;
     }
-    if (selectedServices.ek) {
+    if (selectedServices.ek && vehicleType !== 'motorcycle') {
       totalPrice += vehiclePricing.ek;
-    }
-
-    // Ak sú obe vybrané, použijeme balíkovú cenu ak je výhodnejšia
-    if (selectedServices.stk && selectedServices.ek) {
-      const bundlePrice = vehiclePricing['stk-ek'];
-      if (bundlePrice < totalPrice) {
-        return bundlePrice;
-      }
     }
 
     return totalPrice || null;
   };
 
-  const calculateSavings = (): number | null => {
-    if (!vehicleType || !selectedServices.stk || !selectedServices.ek) return null;
-    
-    const vehiclePricing = pricing[vehicleType as keyof PricingConfig];
-    const individualPrice = vehiclePricing.stk + vehiclePricing.ek;
-    const bundlePrice = vehiclePricing['stk-ek'];
-    
-    return individualPrice - bundlePrice;
-  };
-
   const calculatedPrice = calculatePrice();
-  const savings = calculateSavings();
   const vehicleTypeLabel = vehicleType === 'personal' ? 'Osobné vozidlo' : vehicleType === 'truck' ? 'Dodávka/Nákladné' : vehicleType === 'motorcycle' ? 'Motocykel' : '';
   
   const getServiceTypeLabel = (): string => {
@@ -160,7 +143,10 @@ export default function STKPriceCalculator() {
             </button>
             <button
               type="button"
-              onClick={() => setVehicleType('motorcycle')}
+              onClick={() => {
+                setVehicleType('motorcycle');
+                setSelectedServices((prev) => ({ ...prev, ek: false }));
+              }}
               className={`flex items-center justify-center gap-2 p-4 rounded-xl border-2 transition-all ${
                 vehicleType === 'motorcycle'
                   ? 'border-brand-green-500 bg-brand-green-50 text-brand-green-700'
@@ -176,9 +162,14 @@ export default function STKPriceCalculator() {
         {/* Služba */}
         <div>
           <label className="block text-sm font-semibold text-brand-gray-900 mb-3">
-            Služba <span className="text-gray-500 font-normal">(môžete vybrať obe)</span>
+            Služba{' '}
+            <span className="text-gray-500 font-normal">
+              {vehicleType === 'motorcycle' ? '(len STK)' : '(môžete vybrať obe)'}
+            </span>
           </label>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div
+            className={`grid gap-3 ${vehicleType === 'motorcycle' ? 'grid-cols-1' : 'grid-cols-1 sm:grid-cols-2'}`}
+          >
             <button
               type="button"
               onClick={() => toggleService('stk')}
@@ -197,24 +188,26 @@ export default function STKPriceCalculator() {
                 <CheckCircle className="h-4 w-4 text-brand-red-600" />
               )}
             </button>
-            <button
-              type="button"
-              onClick={() => toggleService('ek')}
-              disabled={!vehicleType}
-              className={`flex flex-col items-center justify-center gap-2 p-4 rounded-xl border-2 transition-all ${
-                selectedServices.ek
-                  ? 'border-brand-green-500 bg-brand-green-50 text-brand-green-700'
-                  : vehicleType
-                  ? 'border-gray-200 hover:border-brand-green-300 text-gray-700'
-                  : 'border-gray-200 text-gray-400 cursor-not-allowed opacity-50'
-              }`}
-            >
-              <Leaf className={`h-5 w-5 ${selectedServices.ek ? 'fill-current' : ''}`} />
-              <span className="font-medium text-sm">EK</span>
-              {selectedServices.ek && (
-                <CheckCircle className="h-4 w-4 text-brand-green-600" />
-              )}
-            </button>
+            {vehicleType !== 'motorcycle' && (
+              <button
+                type="button"
+                onClick={() => toggleService('ek')}
+                disabled={!vehicleType}
+                className={`flex flex-col items-center justify-center gap-2 p-4 rounded-xl border-2 transition-all ${
+                  selectedServices.ek
+                    ? 'border-brand-green-500 bg-brand-green-50 text-brand-green-700'
+                    : vehicleType
+                    ? 'border-gray-200 hover:border-brand-green-300 text-gray-700'
+                    : 'border-gray-200 text-gray-400 cursor-not-allowed opacity-50'
+                }`}
+              >
+                <Leaf className={`h-5 w-5 ${selectedServices.ek ? 'fill-current' : ''}`} />
+                <span className="font-medium text-sm">EK</span>
+                {selectedServices.ek && (
+                  <CheckCircle className="h-4 w-4 text-brand-green-600" />
+                )}
+              </button>
+            )}
           </div>
         </div>
 
@@ -248,19 +241,15 @@ export default function STKPriceCalculator() {
             <p className="text-sm text-brand-gray-600 mb-2">
               Orientačná cena pre {vehicleTypeLabel}
             </p>
-            <div className="flex items-baseline justify-center gap-2 mb-2">
+            <div className="flex items-baseline justify-center gap-2 mb-2 flex-wrap">
+              <span className="text-lg font-semibold text-brand-gray-600">od</span>
               <span className="text-5xl font-bold text-brand-gray-900">
-                {calculatedPrice}€
+                {formatSkEur(calculatedPrice)} €
               </span>
             </div>
             <p className="text-sm font-medium text-brand-gray-700 mb-1">
               {serviceTypeLabel}
             </p>
-            {savings !== null && savings > 0 && (
-              <p className="text-xs text-brand-green-600 font-semibold mt-2">
-                Ušetríte {savings}€ s balíkom
-              </p>
-            )}
             {selectedLocation && selectedLocation.id !== 'all' && (
               <p className="text-xs text-brand-gray-600 mt-2">
                 <MapPin className="h-3 w-3 inline mr-1" />
@@ -282,53 +271,16 @@ export default function STKPriceCalculator() {
         </div>
       </div>
 
-      {/* Accordion - Zobraziť cenník */}
-      <Accordion type="single" collapsible className="mb-6">
-        <AccordionItem value="pricing" className="border border-gray-200 rounded-lg">
-          <AccordionTrigger className="px-4 hover:no-underline">
-            <span className="font-semibold text-brand-gray-900">Zobraziť detailný cenník</span>
-          </AccordionTrigger>
-          <AccordionContent className="px-4 pb-4">
-            <div className="space-y-4 pt-2">
-              {vehicleType && (
-                <div className="bg-gray-50 rounded-lg p-4">
-                  <h4 className="font-semibold text-brand-gray-900 mb-3">
-                    {vehicleType === 'personal' ? 'Osobné vozidlá' : vehicleType === 'truck' ? 'Dodávky/Nákladné vozidlá' : 'Motocykle'}
-                  </h4>
-                  <div className="space-y-2 text-sm">
-                    <div className="flex justify-between items-center">
-                      <span className="text-gray-700">STK</span>
-                      <span className="font-semibold text-brand-gray-900">{pricing[vehicleType as keyof PricingConfig].stk}€</span>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-gray-700">EK</span>
-                      <span className="font-semibold text-brand-gray-900">{pricing[vehicleType as keyof PricingConfig].ek}€</span>
-                    </div>
-                    <div className="flex justify-between items-center pt-2 border-t border-gray-200">
-                      <span className="text-gray-700 font-medium">STK + EK (balík)</span>
-                      <span className="font-bold text-brand-green-600">{pricing[vehicleType as keyof PricingConfig]['stk-ek']}€</span>
-                      <span className="text-xs text-brand-green-600">
-                        (ušetríte {pricing[vehicleType as keyof PricingConfig].stk + pricing[vehicleType as keyof PricingConfig].ek - pricing[vehicleType as keyof PricingConfig]['stk-ek']}€)
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              )}
-              {!vehicleType && (
-                <div className="text-center text-gray-500 text-sm py-4">
-                  Vyberte typ vozidla pre zobrazenie cenníka
-                </div>
-              )}
-              <Link 
-                href="/cennik" 
-                className="block text-center text-brand-green-600 hover:text-brand-green-700 font-medium text-sm mt-4"
-              >
-                Zobraziť kompletný cenník →
-              </Link>
-            </div>
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
+      {/* Link na plný cenník */}
+      <div className="mb-6 flex justify-center">
+        <Link
+          href="/cennik"
+          className="inline-flex items-center gap-2 rounded-xl border-2 border-brand-green-200 bg-brand-green-50 px-5 py-3 text-base font-semibold text-brand-green-700 transition-colors hover:border-brand-green-400 hover:bg-brand-green-100"
+        >
+          Kompletný cenník a detailné ceny
+          <ArrowRight className="h-5 w-5" aria-hidden />
+        </Link>
+      </div>
 
       {/* CTA Button */}
       <div className="flex flex-col sm:flex-row gap-3">

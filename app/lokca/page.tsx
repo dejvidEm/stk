@@ -95,43 +95,6 @@ export default function DemoPage() {
       {/* Saturday Calendar Banner */}
       <SaturdayCalendarBanner locationName="STK Lokca" />
 
-      {/* Prepaid Card Promotion Banner */}
-      <section className="bg-gradient-to-r from-yellow-600 via-amber-500 to-yellow-600 text-white py-8 shadow-xl relative overflow-visible">
-        <div className="absolute inset-0 bg-black/10"></div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="flex items-center gap-4 flex-1">
-              <div className="bg-white/30 backdrop-blur-sm p-4 rounded-xl shadow-lg">
-                <Star className="h-10 w-10 fill-white" />
-              </div>
-              <div>
-                <h2 className="text-2xl md:text-3xl font-bold mb-2 text-white">
-                  Predplatená karta - Bonus 10-25%
-                </h2>
-                <p className="text-lg text-white/95">
-                  Ušetrite pri pravidelnom umývaní vozidla s predplatenou kartou v našej autoumyvárni
-                </p>
-              </div>
-            </div>
-            <div className="flex items-center gap-4">
-              <Link 
-                href="/lokca/autoumyvaren"
-                className="bg-white text-yellow-700 px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-100 transition-colors cursor-pointer shadow-lg"
-              >
-                Zistiť viac
-              </Link>
-            </div>
-            <div className="flex-shrink-0 relative">
-              <img 
-                src="/Karta1.jpg" 
-                alt="Predplatená karta" 
-                className="h-48 md:h-64 lg:h-80 w-auto rounded-xl shadow-2xl object-contain border-2 border-white/30 -my-8 md:-my-12 lg:-my-16"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Trust Indicators */}
       <section className="py-12 bg-brand-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

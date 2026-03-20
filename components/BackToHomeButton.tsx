@@ -20,7 +20,7 @@ export default function BackToHomeButton() {
         aria-label="Späť na hlavnú stránku"
       >
         <Home className="h-3.5 w-3.5 group-hover:text-brand-green-600 transition-colors" />
-        <span className="hidden sm:inline">Domov</span>
+        <span className="hidden sm:inline">STK Centrum Orava</span>
       </Link>
     </div>
   );

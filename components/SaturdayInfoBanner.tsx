@@ -1,6 +1,6 @@
 'use client';
 
-import { Calendar, Clock, Info } from 'lucide-react';
+import { Calendar, Info } from 'lucide-react';
 
 export default function SaturdayInfoBanner() {
   return (
@@ -14,8 +14,8 @@ export default function SaturdayInfoBanner() {
             <h2 className="text-2xl md:text-3xl font-bold mb-3 text-white">
               Začíname pracovať v sobotu!
             </h2>
-            <p className="text-lg md:text-xl mb-2 text-white/95">
-              Každá pobočka má svoje vlastné termíny pre tieto soboty.
+            <p className="text-lg md:text-xl font-semibold text-white mb-3">
+              Váš čas je vzácny. Sme tu pre Vás aj v sobotu 07:00-11:00
             </p>
             <div className="flex items-center justify-center md:justify-start gap-2 text-white/90">
               <Info className="h-5 w-5" />

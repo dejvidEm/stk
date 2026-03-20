@@ -67,7 +67,7 @@ export default function ContactPage() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Contact Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           {/* Phone */}
           <div className="bg-white rounded-2xl shadow-lg p-8 text-center hover:shadow-xl transition-shadow">
             <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -113,6 +113,43 @@ export default function ContactPage() {
               <p className="text-gray-700">Vojtaššákova 908</p>
               <p className="text-gray-700">027 44 Tvrdošín</p>
               <p className="text-gray-700">Slovenská republika</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-white rounded-2xl shadow-lg p-8 text-center hover:shadow-xl transition-shadow mb-12">
+          <h3 className="text-xl font-bold text-gray-900 mb-4">Kedy netreba STK</h3>
+          <div className="text-sm text-gray-700 space-y-2">
+            <p>O1 – prípojné vozidlo do 750 kg (nebrzdené)</p>
+            <p>R1 – prípojné vozidlo za traktor do 1500 kg</p>
+            <p>L1e – motorky so zdvihovým objemom do 50 cm³ a s konštrukčnou rýchlosťou do 45 km/hod</p>
+            <p>L2e – trojkolesový moped so zdvihovým objemom do 50 cm³ a s konštrukčnou rýchlosťou do 45 km/hod</p>
+          </div>
+        </div>
+
+        <div className="bg-white rounded-2xl shadow-lg p-8 text-left hover:shadow-xl transition-shadow mb-12">
+          <h3 className="text-xl font-bold text-gray-900 mb-4">Doklady potrebné ku STK/EK</h3>
+          <div className="text-sm text-gray-700 space-y-3 leading-relaxed">
+            <p className="font-semibold text-gray-900">Doklady potrebné ku STK / EK</p>
+
+            <div className="space-y-2">
+              <p className="font-semibold text-gray-900">Doklady od vozidla</p>
+              <p>Osvědčenie o technickom preukaze, časť I alebo časť II (papierový alebo kartička)</p>
+            </div>
+
+            <div className="space-y-2">
+              <p className="font-semibold text-gray-900">Vozidlo s pohonom na plyn (LPG, CNG)</p>
+              <p>Protokol o montáži plynového zariadenia, ak bola montáž vykonaná v rámci prestavby vozidla</p>
+            </div>
+
+            <div className="space-y-2">
+              <p className="font-semibold text-gray-900">Ak je technický preukaz stratený</p>
+              <p>Výpis z karty vozidla vydaný orgánom Policajného zboru</p>
+            </div>
+
+            <div className="space-y-2">
+              <p className="font-semibold text-gray-900">Ak bol technický preukaz zadržaný</p>
+              <p>Potvrdenie o zadržaní TP Policajným zborom</p>
             </div>
           </div>
         </div>

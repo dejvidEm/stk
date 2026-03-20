@@ -73,7 +73,7 @@ export default function FAQPage() {
     {
       id: 4,
       question: 'Koľko stojí technická kontrola?',
-      answer: 'Ceny sa líšia podľa typu vozidla: Osobné vozidlá: STK 25€, EK 15€, STK+EK 35€. Nákladné vozidlá: STK 45€, EK 25€, STK+EK 60€. Motocykle: STK 20€, EK 12€, STK+EK 28€. Opakovaná kontrola má zľavnené ceny. Akceptujeme hotovosť, karty aj bezhotovostný platby.',
+      answer: 'Ceny sa líšia podľa kategórie vozidla a typu paliva. Osobné vozidlá (M1, N1, L5e, L7e): STK 50,90 €, EK od 46,90 €. Nákladné motorové vozidlá (N2, N3, M2, M3, PS): STK 77,90 €, EK od 57,90 €. Motocykle (L3, L4, L6): STK 39,90 €, EK sa nevykonáva. Opakovaná kontrola (STK): osobné 25,90 €, nákladné 41,90 €, motocykle 20,90 €. Akceptujeme hotovosť, karty aj bezhotovostný platby.',
       category: 'payment',
       tags: ['cena', 'platba', 'osobné', 'nákladné', 'motocykle']
     },

@@ -8,6 +8,7 @@ import {
   Shield, 
   Clock, 
   CheckCircle,
+  Check,
   Star,
   Zap,
   Brush,
@@ -157,16 +158,37 @@ export default function CarWashPage() {
         ></div>
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-red-600/20"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <div className="flex items-center justify-center gap-3 mb-6">
-              <Droplets className="h-12 w-12" />
-              <h1 className="text-4xl md:text-5xl font-bold">
-                Autoumyváreň
-              </h1>
+          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8 lg:gap-10">
+            <div className="text-center lg:text-left flex-1 min-w-0">
+              <div className="flex items-center justify-center lg:justify-start gap-3 mb-6">
+                <Droplets className="h-12 w-12 shrink-0" />
+                <h1 className="text-4xl md:text-5xl font-bold">
+                  Autoumyváreň
+                </h1>
+              </div>
+              <p className="text-xl md:text-2xl opacity-90 max-w-3xl mx-auto lg:mx-0">
+                NON-STOP umývacie boxy dostupné 24/7. Samoobslužné umývacie boxy s moderným vybavením.
+              </p>
             </div>
-            <p className="text-xl md:text-2xl opacity-90 max-w-3xl mx-auto">
-              NON-STOP umývacie boxy dostupné 24/7. Samoobslužné umývacie boxy s moderným vybavením.
-            </p>
+            <aside
+              className="w-full lg:w-auto lg:max-w-xs xl:max-w-sm shrink-0 flex lg:items-center lg:justify-end"
+              aria-label="Obmedzenie rozmerov vozidla"
+            >
+              <div className="flex items-start gap-3 rounded-xl border-2 border-amber-400/90 bg-amber-950/45 backdrop-blur-md p-4 md:p-5 text-left shadow-lg w-full">
+                <AlertTriangle
+                  className="h-7 w-7 md:h-8 md:w-8 text-amber-400 shrink-0 mt-0.5"
+                  aria-hidden
+                />
+                <div>
+                  <p className="text-xs font-bold text-amber-200 uppercase tracking-wide mb-1.5">
+                    Upozornenie
+                  </p>
+                  <p className="text-sm md:text-base text-white/95 font-medium leading-snug">
+                    Max. výška vozidla 2,30 m, max. šírka vozidla 2,50 m
+                  </p>
+                </div>
+              </div>
+            </aside>
           </div>
         </div>
       </section>
@@ -324,7 +346,57 @@ export default function CarWashPage() {
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div
+            className="mb-10 flex items-start gap-3 rounded-xl border-2 border-amber-400 bg-amber-50 p-4 md:p-5 text-left shadow-md"
+            role="note"
+            aria-label="Zodpovednosť za škodu na umývacom portáli"
+          >
+            <AlertTriangle
+              className="h-7 w-7 md:h-8 md:w-8 text-amber-600 shrink-0 mt-0.5"
+              aria-hidden
+            />
+            <p className="text-sm md:text-base text-gray-800 font-medium leading-relaxed">
+              V prípade vzniku škody na umývacom portáli z dôvodu nedodržania pokynov (napr. vozidlo s otvorenou korbou, neupevnené časti, zásah do umývacieho programu a pod.) bude táto škoda vymáhaná od prevádzkovateľa vozidla.
+            </p>
+          </div>
+
+          <div className="space-y-12">
+            {/* Pokyny na obsluhu — full width above ostatné karty */}
+            <div className="bg-white rounded-xl p-6 md:p-8 shadow-lg border border-gray-100">
+              <div className="flex items-start gap-4 md:gap-6">
+                <div className="bg-green-100 p-2 md:p-3 rounded-lg flex-shrink-0">
+                  <Car className="h-6 w-6 md:h-7 md:w-7 text-green-600" />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <h3 className="text-lg md:text-xl font-semibold text-gray-900 mb-4">Pokyny na obsluhu</h3>
+                  <ul className="text-sm md:text-base text-gray-700 space-y-3 leading-relaxed list-none pl-0 m-0">
+                    {[
+                      'Zakúpte si umývací program pri samoobslužnom stojane.',
+                      'Na poskytovanie služby sa vzťahuje výnimka podľa §3 ods. 2 písm. b bod 4 zákona č. 289/2008 o používaní elektronickej registračnej pokladnice (predaj služieb prostredníctvom predajných automatov).',
+                      'V prípade, že potrebujete pokladničný doklad, umývací program si zakúpte na recepcii STK počas pracovnej doby.',
+                      'Pre otvorenie vstupnej brány zadajte čiarový kód na termináli.',
+                      'Autom zájdite do stredu umývacej linky, kým ukazovateľ neukáže „STOP“. Vypnite motor, zatiahnite ručnú brzdu, na automatickej prevodovke zvoľte „P“.',
+                      'Sklopte spätné zrkadlá, zasuňte alebo odmontujte anténu, ťažné zariadenie, prípadne inú nesériovú výbavu (spojler). Zatvorte bočné a strešné okná.',
+                      'Opustite automobil – umývací program prebieha automaticky.',
+                      'Program sa spustí stlačením tlačidla „ŠTART“ na ovládacom paneli.',
+                      'Počas umývania nevstupujte do pracovného priestoru umývacej linky. V prípade nebezpečenstva stlačte núdzové tlačidlo „STOP“.',
+                      'Po rozsvietení šípky je program ukončený. Po otvorení brán opustite s vozidlom umývaciu linku.',
+                    ].map((text, i) => (
+                      <li key={i} className="flex gap-3">
+                        <Check
+                          className="h-5 w-5 text-green-600 shrink-0 mt-0.5"
+                          strokeWidth={2.5}
+                          aria-hidden
+                        />
+                        <span>{text}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div className="grid lg:grid-cols-2 gap-12">
             {/* Left Column - Terms */}
             <div className="space-y-6">
               <div className="bg-white rounded-xl p-6 shadow-lg">
@@ -351,12 +423,17 @@ export default function CarWashPage() {
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-gray-900 mb-2">Prevádzkové pokyny</h3>
-                    <ul className="text-sm text-gray-700 space-y-1">
-                      <li>• Prevádzkovateľ neručí za škody v týchto prípadoch</li>
-                      <li>• Pripevnené časti (napr. predná a zadná maska, bočné prahy, prahové lišty, zadný spojler)</li>
-                      <li>• Ktoré nie sú sériovo alebo neboli riadne upevnené</li>
-                      <li>• Poškodenia karosérie, škrabance alebo prelínanie</li>
-                    </ul>
+                    <div className="text-sm text-gray-700 space-y-3 leading-relaxed">
+                      <p>
+                        Prosím dodržiavajte všeobecné bezpečnostné pokyny v hale. Pri nedodržaní podmienok a pokynov prevádzkovateľ nepreberá zodpovednosť za prípadné škody.
+                      </p>
+                      <p>
+                        Umývanie špecifických vozidiel ako pickup, dodávka s otvorenou ložnou plochou, traktor, obytný automobil, príves a old-timer, prosím prekonzultujte vopred s personálom umývacej linky.
+                      </p>
+                      <p className="font-semibold text-gray-900">
+                        Vozidlá s otvorenou úložnou plochou, zadným rezervným kolesom, navijakom a strešným boxom je zakázané umývať!
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -368,10 +445,9 @@ export default function CarWashPage() {
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-gray-900 mb-2">Zodpovednosť</h3>
-                    <ul className="text-sm text-gray-700 space-y-1">
-                      <li>• Zákazník/vodič je povinný oznámiť prevádzkovateľovi nároky na náhradu škody ešte pred opustením areálu</li>
-                      <li>• V prípade škody vzniknutej pri procese umývania ručí prevádzkovateľ umývacieho zariadenia za priamu škodu</li>
-                    </ul>
+                    <p className="text-sm text-gray-700 leading-relaxed">
+                      V prípade vzniku škody na umývacom portáli z dôvodu nedodržania pokynov (napr. vozidlo s otvorenou korbou, neupevnené časti, zásah do umývacieho programu a pod.) bude táto škoda vymáhaná od prevádzkovateľa vozidla.
+                    </p>
                   </div>
                 </div>
               </div>
@@ -379,24 +455,6 @@ export default function CarWashPage() {
 
             {/* Right Column - Instructions */}
             <div className="space-y-6">
-              <div className="bg-white rounded-xl p-6 shadow-lg">
-                <div className="flex items-start gap-4">
-                  <div className="bg-green-100 p-2 rounded-lg flex-shrink-0">
-                    <Car className="h-6 w-6 text-green-600" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">Pokyny na obsluhu</h3>
-                    <ol className="text-sm text-gray-700 space-y-2">
-                      <li>1. Zakúpte si umývací program pri samoobslužnom stojane na ovládacom paneli</li>
-                      <li>2. Po zakúpení programu sa automaticky otvorí brána umývacej haly</li>
-                      <li>3. Stlačte na spustenie umývacieho programu tlačidlo "START"</li>
-                      <li>4. Autom zajdite rovno do stredu umývacej linky</li>
-                      <li>5. Vypnite motor, zatiahnite ručnú brzdu na automatickej prevodovke zvoľte "P"</li>
-                    </ol>
-                  </div>
-                </div>
-              </div>
-
               <div className="bg-white rounded-xl p-6 shadow-lg">
                 <div className="flex items-start gap-4">
                   <div className="bg-yellow-100 p-2 rounded-lg flex-shrink-0">
@@ -432,6 +490,7 @@ export default function CarWashPage() {
                   </div>
                 </div>
               </div>
+            </div>
             </div>
           </div>
 
