@@ -309,9 +309,9 @@ export default function PricingPage() {
                 <h3 className="text-xl font-semibold text-gray-900">Zabezpečené parkovanie</h3>
               </div>
               <p className="text-gray-600 mb-4">
-                Bezpečné strážené parkovisko pre vaše vozidlo.
+                Bezpečné strážené parkovisko pre vaše vozidlo. Zadarmo prvé 3 hodiny, potom 10,00 € za deň.
               </p>
-              <div className="text-2xl font-bold text-brand-red-600">Zdarma</div>
+              <div className="text-2xl font-bold text-brand-red-600">3 hod. zdarma</div>
             </div>
 
             <div className="bg-gray-50 rounded-xl p-6 hover:shadow-lg transition-shadow">
