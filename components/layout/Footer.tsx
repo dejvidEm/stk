@@ -161,8 +161,18 @@ export default function Footer() {
                     </Link>
                   </li>
                   <li>
+                    <Link href="/namestovo/autoumyvaren" className="text-brand-gray-300 hover:text-white transition-colors text-sm">
+                      Autoumyváreň Námestovo
+                    </Link>
+                  </li>
+                  <li>
                     <Link href="/tvrdosin/autoumyvaren" className="text-brand-gray-300 hover:text-white transition-colors text-sm">
-                      Autoumyváreň
+                      Autoumyváreň Tvrdošín
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/lokca/autoumyvaren" className="text-brand-gray-300 hover:text-white transition-colors text-sm">
+                      Autoumyváreň Lokca (neprevádzkujeme)
                     </Link>
                   </li>
                   <li>

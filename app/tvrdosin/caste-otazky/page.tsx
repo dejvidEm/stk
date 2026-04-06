@@ -56,7 +56,7 @@ export default function FAQPage() {
     {
       id: 3,
       question: 'Aké doklady si mám priniesť na STK?',
-      answer: 'Doklady od vozidla: Osvedčenie o technickom preukaze, časť I alebo časť II (papierový alebo kartička). Vozidlo s pohonom na plyn (LPG, CNG): Protokol o montáži plynového zariadenia, ak bola montáž vykonaná v rámci prestavby vozidla. Ak je technický preukaz stratený: Výpis z karty vozidla vydaný orgánom Policajného zboru. Ak bol technický preukaz zadržaný: Potvrdenie o zadržaní TP Policajným zborom.',
+      answer: 'Osvedčenie o technickom preukaze, časť I alebo časť II (papierový alebo kartička).',
       category: 'documents',
       tags: ['doklady', 'technický preukaz', 'poistenie', 'vodičský preukaz']
     },
@@ -296,11 +296,11 @@ export default function FAQPage() {
               <span>+421 2 1234 5678</span>
             </a>
             <a
-              href="mailto:info@stkcentrum.sk"
-              className="flex items-center justify-center space-x-2 bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors"
+              href="mailto:info@stktvrdosin.sk"
+              className="flex items-center justify-center gap-2 bg-green-600 text-white px-4 py-3 rounded-lg hover:bg-green-700 transition-colors text-center text-sm sm:text-base"
             >
-              <AtSign className="h-5 w-5 inline-block" />
-              <span>E-mail</span>
+              <AtSign className="h-5 w-5 shrink-0" aria-hidden />
+              <span className="break-all">info[at]stktvrdosin.sk</span>
             </a>
             <a
               href="/kontakt"

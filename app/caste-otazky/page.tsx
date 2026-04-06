@@ -66,7 +66,7 @@ export default function FAQPage() {
     {
       id: 3,
       question: 'Aké doklady si mám priniesť na STK?',
-      answer: 'Doklady od vozidla: Osvedčenie o technickom preukaze, časť I alebo časť II (papierový alebo kartička). Vozidlo s pohonom na plyn (LPG, CNG): Protokol o montáži plynového zariadenia, ak bola montáž vykonaná v rámci prestavby vozidla. Ak je technický preukaz stratený: Výpis z karty vozidla vydaný orgánom Policajného zboru. Ak bol technický preukaz zadržaný: Potvrdenie o zadržaní TP Policajným zborom.',
+      answer: 'Osvedčenie o technickom preukaze, časť I alebo časť II (papierový alebo kartička).',
       category: 'documents',
       tags: ['doklady', 'technický preukaz', 'poistenie', 'vodičský preukaz']
     },

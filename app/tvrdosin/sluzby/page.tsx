@@ -58,9 +58,6 @@ export default function ServicesPage() {
       ],
       requirements: [
         'Osvedčenie o technickom preukaze, časť I alebo časť II (papierový alebo kartička)',
-        'Doklad o poistení (platná zelená karta)',
-        'Občiansky preukaz',
-        // 'Predchádzajúci protokol STK (ak existuje)'
       ]
     },
     ek: {
@@ -77,10 +74,7 @@ export default function ServicesPage() {
         'Vizuálna kontrola emisného systému'
       ],
       requirements: [
-        'Technický preukaz vozidla',
-        'Doklad o poistení',
-        'Platný vodičský preukaz',
-        'Predchádzajúci protokol EK (ak existuje)'
+        'Osvedčenie o technickom preukaze, časť I alebo časť II (papierový alebo kartička)',
       ]
     },
     recheck: {
@@ -96,8 +90,7 @@ export default function ServicesPage() {
         'Vydanie nálepky pri úspešnom absolvovaní'
       ],
       requirements: [
-        'Pôvodný protokol z pravidelnej kontroly',
-        'Osvedčenie o technickom preukaze, časť I alebo časť II (papierový alebo kartička)'
+        'Osvedčenie o technickom preukaze, časť I alebo časť II (papierový alebo kartička)',
       ]
     },
     additional: {
@@ -114,7 +107,7 @@ export default function ServicesPage() {
         'Individuálne riešenia podľa požiadaviek zákazníka'
       ],
       requirements: [
-        'Emailový dopyt na emade@emade.sk pre expresné vybavenie',
+        'Emailový dopyt na emade[at]emade.sk pre expresné vybavenie',
         'Príplatok 30€ za expresné vybavenie',
         'Potrebné doklady podľa typu služby',
         'Dohodnutie termínu vopred'
@@ -396,7 +389,10 @@ export default function ServicesPage() {
                         Nenašli ste termín? Prednostné vybavenie nasledujúci kalendárny deň za príplatok 30,-€.
                       </p>
                       <p className="text-blue-800 leading-relaxed">
-                        Na základe emailového dopytu na <a href="mailto:emade@emade.sk" className="text-blue-600 hover:text-blue-700 underline font-semibold">emade@emade.sk</a>
+                        Na základe emailového dopytu na{' '}
+                        <a href="mailto:emade@emade.sk" className="text-blue-600 hover:text-blue-700 underline font-semibold">
+                          emade[at]emade.sk
+                        </a>
                       </p>
                     </div>
 
@@ -444,15 +440,24 @@ export default function ServicesPage() {
                       </div>
                     </div>
 
-                    {/* Umývací program Exkluzív */}
+                    <div className="md:col-span-2 rounded-xl border border-blue-200 bg-gradient-to-r from-blue-100/90 to-blue-50 p-5">
+                      <h3 className="text-lg font-bold text-blue-900 mb-2">
+                        Doplnkové služby so zľavou
+                      </h3>
+                      <p className="text-sm text-blue-800 leading-relaxed">
+                        Umývacie programy nižšie si treba objednať a zaplatiť vopred pri objednaní služby STK.
+                      </p>
+                    </div>
+
+                    {/* Umývací program Exclusive */}
                     <div className="bg-blue-50 border border-blue-200 rounded-xl p-6">
-                      <h3 className="text-xl font-bold text-blue-900 mb-3">Umývací program Exkluzív</h3>
+                      <h3 className="text-xl font-bold text-blue-900 mb-3">Umývací program Exclusive</h3>
                       <p className="text-blue-800 leading-relaxed mb-3">
-                        Umytie vozidla s programom Exkluzív so zľavou 20%.
+                        Umytie vozidla s programom Exclusive so zľavou pri kombinácii so službou STK.
                       </p>
                       <div className="bg-blue-100 p-3 rounded-lg mb-3">
                         <p className="text-blue-900 font-semibold text-sm">
-                          Cena služby: 7,90€ s DPH<br />
+                          Cena: 11,20 € s DPH<br />
                           <span className="text-blue-700 font-normal">(nezahŕňa cenu za výkon kontroly)</span>
                         </p>
                       </div>
@@ -474,11 +479,11 @@ export default function ServicesPage() {
                     <div className="bg-blue-50 border border-blue-200 rounded-xl p-6">
                       <h3 className="text-xl font-bold text-blue-900 mb-3">Umývací program Basic</h3>
                       <p className="text-blue-800 leading-relaxed mb-3">
-                        Umytie vozidla s programom Basic so zľavou 20%.
+                        Umytie vozidla s programom Basic so zľavou pri kombinácii so službou STK.
                       </p>
                       <div className="bg-blue-100 p-3 rounded-lg mb-3">
                         <p className="text-blue-900 font-semibold text-sm">
-                          Cena služby: 3,90€ s DPH<br />
+                          Cena: 4,80 € s DPH<br />
                           <span className="text-blue-700 font-normal">(nezahŕňa cenu za výkon kontroly)</span>
                         </p>
                       </div>

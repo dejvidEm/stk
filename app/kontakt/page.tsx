@@ -19,6 +19,7 @@ import {
 } from 'lucide-react';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import SaturdayCalendarBanner from '@/components/SaturdayCalendarBanner';
+import ReservationCancelNotice from '@/components/ReservationCancelNotice';
 
 const LOCATIONS = [
   {
@@ -139,9 +140,11 @@ export default function ContactPage() {
             <Building2 className="h-8 w-8 text-brand-red-600" />
             Naše pobočky
           </h2>
-          <p className="text-gray-600 mb-8 max-w-2xl">
+          <p className="text-gray-600 mb-6 max-w-2xl">
             Každá pobočka má vlastné telefónne číslo a e-mail. Otváracie hodiny sa môžu líšiť.
           </p>
+
+          <ReservationCancelNotice className="mb-8 max-w-2xl" />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {LOCATIONS.map((loc) => (

@@ -122,9 +122,9 @@ export default function CarWashPage() {
 
   const features = [
     {
-      icon: Zap,
-      title: 'Moderné technológie',
-      description: 'Najnovšie zariadenie s automatickým dávkovaním chemie'
+      icon: Clock,
+      title: 'NON-STOP prevádzka',
+      description: 'Samoobslužné umývacie boxy dostupné 24 hodín denne'
     },
     {
       icon: Droplets,
@@ -132,19 +132,82 @@ export default function CarWashPage() {
       description: 'Používame len biodegradabilné čistiace prostriedky'
     },
     {
-      icon: Clock,
-      title: 'Rýchle umytie',
-      description: 'Efektívne programy šetriace váš čas'
+      icon: Wind,
+      title: 'Vysávač',
+      description: 'K dispozícii na doplnkové čistenie interiéru'
     },
     {
       icon: Shield,
       title: 'Ochrana laku',
-      description: 'Kvalitné vosky a ochranné prostriedky'
+      description: 'Kvalitné programy s voskom a ochranou karosérie'
     }
   ];
 
   const currentProgram = washPrograms[selectedProgram as keyof typeof washPrograms];
   const IconComponent = currentProgram.icon;
+
+  const umyvacBoxSteps = [
+    {
+      title: 'Čistič diskov-špeciál',
+      lines: [
+        'Špeciálny čistič diskov na čistenie odolných nečistôt v oblasti diskov. Doba pôsobenia max. 30 sek.',
+        'Použite postrekovaciu trubicu s modrou hadicou.',
+      ],
+    },
+    {
+      title: 'Odstraňovač mušiek-špeciál',
+      lines: [
+        'Predbežný čistič na rozpúšťanie hmyzu a peľu na vozidle. Doba pôsobenia max. 30 sek.',
+        'Použite postrekovaciu trubicu s modrou hadicou.',
+      ],
+    },
+    {
+      title: 'XXL-Pena',
+      lines: [
+        'Účinná pena na rozpustenie nečistôt na diskoch a vozidle. Doba pôsobenia max. 30 sek.',
+        'Použite penovú trubicu so zelenou hadicou.',
+      ],
+    },
+    {
+      title: 'Vysokotlakové umývanie',
+      lines: [
+        'Odstraňovanie hrubých nečistôt pomocou silného vysokotlakového lúča (pracovný tlak cca 85 bar).',
+        'Použite postrekovaciu trubicu s modrou hadicou.',
+        'Minimálny odstup 30 cm!',
+      ],
+    },
+    {
+      title: 'Mäkká umývacia kefa',
+      lines: [
+        'Umývanie rozpustených nečistôt s mäkkou šampónovacou umývacou kefou.',
+        'Použite umývaciu kefu s červenou hadicou.',
+      ],
+    },
+    {
+      title: 'Opláchnutie čistou vodou',
+      lines: [
+        'Opláchnutie zvyškov šampónu a špinavej vody z vozidla.',
+        'Použite postrekovaciu trubicu s modrou hadicou.',
+        'Minimálny odstup 30 cm!',
+      ],
+    },
+    {
+      title: 'Horúci vosk',
+      lines: [
+        'Vysoko kvalitný konzervačný prostriedok s leskom s formulou na ochranu laku.',
+        'Na zachovanie hodnoty osobného automobilu.',
+        'Použite penovú trubicu so zelenou hadicou.',
+      ],
+    },
+    {
+      title: 'Oplachovanie s leskom bez škvŕn',
+      lines: [
+        'Dodatočné oplachovanie s demineralizovanou vodou pre výsledok bez škvŕn.',
+        'Použite postrekovaciu trubicu s modrou hadicou.',
+        'Minimálny odstup 30 cm!',
+      ],
+    },
+  ] as const;
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -167,7 +230,8 @@ export default function CarWashPage() {
                 </h1>
               </div>
               <p className="text-xl md:text-2xl opacity-90 max-w-3xl mx-auto lg:mx-0">
-                NON-STOP umývací portál dostupný 24/7. Samoobslužný umývací portál s moderným vybavením.
+                <span className="block">NON-STOP umývacie boxy 24/7</span>
+                <span className="block mt-2">Vysávač</span>
               </p>
             </div>
             <aside
@@ -224,6 +288,71 @@ export default function CarWashPage() {
                 className="h-48 md:h-64 lg:h-80 w-auto rounded-xl shadow-2xl object-contain border-2 border-white/30 -my-8 md:-my-12 lg:-my-16"
               />
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Umývací box — odporúčaný postup */}
+      <section
+        id="umyvaci-box"
+        className="py-10 md:py-12 bg-white border-t border-gray-200"
+        aria-labelledby="umyvaci-box-heading"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-6 md:mb-8">
+            <h2
+              id="umyvaci-box-heading"
+              className="text-3xl md:text-4xl font-bold text-gray-900 mb-2"
+            >
+              Umývací box
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Postup a správne použitie trubíc v samoobslužnom umývacom boxe v areáli STK Tvrdošín
+            </p>
+          </div>
+
+          <div className="bg-slate-50 rounded-xl border border-slate-200/80 shadow-sm p-4 sm:p-6 md:p-7 max-w-4xl mx-auto">
+            <div className="text-center mb-4 md:mb-5 pb-3 border-b border-slate-200/80">
+              <h3 className="text-base md:text-lg font-bold text-gray-900 mb-1">
+                Odporúčanie programu
+              </h3>
+              <p className="text-xs sm:text-sm font-semibold text-blue-700 leading-snug">
+                Prémiové umývanie | Intenzívne umývanie | Rýchle umývanie
+              </p>
+            </div>
+
+            <ol className="space-y-5 md:space-y-6 list-none pl-0 m-0">
+              {umyvacBoxSteps.map((item, index) => (
+                <li
+                  key={item.title}
+                  className="relative pl-0 md:pl-12 border-b border-slate-200/90 pb-5 last:border-b-0 last:pb-0"
+                >
+                  <div className="flex flex-col md:flex-row md:items-start gap-2 md:gap-3">
+                    <span
+                      className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-blue-600 text-white font-bold text-sm md:absolute md:left-0 md:top-0"
+                      aria-hidden
+                    >
+                      {index + 1}
+                    </span>
+                    <div className="min-w-0 flex-1">
+                      <h4 className="text-base font-semibold text-gray-900 mb-1.5">
+                        {item.title}
+                      </h4>
+                      <ul className="space-y-1 text-sm text-gray-700 leading-snug list-none pl-0 m-0">
+                        {item.lines.map((line, i) => (
+                          <li key={i} className="flex gap-2">
+                            <span className="text-blue-600 font-bold shrink-0" aria-hidden>
+                              •
+                            </span>
+                            <span>{line}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </li>
+              ))}
+            </ol>
           </div>
         </div>
       </section>
@@ -338,25 +467,25 @@ export default function CarWashPage() {
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Všeobecné obchodné podmienky
-            </h2>
-            <p className="text-xl text-gray-600">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
               Pokyny na obsluhu a dôležité informácie
+            </h2>
+            <p className="text-base md:text-lg text-gray-600 font-normal">
+              Všeobecné obchodné podmienky
             </p>
           </div>
 
           <div
             className="mb-10 flex items-start gap-3 rounded-xl border-2 border-amber-400 bg-amber-50 p-4 md:p-5 text-left shadow-md"
             role="note"
-            aria-label="Zodpovednosť za škodu na umývacom portáli"
+            aria-label="Zodpovednosť za škodu na zariadení autoumyvárne"
           >
             <AlertTriangle
               className="h-7 w-7 md:h-8 md:w-8 text-amber-600 shrink-0 mt-0.5"
               aria-hidden
             />
             <p className="text-sm md:text-base text-gray-800 font-medium leading-relaxed">
-              V prípade vzniku škody na umývacom portáli z dôvodu nedodržania pokynov (napr. vozidlo s otvorenou korbou, neupevnené časti, zásah do umývacieho programu a pod.) bude táto škoda vymáhaná od prevádzkovateľa vozidla.
+              V prípade vzniku škody na zariadení autoumyvárne (umývacie boxy) z dôvodu nedodržania pokynov (napr. nesprávne použitie vysokotlakového zariadenia, poškodenie hadíc, zásah do cudzieho vozidla a pod.) bude táto škoda vymáhaná od prevádzkovateľa vozidla.
             </p>
           </div>
 
@@ -371,16 +500,13 @@ export default function CarWashPage() {
                   <h3 className="text-lg md:text-xl font-semibold text-gray-900 mb-4">Pokyny na obsluhu</h3>
                   <ul className="text-sm md:text-base text-gray-700 space-y-3 leading-relaxed list-none pl-0 m-0">
                     {[
-                      'Zakúpte si umývací program pri samoobslužnom stojane.',
+                      'Zakúpte si umývací program alebo kredit pri platobnom termináli v areáli.',
                       'Na poskytovanie služby sa vzťahuje výnimka podľa §3 ods. 2 písm. b bod 4 zákona č. 289/2008 o používaní elektronickej registračnej pokladnice (predaj služieb prostredníctvom predajných automatov).',
-                      'V prípade, že potrebujete pokladničný doklad, umývací program si zakúpte na recepcii STK počas pracovnej doby.',
-                      'Pre otvorenie vstupnej brány zadajte čiarový kód na termináli.',
-                      'Autom zájdite do stredu umývacej linky, kým ukazovateľ neukáže „STOP“. Vypnite motor, zatiahnite ručnú brzdu, na automatickej prevodovke zvoľte „P“.',
-                      'Sklopte spätné zrkadlá, zasuňte alebo odmontujte anténu, ťažné zariadenie, prípadne inú nesériovú výbavu (spojler). Zatvorte bočné a strešné okná.',
-                      'Opustite automobil – umývací program prebieha automaticky.',
-                      'Program sa spustí stlačením tlačidla „ŠTART“ na ovládacom paneli.',
-                      'Počas umývania nevstupujte do pracovného priestoru umývacej linky. V prípade nebezpečenstva stlačte núdzové tlačidlo „STOP“.',
-                      'Po rozsvietení šípky je program ukončený. Po otvorení brán opustite s vozidlom umývaciu linku.',
+                      'V prípade, že potrebujete pokladničný doklad, službu si zakúpte na recepcii STK počas pracovnej doby.',
+                      'Zvoľte si voľný umývací box a zaparkujte vozidlo tak, aby ste bezpečne vedeli používať vysokotlakové zariadenie a prípravky.',
+                      'Pred začatím umývania zatvorte okná, sklopte spätné zrkadlá a zasuňte alebo odmontujte anténu.',
+                      'Dodržujte návod na použitie zariadenia v boxe a bezpečnostné pokyny umiestnené v areáli.',
+                      'Vysávač používajte ako samostatnú službu — po ukončení umytia uvoľnite box, aby mohli pokračovať ďalší zákazníci.',
                     ].map((text, i) => (
                       <li key={i} className="flex gap-3">
                         <Check
@@ -428,7 +554,7 @@ export default function CarWashPage() {
                         Prosím dodržiavajte všeobecné bezpečnostné pokyny v hale. Pri nedodržaní podmienok a pokynov prevádzkovateľ nepreberá zodpovednosť za prípadné škody.
                       </p>
                       <p>
-                        Umývanie špecifických vozidiel ako pickup, dodávka s otvorenou ložnou plochou, traktor, obytný automobil, príves a old-timer, prosím prekonzultujte vopred s personálom umývacej linky.
+                        Umývanie špecifických vozidiel ako pickup, dodávka s otvorenou ložnou plochou, traktor, obytný automobil, príves a old-timer, prosím prekonzultujte vopred s personálom STK.
                       </p>
                       <p className="font-semibold text-gray-900">
                         Vozidlá s otvorenou úložnou plochou, zadným rezervným kolesom, navijakom a strešným boxom je zakázané umývať!
@@ -446,7 +572,7 @@ export default function CarWashPage() {
                   <div>
                     <h3 className="text-lg font-semibold text-gray-900 mb-2">Zodpovednosť</h3>
                     <p className="text-sm text-gray-700 leading-relaxed">
-                      V prípade vzniku škody na umývacom portáli z dôvodu nedodržania pokynov (napr. vozidlo s otvorenou korbou, neupevnené časti, zásah do umývacieho programu a pod.) bude táto škoda vymáhaná od prevádzkovateľa vozidla.
+                      V prípade vzniku škody na zariadení autoumyvárne (umývacie boxy) z dôvodu nedodržania pokynov bude táto škoda vymáhaná od prevádzkovateľa vozidla.
                     </p>
                   </div>
                 </div>
@@ -463,9 +589,9 @@ export default function CarWashPage() {
                   <div>
                     <h3 className="text-lg font-semibold text-gray-900 mb-2">Bezpečnostné pokyny</h3>
                     <ul className="text-sm text-gray-700 space-y-1">
-                      <li>• Počas umývania nesmie byť v aute žiadne osoby</li>
-                      <li>• Pokiaš umývania nevstupujte do pracovného priestoru umývacej haly</li>
-                      <li>• V prípade nebezpečenstva stlačte núdzové tlačidlo "STOP" pri dverách</li>
+                      <li>• Dbajte na bezpečný odstup pri používaní vysokotlakového zariadenia</li>
+                      <li>• Nevsmerovávajte vysokotlakovú trysku k osobám ani k okolitým vozidlám</li>
+                      <li>• Počas práce v boxe dávajte pozor na šmykľavú podlahu</li>
                       <li>• Sklopte spätné zrkadlá, zasuňte alebo odmontujte antény</li>
                       <li>• Vozidlá s otvorenou úložnou plochou, zadným rezervným kolesom je zakázané umývať!</li>
                     </ul>

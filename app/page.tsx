@@ -16,7 +16,8 @@ import {
   Instagram,
   Coffee,
   UtensilsCrossed,
-  Calendar
+  Calendar,
+  Truck,
 } from 'lucide-react';
 import { Kavivanar } from 'next/font/google';
 import CarwashBanner from '@/components/CarwashBanner';
@@ -281,6 +282,26 @@ export default function HomePage() {
               </div>
             ))}
           </div>
+
+          <div
+            className="mt-10 max-w-3xl mx-auto"
+            role="region"
+            aria-label="Zákaznícke konto pre flotily"
+          >
+            <div className="flex flex-col sm:flex-row sm:items-center gap-4 rounded-2xl border border-white/25 bg-white/10 backdrop-blur-md px-5 py-4 shadow-lg">
+              <div
+                className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white/15 text-white mx-auto sm:mx-0"
+                aria-hidden
+              >
+                <Truck className="h-6 w-6" />
+              </div>
+              <p className="text-center sm:text-left text-sm sm:text-base text-white/95 leading-relaxed">
+                <span className="font-semibold text-white">Máte flotilu vozidiel</span>
+                {' — '}
+                vytvorte si zákaznícke konto a spravujte svoje objednávky rýchlo a pohodlne.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -493,7 +514,7 @@ export default function HomePage() {
           },
           {
             question: 'Aké doklady si mám priniesť na STK?',
-            answer: 'Doklady od vozidla: Osvedčenie o technickom preukaze, časť I alebo časť II (papierový alebo kartička). Vozidlo s pohonom na plyn (LPG, CNG): Protokol o montáži plynového zariadenia, ak bola montáž vykonaná v rámci prestavby vozidla. Ak je technický preukaz stratený: Výpis z karty vozidla vydaný orgánom Policajného zboru. Ak bol technický preukaz zadržaný: Potvrdenie o zadržaní TP Policajným zborom.'
+            answer: 'Osvedčenie o technickom preukaze, časť I alebo časť II (papierový alebo kartička).'
           },
           {
             question: 'Koľko stojí technická kontrola?',
@@ -542,7 +563,7 @@ export default function HomePage() {
                 },
                 {
                   question: 'Máte v Námestove autoumyváreň?',
-                  answer: 'Áno, v areáli STK Námestovo máme modernú autoumyváreň s automatickým portálom, ktorý je dostupný 24/7. Okrem toho ponúkame aj ecoČistiareň a práčovňu.'
+                  answer: 'Áno. V areáli STK Námestovo máte k dispozícii automatický umývací portál 24/7, umývacie boxy 24/7, vysávač a automatický čistič rohoží.'
                 },
                 {
                   question: 'Ako dlho trvá cesta z centra Námestova?',
@@ -566,7 +587,7 @@ export default function HomePage() {
                 },
                 {
                   question: 'Máte v Tvrdošíne autoumyváreň?',
-                  answer: 'Áno, v areáli máme autoumyváreň s automatickým portálom. Okrem toho máme aj kaviareň, kde si môžete počkať počas kontroly.'
+                  answer: 'Áno. V areáli STK Tvrdošín prevádzkujeme samoobslužné umývacie boxy 24/7 a vysávač. Počas kontroly si môžete posedieť aj v našej kaviarni.'
                 },
                 {
                   question: 'Ako sa dostanem k STK Tvrdošín?',
@@ -835,8 +856,18 @@ export default function HomePage() {
                       </Link>
                     </li>
                     <li>
+                      <Link href="/namestovo/autoumyvaren" className="text-brand-gray-300 hover:text-white transition-colors text-sm">
+                        Autoumyváreň Námestovo
+                      </Link>
+                    </li>
+                    <li>
                       <Link href="/tvrdosin/autoumyvaren" className="text-brand-gray-300 hover:text-white transition-colors text-sm">
-                        Autoumyváreň
+                        Autoumyváreň Tvrdošín
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/lokca/autoumyvaren" className="text-brand-gray-300 hover:text-white transition-colors text-sm">
+                        Autoumyváreň Lokca (neprevádzkujeme)
                       </Link>
                     </li>
                     <li>

@@ -22,6 +22,8 @@ import {
   Fingerprint
 } from 'lucide-react';
 import SaturdayCalendarBanner from '@/components/SaturdayCalendarBanner';
+import STKLehotyKontrolSection from '@/components/STKLehotyKontrolSection';
+import STKAverageTimeDisclaimer from '@/components/STKAverageTimeDisclaimer';
 
 export default function DemoPage() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -121,6 +123,7 @@ export default function DemoPage() {
               </div>
               <div className="text-3xl font-bold text-brand-gray-900 mb-2">30 min</div>
               <div className="text-brand-gray-600">priemerný čas</div>
+              <STKAverageTimeDisclaimer />
             </div>
             <div className="flex flex-col items-center">
               <div className="bg-brand-green-100 p-4 rounded-full mb-4">
@@ -244,6 +247,8 @@ export default function DemoPage() {
               </Link>
             </div>
           </div>
+
+          <STKLehotyKontrolSection />
         </div>
       </section>
 

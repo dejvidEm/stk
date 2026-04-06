@@ -146,6 +146,107 @@ export default function CarWashPage() {
   const currentProgram = washPrograms[selectedProgram as keyof typeof washPrograms];
   const IconComponent = currentProgram.icon;
 
+  const carwashProgramsCard = [
+    {
+      name: 'Platinum',
+      price: '14,00 €',
+      color: 'bg-yellow-500',
+      description:
+        'vysokotlakové predumytie, aktívna pena, šampón, umytie kolies, vysokotlakové umytie podvozku, penový vosk + zaleštenie, sušenie, 10–12 minút',
+    },
+    {
+      name: 'Exclusive',
+      price: '12,00 €',
+      color: 'bg-orange-500',
+      description:
+        'vysokotlakové predumytie, aktívna pena, šampón, umytie kolies, vysokotlakové umytie podvozku, sušenie, 9–11 minút',
+    },
+    {
+      name: 'Wax',
+      price: '9,00 €',
+      color: 'bg-purple-500',
+      description:
+        'vysokotlakové predumytie, šampón, umytie kolies, vysokotlakové umytie podvozku, vosk, sušenie, 9–11 minút',
+    },
+    {
+      name: 'Standard',
+      price: '7,00 €',
+      color: 'bg-green-500',
+      description:
+        'vysokotlakové predumytie, šampón, umytie kolies, vysokotlakové umytie podvozku, sušenie, 8–10 minút',
+    },
+    {
+      name: 'Basic',
+      price: '6,00 €',
+      color: 'bg-blue-500',
+      description:
+        'vysokotlakové predumytie, šampón, umytie kolies, sušenie, 7–9 minút',
+    },
+  ] as const;
+
+  const umyvacBoxSteps = [
+    {
+      title: 'Čistič diskov-špeciál',
+      lines: [
+        'Špeciálny čistič diskov na čistenie odolných nečistôt v oblasti diskov. Doba pôsobenia max. 30 sek.',
+        'Použite postrekovaciu trubicu s modrou hadicou.',
+      ],
+    },
+    {
+      title: 'Odstraňovač mušiek-špeciál',
+      lines: [
+        'Predbežný čistič na rozpúšťanie hmyzu a peľu na vozidle. Doba pôsobenia max. 30 sek.',
+        'Použite postrekovaciu trubicu s modrou hadicou.',
+      ],
+    },
+    {
+      title: 'XXL-Pena',
+      lines: [
+        'Účinná pena na rozpustenie nečistôt na diskoch a vozidle. Doba pôsobenia max. 30 sek.',
+        'Použite penovú trubicu so zelenou hadicou.',
+      ],
+    },
+    {
+      title: 'Vysokotlakové umývanie',
+      lines: [
+        'Odstraňovanie hrubých nečistôt pomocou silného vysokotlakového lúča (pracovný tlak cca 85 bar).',
+        'Použite postrekovaciu trubicu s modrou hadicou.',
+        'Minimálny odstup 30 cm!',
+      ],
+    },
+    {
+      title: 'Mäkká umývacia kefa',
+      lines: [
+        'Umývanie rozpustených nečistôt s mäkkou šampónovacou umývacou kefou.',
+        'Použite umývaciu kefu s červenou hadicou.',
+      ],
+    },
+    {
+      title: 'Opláchnutie čistou vodou',
+      lines: [
+        'Opláchnutie zvyškov šampónu a špinavej vody z vozidla.',
+        'Použite postrekovaciu trubicu s modrou hadicou.',
+        'Minimálny odstup 30 cm!',
+      ],
+    },
+    {
+      title: 'Horúci vosk',
+      lines: [
+        'Vysoko kvalitný konzervačný prostriedok s leskom s formulou na ochranu laku.',
+        'Na zachovanie hodnoty osobného automobilu.',
+        'Použite penovú trubicu so zelenou hadicou.',
+      ],
+    },
+    {
+      title: 'Oplachovanie s leskom bez škvŕn',
+      lines: [
+        'Dodatočné oplachovanie s demineralizovanou vodou pre výsledok bez škvŕn.',
+        'Použite postrekovaciu trubicu s modrou hadicou.',
+        'Minimálny odstup 30 cm!',
+      ],
+    },
+  ] as const;
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
@@ -167,7 +268,10 @@ export default function CarWashPage() {
                 </h1>
               </div>
               <p className="text-xl md:text-2xl opacity-90 max-w-3xl mx-auto lg:mx-0">
-                NON-STOP umývacie boxy dostupné 24/7. Samoobslužné umývacie boxy s moderným vybavením.
+                <span className="block">Automatický umývací portál 24/7</span>
+                <span className="block mt-2">Umývacie boxy 24/7</span>
+                <span className="block mt-2">Vysávač</span>
+                <span className="block mt-2">Automatický čistič rohoží</span>
               </p>
             </div>
             <aside
@@ -224,6 +328,71 @@ export default function CarWashPage() {
                 className="h-48 md:h-64 lg:h-80 w-auto rounded-xl shadow-2xl object-contain border-2 border-white/30 -my-8 md:-my-12 lg:-my-16"
               />
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Umývací box — odporúčaný postup */}
+      <section
+        id="umyvaci-box"
+        className="py-10 md:py-12 bg-white border-t border-gray-200"
+        aria-labelledby="umyvaci-box-heading"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-6 md:mb-8">
+            <h2
+              id="umyvaci-box-heading"
+              className="text-3xl md:text-4xl font-bold text-gray-900 mb-2"
+            >
+              Umývací box
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Postup a správne použitie trubíc v samoobslužnom umývacom boxe v areáli STK Námestovo
+            </p>
+          </div>
+
+          <div className="bg-slate-50 rounded-xl border border-slate-200/80 shadow-sm p-4 sm:p-6 md:p-7 max-w-4xl mx-auto">
+            <div className="text-center mb-4 md:mb-5 pb-3 border-b border-slate-200/80">
+              <h3 className="text-base md:text-lg font-bold text-gray-900 mb-1">
+                Odporúčanie programu
+              </h3>
+              <p className="text-xs sm:text-sm font-semibold text-blue-700 leading-snug">
+                Prémiové umývanie | Intenzívne umývanie | Rýchle umývanie
+              </p>
+            </div>
+
+            <ol className="space-y-5 md:space-y-6 list-none pl-0 m-0">
+              {umyvacBoxSteps.map((item, index) => (
+                <li
+                  key={item.title}
+                  className="relative pl-0 md:pl-12 border-b border-slate-200/90 pb-5 last:border-b-0 last:pb-0"
+                >
+                  <div className="flex flex-col md:flex-row md:items-start gap-2 md:gap-3">
+                    <span
+                      className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-blue-600 text-white font-bold text-sm md:absolute md:left-0 md:top-0"
+                      aria-hidden
+                    >
+                      {index + 1}
+                    </span>
+                    <div className="min-w-0 flex-1">
+                      <h4 className="text-base font-semibold text-gray-900 mb-1.5">
+                        {item.title}
+                      </h4>
+                      <ul className="space-y-1 text-sm text-gray-700 leading-snug list-none pl-0 m-0">
+                        {item.lines.map((line, i) => (
+                          <li key={i} className="flex gap-2">
+                            <span className="text-blue-600 font-bold shrink-0" aria-hidden>
+                              •
+                            </span>
+                            <span>{line}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </li>
+              ))}
+            </ol>
           </div>
         </div>
       </section>
@@ -338,11 +507,11 @@ export default function CarWashPage() {
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Všeobecné obchodné podmienky
-            </h2>
-            <p className="text-xl text-gray-600">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
               Pokyny na obsluhu a dôležité informácie
+            </h2>
+            <p className="text-base md:text-lg text-gray-600 font-normal">
+              Všeobecné obchodné podmienky
             </p>
           </div>
 
@@ -360,10 +529,10 @@ export default function CarWashPage() {
             </p>
           </div>
 
-          <div className="space-y-12">
-            {/* Pokyny na obsluhu — full width above ostatné karty */}
-            <div className="bg-white rounded-xl p-6 md:p-8 shadow-lg border border-gray-100">
-              <div className="flex items-start gap-4 md:gap-6">
+          <div className="mb-12 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-stretch">
+            {/* Pokyny na obsluhu */}
+            <div className="bg-white rounded-xl p-6 md:p-8 shadow-lg border border-gray-100 flex flex-col h-full">
+              <div className="flex items-start gap-4 md:gap-6 flex-1">
                 <div className="bg-green-100 p-2 md:p-3 rounded-lg flex-shrink-0">
                   <Car className="h-6 w-6 md:h-7 md:w-7 text-green-600" />
                 </div>
@@ -395,6 +564,70 @@ export default function CarWashPage() {
                 </div>
               </div>
             </div>
+
+            {/* Programy — pod sebou, ako na hlavnej stránke */}
+            <div
+              id="programy"
+              className="flex flex-col h-full min-w-0"
+              aria-labelledby="carwash-programs-heading"
+            >
+              <div className="bg-white/70 backdrop-blur-md rounded-2xl p-6 sm:p-8 border border-white/50 shadow-xl flex flex-col h-full">
+                <div className="space-y-6 flex flex-col flex-1">
+                  <div className="text-center">
+                    <div className="inline-flex items-center justify-center w-20 h-20 bg-blue-100/80 backdrop-blur-sm rounded-full mb-4">
+                      <Droplets className="h-10 w-10 text-blue-600" aria-hidden />
+                    </div>
+                    <p className="text-sm font-semibold text-blue-700 mb-1">Automatický portál</p>
+                    <h3 id="carwash-programs-heading" className="text-2xl font-bold mb-2 text-gray-900">
+                      5 umývacích programov
+                    </h3>
+                    <p className="text-sm text-gray-600">
+                      Platí na umývacích boxoch a na automatickom umývacom portáli v areáli STK Námestovo
+                    </p>
+                  </div>
+
+                  <div className="grid grid-cols-1 gap-3 flex-1">
+                    {carwashProgramsCard.map((program, index) => (
+                      <div
+                        key={index}
+                        className="bg-white/80 backdrop-blur-sm rounded-lg p-3 border border-gray-200/50 hover:bg-white transition-colors shadow-sm"
+                      >
+                        <div className="flex gap-3 items-start justify-between">
+                          <div className={`mt-1.5 w-3 h-3 rounded-full shrink-0 ${program.color}`} />
+                          <div className="min-w-0 flex-1">
+                            <span className="font-semibold text-gray-900">{program.name}</span>
+                            <p className="text-[11px] sm:text-xs text-gray-600 mt-1 leading-snug">
+                              {program.description}
+                            </p>
+                          </div>
+                          <div className="text-right shrink-0 pt-0.5">
+                            <div className="font-bold text-gray-900 whitespace-nowrap">{program.price}</div>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="pt-4 border-t border-gray-200/50 mt-auto">
+                    <div className="flex items-center justify-center gap-6 text-sm flex-wrap">
+                      <div className="flex items-center gap-2">
+                        <div className="w-2 h-2 bg-green-500 rounded-full" aria-hidden />
+                        <span className="text-gray-700">Karta</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <div className="w-2 h-2 bg-yellow-500 rounded-full" aria-hidden />
+                        <span className="text-gray-700">Hotovosť</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <div className="w-2 h-2 bg-blue-500 rounded-full" aria-hidden />
+                        <span className="text-gray-700">Google/Apple Pay</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
             <div className="grid lg:grid-cols-2 gap-12">
             {/* Left Column - Terms */}
@@ -492,7 +725,6 @@ export default function CarWashPage() {
               </div>
             </div>
             </div>
-          </div>
 
           {/* Payment Methods */}
           <div className="mt-12 bg-white rounded-xl p-8 shadow-lg">
@@ -542,7 +774,7 @@ export default function CarWashPage() {
             Pripravení na umytie vašeho vozidla?
           </h2>
           <p className="text-xl mb-8 opacity-90">
-            Navštívte našu autoumyváreň priamo v areáli STK Tvrdošín
+            Navštívte našu autoumyváreň priamo v areáli STK Námestovo
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a

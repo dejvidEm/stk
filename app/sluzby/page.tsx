@@ -43,10 +43,7 @@ export default function ServicesPage() {
         'Exhaláty a hlučnosť'
       ],
       requirements: [
-        'Technický preukaz vozidla',
-        'Doklad o poistení',
-        'Platný vodičský preukaz',
-        'Predchádzajúci protokol STK (ak existuje)'
+        'Osvedčenie o technickom preukaze, časť I alebo časť II (papierový alebo kartička)',
       ]
     },
     ek: {
@@ -63,10 +60,7 @@ export default function ServicesPage() {
         'Vizuálna kontrola emisného systému'
       ],
       requirements: [
-        'Technický preukaz vozidla',
-        'Doklad o poistení',
-        'Platný vodičský preukaz',
-        'Predchádzajúci protokol EK (ak existuje)'
+        'Osvedčenie o technickom preukaze, časť I alebo časť II (papierový alebo kartička)',
       ]
     },
     recheck: {
@@ -82,10 +76,7 @@ export default function ServicesPage() {
         'Vydanie nálepky pri úspešnom absolvovaní'
       ],
       requirements: [
-        'Protokol z prvej kontroly',
-        'Technický preukaz vozidla',
-        'Doklad o vykonaných opravách',
-        'Doklad o poistení'
+        'Osvedčenie o technickom preukaze, časť I alebo časť II (papierový alebo kartička)',
       ]
     }
   };

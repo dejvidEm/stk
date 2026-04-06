@@ -1,4 +1,4 @@
-import { ArrowLeft, Car, Calculator } from 'lucide-react';
+import { Car } from 'lucide-react';
 import Link from 'next/link';
 
 export default function PricingPage() {
@@ -35,7 +35,7 @@ export default function PricingPage() {
 
           <div className="bg-white rounded-xl shadow-lg overflow-hidden">
             <div className="overflow-x-auto">
-              <table className="w-full">
+              <table className="w-full [&_th]:!py-2.5 [&_td]:!py-2">
                 <thead className="bg-brand-red-600 text-white">
                   <tr>
                     <th className="px-6 py-4 text-left font-semibold">Druh vozidla</th>
@@ -106,7 +106,7 @@ export default function PricingPage() {
                     <td className="px-6 py-4 text-center text-gray-900 font-semibold">-</td>
                   </tr>
                   <tr className="hover:bg-gray-50">
-                    <td className="px-6 py-4 font-medium text-gray-900">Administratívna kontrola zrýchlene*</td>
+                    <td className="px-6 py-4 font-medium text-gray-900">Administratívna kontrola zvýhodnená*</td>
                     <td className="px-6 py-4 text-center text-gray-700">Všetky kategórie</td>
                     <td className="px-6 py-4 text-center text-gray-900 font-semibold">16,00 €</td>
                     <td className="px-6 py-4 text-center text-gray-900 font-semibold">-</td>
@@ -141,7 +141,8 @@ export default function PricingPage() {
             
             <div className="bg-gray-50 px-6 py-4 border-t border-gray-200">
               <p className="text-sm text-gray-600 italic">
-                * Administratívna kontrola zrýchlene - do 24 hodín
+                * Ide o zvýhodnenú (nie zrýchlenú) administratívnu kontrolu, ak pôvodná TK alebo EK bola
+                vykonaná na našom pracovisku. Spracovanie do 24 hodín.
               </p>
               <p className="text-sm text-gray-600 mt-2">
                 Všetky ceny sú uvedené s DPH. Ceny platné od 1.1.2024.
@@ -167,7 +168,7 @@ export default function PricingPage() {
 
           <div className="bg-white rounded-xl shadow-lg overflow-hidden">
             <div className="overflow-x-auto">
-              <table className="w-full">
+              <table className="w-full [&_th]:!py-2.5 [&_td]:!py-2">
                 <thead className="bg-brand-red-600 text-white">
                   <tr>
                     <th className="px-6 py-4 text-left font-semibold">Druh vozidla</th>
@@ -208,7 +209,7 @@ export default function PricingPage() {
                     <td className="px-6 py-4 text-center text-gray-900 font-semibold">25,00 €</td>
                   </tr>
                   <tr className="hover:bg-gray-50 bg-red-50">
-                    <td className="px-6 py-4 font-medium text-gray-900">Administratívna kontrola zrýchlene*</td>
+                    <td className="px-6 py-4 font-medium text-gray-900">Administratívna kontrola zvýhodnená*</td>
                     <td className="px-6 py-4 text-center text-gray-700">Všetky kategórie</td>
                     <td className="px-6 py-4 text-center text-gray-900 font-semibold">15,00 €</td>
                     <td className="px-6 py-4 text-center text-gray-900 font-semibold">-</td>
@@ -243,7 +244,8 @@ export default function PricingPage() {
             
             <div className="bg-gray-50 px-6 py-4 border-t border-gray-200">
               <p className="text-sm text-gray-600 italic">
-                * Administratívna kontrola zrýchlene - do 24 hodín
+                * Ide o zvýhodnenú (nie zrýchlenú) administratívnu kontrolu, ak pôvodná TK alebo EK bola
+                vykonaná na našom pracovisku. Spracovanie do 24 hodín.
               </p>
               <p className="text-sm text-gray-600 mt-2">
                 <strong>Osvedčenie o technickej/emisnej kontrole</strong> slúži ako doklad na preukázanie platnosti TK/EK pri kontrole v cestnej premávke.
@@ -252,7 +254,8 @@ export default function PricingPage() {
                 Opakovaná technická/emisná kontrola sa musí vykonať do 60 kalendárnych dní od pravidelnej kontroly.
               </p>
               <p className="text-sm text-gray-600 mt-1">
-                * Pravidelná kontrola vykonaná na našom pracovisku
+                ** Pravidelná kontrola vykonaná na našom pracovisku (vzťahuje sa na cenu opakovanej
+                kontroly)
               </p>
               <p className="text-sm text-gray-600 mt-2">
                 Všetky ceny sú uvedené s DPH. Ceny platné od 1.1.2024.
@@ -280,25 +283,12 @@ export default function PricingPage() {
                 <div className="bg-brand-red-100 p-2 rounded-lg">
                   <Car className="h-6 w-6 text-brand-red-600" />
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900">Express vystavenie</h3>
+                <h3 className="text-xl font-semibold text-gray-900">Razenie VIN čísla</h3>
               </div>
               <p className="text-gray-600 mb-4">
-                Rýchle spracovanie a vystavenie protokolu do 1 hodiny.
+                Odborné razenie identifikačného čísla vozidla (VIN).
               </p>
-              <div className="text-2xl font-bold text-brand-red-600">+ 5,00 €</div>
-            </div>
-
-            <div className="bg-gray-50 rounded-xl p-6 hover:shadow-lg transition-shadow">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="bg-brand-red-100 p-2 rounded-lg">
-                  <Car className="h-6 w-6 text-brand-red-600" />
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900">VIN očíslovanie</h3>
-              </div>
-              <p className="text-gray-600 mb-4">
-                Odborné vykonanie VIN označenia vozidla.
-              </p>
-              <div className="text-2xl font-bold text-brand-red-600">20,00 €</div>
+              <div className="text-2xl font-bold text-brand-red-600">140,00 €</div>
             </div>
 
             <div className="bg-gray-50 rounded-xl p-6 hover:shadow-lg transition-shadow">

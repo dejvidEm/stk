@@ -22,6 +22,8 @@ import {
   Fingerprint
 } from 'lucide-react';
 import SaturdayCalendarBanner from '@/components/SaturdayCalendarBanner';
+import STKLehotyKontrolSection from '@/components/STKLehotyKontrolSection';
+import STKAverageTimeDisclaimer from '@/components/STKAverageTimeDisclaimer';
 
 export default function DemoPage() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -64,30 +66,66 @@ export default function DemoPage() {
         ></div>
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32 -mt-4">
-          <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-              STK Tvrdošín
-              <span className="block text-brand-green-400">rýchlo a spoľahlivo</span>
-            </h1>
-            <p className="text-xl md:text-2xl mb-8 opacity-90">
-              Profesionálne služby STK a EK v Tvrdošíne fungujúce od roku 2011. 
-              Rezervujte si termín online a ušetrite čas.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link 
-                href="/tvrdosin/rezervacia"
-                className="bg-brand-green-500 hover:bg-brand-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors inline-flex items-center justify-center group"
-              >
-                Rezervovať termín
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-              </Link>
-              <Link 
-                href="/tvrdosin/cennik"
-                className="border-2 border-white hover:bg-white hover:text-brand-red-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors inline-flex items-center justify-center"
-              >
-                Zobraziť cenník
-              </Link>
+          <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-10 lg:gap-12">
+            <div className="max-w-3xl flex-1 min-w-0">
+              <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+                STK Tvrdošín
+                <span className="block text-brand-green-400">rýchlo a spoľahlivo</span>
+              </h1>
+              <p className="text-xl md:text-2xl mb-8 opacity-90">
+                Profesionálne služby STK a EK v Tvrdošíne fungujúce od roku 2011. 
+                Rezervujte si termín online a ušetrite čas.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link 
+                  href="/tvrdosin/rezervacia"
+                  className="bg-brand-green-500 hover:bg-brand-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors inline-flex items-center justify-center group"
+                >
+                  Rezervovať termín
+                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                </Link>
+                <Link 
+                  href="/tvrdosin/cennik"
+                  className="border-2 border-white hover:bg-white hover:text-brand-red-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors inline-flex items-center justify-center"
+                >
+                  Zobraziť cenník
+                </Link>
+              </div>
             </div>
+
+            <aside
+              className="w-full max-w-sm mx-auto lg:mx-0 lg:shrink-0 lg:pt-2"
+              aria-label="Orientačný cenník"
+            >
+              <div className="rounded-xl border border-white/25 bg-white/10 backdrop-blur-md px-4 py-3.5 shadow-lg">
+                <p className="text-xs font-bold uppercase tracking-wide text-white/80 text-center mb-2">
+                  Cenník
+                </p>
+                <ul className="text-sm text-white/95 space-y-1 leading-snug">
+                  <li>
+                    TK — cena od <span className="font-semibold text-white">25,- €</span>
+                  </li>
+                  <li>
+                    Emisná kontrola od <span className="font-semibold text-white">25,- €</span>
+                  </li>
+                  <li>
+                    Kombinovaná od <span className="font-semibold text-white">50,- €</span>
+                  </li>
+                  <li>
+                    Opakovaná od <span className="font-semibold text-white">15,- €</span>
+                  </li>
+                </ul>
+                <div className="mt-3 pt-2.5 border-t border-white/20 text-center">
+                  <Link
+                    href="/tvrdosin/cennik"
+                    className="text-sm font-semibold text-brand-green-400 hover:text-brand-green-300 inline-flex items-center justify-center gap-1 transition-colors"
+                  >
+                    Celý cenník
+                    <ArrowRight className="h-3.5 w-3.5" aria-hidden />
+                  </Link>
+                </div>
+              </div>
+            </aside>
           </div>
         </div>
       </section>
@@ -158,6 +196,7 @@ export default function DemoPage() {
               </div>
               <div className="text-3xl font-bold text-brand-gray-900 mb-2">30 min</div>
               <div className="text-brand-gray-600">priemerný čas</div>
+              <STKAverageTimeDisclaimer />
             </div>
             <div className="flex flex-col items-center">
               <div className="bg-brand-green-100 p-4 rounded-full mb-4">
@@ -281,6 +320,8 @@ export default function DemoPage() {
               </Link>
             </div>
           </div>
+
+          <STKLehotyKontrolSection />
         </div>
       </section>
 
@@ -532,19 +573,9 @@ export default function DemoPage() {
               <ul className="space-y-2 text-brand-gray-700">
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-brand-green-500 mr-2 flex-shrink-0 mt-0.5" />
-                  <span>Technický preukaz vozidla (časť I a časť II)</span>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-brand-green-500 mr-2 flex-shrink-0 mt-0.5" />
-                  <span>Občiansky preukaz majiteľa vozidla</span>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-brand-green-500 mr-2 flex-shrink-0 mt-0.5" />
-                  <span>Vozidlo musí byť prítomné</span>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-brand-green-500 mr-2 flex-shrink-0 mt-0.5" />
-                  <span>Doklad o poistení (ak je požadovaný)</span>
+                  <span>
+                    Osvedčenie o technickom preukaze, časť I alebo časť II (papierový alebo kartička)
+                  </span>
                 </li>
               </ul>
             </div>
