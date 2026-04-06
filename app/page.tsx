@@ -429,7 +429,7 @@ export default function HomePage() {
                 <Clock className="h-8 w-8 text-brand-gray-600" />
               </div>
               <div className="text-3xl font-bold text-brand-gray-900 mb-2">45 min</div>
-              <div className="text-brand-gray-600">priemerný čas</div>
+              <div className="text-brand-gray-600">priemerný čas vybavenia vozidla</div>
             </div>
             <div className="flex flex-col items-center">
               <div className="bg-brand-green-100 p-4 rounded-full mb-4">

@@ -282,7 +282,7 @@ export default function ServicesPage() {
               <div className="bg-red-100 w-14 h-14 rounded-lg flex items-center justify-center mb-3">
                 <Flame className="h-7 w-7 text-red-600" />
               </div>
-              <h3 className="text-lg font-bold text-brand-gray-900 mb-2">Hasící prístroj</h3>
+              <h3 className="text-lg font-bold text-brand-gray-900 mb-2">Hasiaci prístroj</h3>
               <p className="text-brand-gray-600 text-sm mb-3">
                 Povinný pre nákladné vozidlá a autobusy. Odporúčaný pre všetky vozidlá.
               </p>

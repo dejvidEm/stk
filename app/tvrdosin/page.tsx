@@ -195,8 +195,7 @@ export default function DemoPage() {
                 <Clock className="h-8 w-8 text-brand-gray-600" />
               </div>
               <div className="text-3xl font-bold text-brand-gray-900 mb-2">30 min</div>
-              <div className="text-brand-gray-600">priemerný čas</div>
-              <STKAverageTimeDisclaimer />
+              <div className="text-brand-gray-600">priemerný čas vybavenia vozidla</div>
             </div>
             <div className="flex flex-col items-center">
               <div className="bg-brand-green-100 p-4 rounded-full mb-4">
@@ -206,6 +205,7 @@ export default function DemoPage() {
               <div className="text-brand-gray-600">spokojnosť zákazníkov</div>
             </div>
           </div>
+          <STKAverageTimeDisclaimer />
         </div>
       </section>
 
@@ -408,7 +408,7 @@ export default function DemoPage() {
               <div className="bg-red-100 w-16 h-16 rounded-lg flex items-center justify-center mb-4">
                 <Flame className="h-8 w-8 text-red-600" />
               </div>
-              <h3 className="text-xl font-bold text-brand-gray-900 mb-2">Hasící prístroj</h3>
+              <h3 className="text-xl font-bold text-brand-gray-900 mb-2">Hasiaci prístroj</h3>
               <p className="text-brand-gray-600 text-sm mb-3">
                 Povinný pre nákladné vozidlá a autobusy. Odporúčaný pre všetky vozidlá.
               </p>
