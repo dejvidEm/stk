@@ -34,14 +34,21 @@ export default function Footer() {
     return '/caste-otazky';
   })();
 
+  const naseSluzbyHref = (() => {
+    if (pathname.startsWith('/namestovo')) return '/namestovo#nase-sluzby';
+    if (pathname.startsWith('/tvrdosin')) return '/tvrdosin#nase-sluzby';
+    if (pathname.startsWith('/lokca')) return '/lokca#nase-sluzby';
+    return '/#nase-sluzby';
+  })();
+
   const handleFooterLinkClickCapture = (e: React.MouseEvent<HTMLElement>) => {
     const target = e.target as HTMLElement;
     const anchor = target.closest('a');
     if (!anchor) return;
 
     const href = anchor.getAttribute('href') ?? '';
-    // For internal navigation links, always jump to top.
-    if (href.startsWith('/')) {
+    // For internal navigation links, jump to top (skip hash links so in-page / anchor targets can scroll).
+    if (href.startsWith('/') && !href.includes('#')) {
       window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
     }
   };
@@ -155,7 +162,7 @@ export default function Footer() {
                 <h4 className="font-semibold text-lg mb-4 text-white">Služby</h4>
                 <ul className="space-y-3">
                   <li>
-                    <Link href="/sluzby" className="text-brand-gray-300 hover:text-white transition-colors text-sm flex items-center group">
+                    <Link href={naseSluzbyHref} className="text-brand-gray-300 hover:text-white transition-colors text-sm flex items-center group">
                       <span>Naše služby</span>
                       <Car className="h-3 w-3 ml-2 opacity-0 group-hover:opacity-100 transition-opacity" />
                     </Link>
@@ -256,7 +263,7 @@ export default function Footer() {
         <div className="border-t border-brand-gray-800 pt-8">
           <div className="flex flex-col items-center gap-4">
             <div className="order-2 text-brand-gray-400 text-sm text-center">
-              <p>&copy; 2025 EMADE, spol. s r.o. Všetky práva vyhradené.</p>
+              <p>&copy; 2026 EMADE, spol. s r.o. Všetky práva vyhradené.</p>
               <p className="mt-1">STK Centrum Orava - Profesionálne služby technickej kontroly vozidiel</p>
                 <div className="mt-10 flex flex-col items-center">
                   <a

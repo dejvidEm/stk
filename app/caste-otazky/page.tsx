@@ -125,13 +125,6 @@ export default function FAQPage() {
       answer: 'Pred kontrolou skontrolujte: funkčnosť všetkých svetiel, stav pneumatík a hĺbku dezénu (min. 1,6mm), hladinu oleja a chladiacej kvapaliny, funkčnosť klaksónu a smeroviek. Vyčistite evidenčné čísla a odstráňte predmety z vozidla.',
       category: 'stk',
       tags: ['príprava', 'svetlá', 'pneumatiky', 'kontrola']
-    },
-    {
-      id: 12,
-      question: 'Môžem platiť kartou alebo len hotovosť?',
-      answer: 'Akceptujeme všetky formy platby: hotovosť, platobné karty (Visa, Mastercard), QR kódy (viaceré banky), bankový prevod. Pre firemných zákazníkov vystavujeme faktúry s DPH. Platba je splatná po ukončení kontroly.',
-      category: 'payment',
-      tags: ['platba', 'karta', 'hotovosť', 'QR', 'faktúra']
     }
   ];
 

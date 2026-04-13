@@ -7,7 +7,6 @@ import {
   Car, 
   Truck, 
   Bike,
-  User, 
   Phone, 
   Mail, 
   CheckCircle,
@@ -25,17 +24,13 @@ interface BookingData {
   date: string;
   time: string;
   vehicleInfo: {
-    brand: string;
-    model: string;
-    year: string;
     licensePlate: string;
-    vin: string;
   };
   customerInfo: {
-    firstName: string;
-    lastName: string;
+    fullName: string;
     phone: string;
     email: string;
+    emailConfirm: string;
   };
 }
 
@@ -47,17 +42,13 @@ export default function BookingPage() {
     date: '',
     time: '',
     vehicleInfo: {
-      brand: '',
-      model: '',
-      year: '',
-      licensePlate: '',
-      vin: ''
+      licensePlate: ''
     },
     customerInfo: {
-      firstName: '',
-      lastName: '',
+      fullName: '',
       phone: '',
-      email: ''
+      email: '',
+      emailConfirm: ''
     }
   });
 
@@ -168,9 +159,12 @@ export default function BookingPage() {
       case 2:
         return bookingData.date && bookingData.time;
       case 3:
-        return Object.values(bookingData.vehicleInfo).every(value => value.trim() !== '');
-      case 4:
-        return Object.values(bookingData.customerInfo).every(value => value.trim() !== '');
+        return bookingData.vehicleInfo.licensePlate.trim() !== '';
+      case 4: {
+        const { fullName, phone, email, emailConfirm } = bookingData.customerInfo;
+        if (!fullName.trim() || !phone.trim() || !email.trim() || !emailConfirm.trim()) return false;
+        return email.trim() === emailConfirm.trim();
+      }
       default:
         return false;
     }
@@ -222,6 +216,13 @@ export default function BookingPage() {
               </div>
             ))}
           </div>
+        </div>
+
+        <div className="mb-6 flex gap-3 rounded-xl border border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed text-blue-900">
+          <Phone className="mt-0.5 h-5 w-5 shrink-0 text-blue-600" aria-hidden />
+          <p>
+            Vybavujeme aj vozidlá bez rezervácie. O aktuálnych voľných kapacitách na dnešný deň sa, prosím, informujte telefonicky.
+          </p>
         </div>
 
         {/* Step Content */}
@@ -357,75 +358,19 @@ export default function BookingPage() {
           {currentStep === 3 && (
             <div>
               <h2 className="text-2xl font-bold text-gray-900 mb-6">Informácie o vozidle</h2>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Značka vozidla *
-                  </label>
-                  <input
-                    type="text"
-                    value={bookingData.vehicleInfo.brand}
-                    onChange={(e) => updateBookingData('vehicleInfo', { brand: e.target.value })}
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                    placeholder="napr. Škoda"
-                  />
-                </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Model vozidla *
-                  </label>
-                  <input
-                    type="text"
-                    value={bookingData.vehicleInfo.model}
-                    onChange={(e) => updateBookingData('vehicleInfo', { model: e.target.value })}
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                    placeholder="napr. Octavia"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Rok výroby *
-                  </label>
-                  <input
-                    type="number"
-                    value={bookingData.vehicleInfo.year}
-                    onChange={(e) => updateBookingData('vehicleInfo', { year: e.target.value })}
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                    placeholder="napr. 2018"
-                    min="1980"
-                    max="2024"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Evidenčné číslo (EČV) *
-                  </label>
-                  <input
-                    type="text"
-                    value={bookingData.vehicleInfo.licensePlate}
-                    onChange={(e) => updateBookingData('vehicleInfo', { licensePlate: e.target.value.toUpperCase() })}
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                    placeholder="napr. BA123AB"
-                  />
-                </div>
-
-                <div className="md:col-span-2">
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    VIN číslo *
-                  </label>
-                  <input
-                    type="text"
-                    value={bookingData.vehicleInfo.vin}
-                    onChange={(e) => updateBookingData('vehicleInfo', { vin: e.target.value.toUpperCase() })}
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                    placeholder="17-miestne VIN číslo"
-                    maxLength={17}
-                  />
-                </div>
+              <div className="max-w-md">
+                <label className="mb-2 block text-sm font-medium text-gray-700">
+                  Evidenčné číslo vozidla (EČV) *
+                </label>
+                <input
+                  type="text"
+                  value={bookingData.vehicleInfo.licensePlate}
+                  onChange={(e) => updateBookingData('vehicleInfo', { licensePlate: e.target.value.toUpperCase() })}
+                  className="w-full rounded-lg border border-gray-300 p-3 focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
+                  placeholder="napr. BA123AB"
+                  autoComplete="off"
+                />
               </div>
             </div>
           )}
@@ -434,65 +379,75 @@ export default function BookingPage() {
           {currentStep === 4 && (
             <div>
               <h2 className="text-2xl font-bold text-gray-900 mb-6">Kontaktné údaje</h2>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+              <div className="mb-8 max-w-xl space-y-6">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Meno *
+                  <label className="mb-2 block text-sm font-medium text-gray-700">
+                    Meno a priezvisko *
                   </label>
                   <input
                     type="text"
-                    value={bookingData.customerInfo.firstName}
-                    onChange={(e) => updateBookingData('customerInfo', { firstName: e.target.value })}
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                    placeholder="Vaše meno"
+                    value={bookingData.customerInfo.fullName}
+                    onChange={(e) => updateBookingData('customerInfo', { fullName: e.target.value })}
+                    className="w-full rounded-lg border border-gray-300 p-3 focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
+                    placeholder="Vaše meno a priezvisko"
+                    autoComplete="name"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Priezvisko *
-                  </label>
-                  <input
-                    type="text"
-                    value={bookingData.customerInfo.lastName}
-                    onChange={(e) => updateBookingData('customerInfo', { lastName: e.target.value })}
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                    placeholder="Vaše priezvisko"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="mb-2 block text-sm font-medium text-gray-700">
                     Telefónne číslo *
                   </label>
                   <input
                     type="tel"
                     value={bookingData.customerInfo.phone}
                     onChange={(e) => updateBookingData('customerInfo', { phone: e.target.value })}
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    className="w-full rounded-lg border border-gray-300 p-3 focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
                     placeholder="+421 xxx xxx xxx"
+                    autoComplete="tel"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="mb-2 block text-sm font-medium text-gray-700">
                     E-mail *
                   </label>
                   <input
                     type="email"
                     value={bookingData.customerInfo.email}
                     onChange={(e) => updateBookingData('customerInfo', { email: e.target.value })}
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    className="w-full rounded-lg border border-gray-300 p-3 focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
                     placeholder="vas.email@example.com"
+                    autoComplete="email"
                   />
                 </div>
+
+                <div>
+                  <label className="mb-2 block text-sm font-medium text-gray-700">
+                    Potvrdenie e-mailu *
+                  </label>
+                  <input
+                    type="email"
+                    value={bookingData.customerInfo.emailConfirm}
+                    onChange={(e) => updateBookingData('customerInfo', { emailConfirm: e.target.value })}
+                    className="w-full rounded-lg border border-gray-300 p-3 focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
+                    placeholder="Zadajte e-mail znova"
+                    autoComplete="off"
+                  />
+                </div>
+
+                {bookingData.customerInfo.email &&
+                  bookingData.customerInfo.emailConfirm &&
+                  bookingData.customerInfo.email.trim() !== bookingData.customerInfo.emailConfirm.trim() && (
+                    <p className="text-sm text-red-600">E-mailové adresy sa musia zhodovať.</p>
+                  )}
               </div>
 
               {/* Summary */}
-              <div className="mt-8 p-6 bg-gray-50 rounded-xl">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">Súhrn rezervácie</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+              <div className="mt-8 rounded-xl bg-gray-50 p-6">
+                <h3 className="mb-4 text-lg font-semibold text-gray-900">Súhrn rezervácie</h3>
+                <div className="grid grid-cols-1 gap-4 text-sm md:grid-cols-2">
                   <div>
                     <strong>Služba:</strong> {serviceTypes.find(s => s.id === bookingData.serviceType)?.name}
                   </div>
@@ -503,7 +458,10 @@ export default function BookingPage() {
                     <strong>Čas:</strong> {bookingData.time}
                   </div>
                   <div>
-                    <strong>Vozidlo:</strong> {bookingData.vehicleInfo.brand} {bookingData.vehicleInfo.model} ({bookingData.vehicleInfo.year})
+                    <strong>EČV:</strong> {bookingData.vehicleInfo.licensePlate}
+                  </div>
+                  <div className="md:col-span-2">
+                    <strong>Meno:</strong> {bookingData.customerInfo.fullName}
                   </div>
                 </div>
               </div>

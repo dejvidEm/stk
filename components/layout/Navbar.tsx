@@ -59,6 +59,7 @@ export default function Navbar() {
     { href: `${centerInfo.basePath}/galeria`, label: 'Galéria' },
     { href: `${centerInfo.basePath}/cennik`, label: 'Cenník' },
     { href: `${centerInfo.basePath}/rezervacia`, label: 'Rezervácia' },
+    { href: `${centerInfo.basePath}/caste-otazky`, label: 'FAQ' },
     { href: `${centerInfo.basePath}/kontakt`, label: 'Kontakt' },
   ];
 

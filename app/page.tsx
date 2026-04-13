@@ -5,6 +5,7 @@ import {
   MapPin, 
   ExternalLink, 
   Shield,
+  Leaf,
   CheckCircle,
   Clock,
   Star,
@@ -24,6 +25,7 @@ import CarwashBanner from '@/components/CarwashBanner';
 import SaturdayInfoBanner from '@/components/SaturdayInfoBanner';
 import STKReminderLeadMagnet from '@/components/STKReminderLeadMagnet';
 import STKPriceCalculator from '@/components/STKPriceCalculator';
+import STKLehotyKontrolSection from '@/components/STKLehotyKontrolSection';
 import MainFAQ from '@/components/MainFAQ';
 import LocationFAQ from '@/components/LocationFAQ';
 import ReviewsSlider from '@/components/ReviewsSlider';
@@ -442,12 +444,90 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section id="nase-sluzby" className="scroll-mt-24 py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-12 text-center">
+            <h2 className="mb-4 text-3xl font-bold text-brand-gray-900 md:text-4xl">
+              Naše služby
+            </h2>
+            <p className="mx-auto max-w-3xl text-xl text-brand-gray-600">
+              Technické kontroly, emisné kontroly a kontrola originality v našich prevádzkach v Orave.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+            <div className="rounded-xl border border-brand-gray-100 bg-brand-gray-50/80 p-8 shadow-lg transition-shadow hover:shadow-xl">
+              <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-lg bg-brand-red-100">
+                <Shield className="h-8 w-8 text-brand-red-600" />
+              </div>
+              <h3 className="mb-3 text-2xl font-bold text-brand-gray-900">Technická kontrola (STK)</h3>
+              <p className="mb-6 text-brand-gray-600">
+                Komplexná technická prehliadka vozidla podľa platných predpisov SR.
+              </p>
+              <Link
+                href="/sluzby"
+                className="inline-flex items-center font-semibold text-brand-red-600 hover:text-brand-red-700"
+              >
+                Viac informácií
+                <ArrowRight className="ml-1 h-4 w-4" />
+              </Link>
+            </div>
+            <div className="rounded-xl border border-brand-gray-100 bg-brand-gray-50/80 p-8 shadow-lg transition-shadow hover:shadow-xl">
+              <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-lg bg-brand-green-100">
+                <Leaf className="h-8 w-8 text-brand-green-600" />
+              </div>
+              <h3 className="mb-3 text-2xl font-bold text-brand-gray-900">Emisná kontrola (EK)</h3>
+              <p className="mb-6 text-brand-gray-600">
+                Meranie emisií pre benzínové a dieselové vozidlá.
+              </p>
+              <Link
+                href="/sluzby"
+                className="inline-flex items-center font-semibold text-brand-red-600 hover:text-brand-red-700"
+              >
+                Viac informácií
+                <ArrowRight className="ml-1 h-4 w-4" />
+              </Link>
+            </div>
+            <div className="rounded-xl border border-brand-gray-100 bg-brand-gray-50/80 p-8 shadow-lg transition-shadow hover:shadow-xl">
+              <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-lg bg-brand-gray-100">
+                <Calendar className="h-8 w-8 text-brand-gray-600" />
+              </div>
+              <h3 className="mb-3 text-2xl font-bold text-brand-gray-900">Opakovaná kontrola</h3>
+              <p className="mb-6 text-brand-gray-600">
+                Kontrola odstránenia závad po predchádzajúcej STK.
+              </p>
+              <Link
+                href="/sluzby"
+                className="inline-flex items-center font-semibold text-brand-red-600 hover:text-brand-red-700"
+              >
+                Viac informácií
+                <ArrowRight className="ml-1 h-4 w-4" />
+              </Link>
+            </div>
+          </div>
+          <div className="mt-10 text-center">
+            <Link
+              href="/sluzby"
+              className="inline-flex items-center rounded-lg bg-brand-red-600 px-8 py-3 font-semibold text-white shadow-md transition-colors hover:bg-brand-red-700"
+            >
+              Kompletný prehľad služieb
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Price Calculator Section */}
       <section className="py-16 bg-gradient-to-br from-brand-gray-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <STKPriceCalculator />
           </div>
+        </div>
+      </section>
+
+      <section className="py-12 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <STKLehotyKontrolSection />
         </div>
       </section>
 
@@ -850,7 +930,7 @@ export default function HomePage() {
                   <h4 className="font-semibold text-lg mb-4 text-white">Služby</h4>
                   <ul className="space-y-3">
                     <li>
-                      <Link href="/sluzby" className="text-brand-gray-300 hover:text-white transition-colors text-sm flex items-center group">
+                      <Link href="/#nase-sluzby" className="text-brand-gray-300 hover:text-white transition-colors text-sm flex items-center group">
                         <span>Naše služby</span>
                         <Car className="h-3 w-3 ml-2 opacity-0 group-hover:opacity-100 transition-opacity" />
                       </Link>
@@ -951,7 +1031,7 @@ export default function HomePage() {
           <div className="border-t border-brand-gray-800 pt-8">
             <div className="flex flex-col items-center gap-4">
               <div className="order-2 text-brand-gray-400 text-sm text-center">
-                <p>&copy; 2025 EMADE, spol. s r.o. Všetky práva vyhradené.</p>
+                <p>&copy; 2026 EMADE, spol. s r.o. Všetky práva vyhradené.</p>
                 <p className="mt-1">STK Centrum Orava - Profesionálne služby technickej kontroly vozidiel</p>
                 <div className="mt-10 flex flex-col items-center">
                   <a

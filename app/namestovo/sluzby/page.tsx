@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useState } from 'react';
 import { 
   Shield, 
@@ -23,7 +24,8 @@ import {
   Heart,
   Highlighter,
   Wrench,
-  Flame
+  Flame,
+  Fingerprint
 } from 'lucide-react';
 import {
   Dialog,
@@ -67,29 +69,32 @@ export default function ServicesPage() {
       validity: '2 roky (benzínové motory), 1 rok (dieselové motory)',
       checks: [
         'Meranie CO pre benzínové motory',
-        'Meranie nepriesvitnosti pre dieselové motory',
         'Kontrola funkčnosti katalyzátora',
         'Kontrola tesnosti výfukového systému',
         'Vizuálna kontrola emisného systému'
       ],
       requirements: [
         'Osvedčenie o technickom preukaze, časť I alebo časť II (papierový alebo kartička)',
+        'Pri opakovanej emisnej kontrole prípadne protokol alebo oznámenie z predchádzajúcej EK podľa situácie',
       ]
     },
     recheck: {
-      title: 'Opakovaná kontrola',
+      title: 'Ostatné kontroly',
       icon: RotateCcw,
-      description: 'Kontrola odstránenia závad zistených pri prvej kontrole',
-      duration: '15-30 minút',
-      validity: 'Podľa typu závady',
+      description: 'Opakovaná kontrola závad, administratívna kontrola a predkontrola pred riadnou STK alebo EK.',
+      duration: 'Podľa typu kontroly (spravidla 15–45 minút)',
+      validity: 'Podľa typu kontroly',
       checks: [
-        'Kontrola odstránenia zistených závad',
-        'Overenie správnosti opráv',
-        'Čiastočná kontrola súvisiacich systémov',
-        'Vydanie nálepky pri úspešnom absolvovaní'
+        'Opakovaná kontrola',
+        'Administratívna kontrola',
+        'Predkontrola',
+        'Kontrola originality'
       ],
       requirements: [
         'Osvedčenie o technickom preukaze, časť I alebo časť II (papierový alebo kartička)',
+        'Pri opakovanej kontrole prípadne protokol alebo oznámenie z predchádzajúcej STK podľa situácie',
+        'Pri administratívnej kontrole a predkontrole odporúčame dohodnúť rozsah vopred (telefonicky alebo na mieste)',
+        'Pri kontrole originality: technický preukaz (časť I a II), občiansky preukaz majiteľa a prítomné vozidlo',
       ]
     },
     additional: {
@@ -100,8 +105,8 @@ export default function ServicesPage() {
       validity: 'Rôzne',
       checks: [
         'Expresné vybavenie - prednostné vybavenie nasledujúci kalendárny deň',
-        'Umiestnenie a upevnenie prideleného náhradného VIN čísla',
-        'Razenie VIN čísla pre všetky kategórie vozidiel',
+        'Vyrážanie VIN čísla — vyrážame pridelené náhradné identifikačné čísla vozidiel (VIN čísla) pre všetky kategórie vozidiel',
+        'Predkontrola pred STK a EK',
         'Meranie CO2',
         'Individuálne riešenia podľa požiadaviek zákazníka'
       ],
@@ -118,46 +123,42 @@ export default function ServicesPage() {
     {
       type: 'Osobné vozidlá',
       icon: Car,
-      description: 'Vozidlá kategórie M1 do 3,5t',
       frequency: 'Každé 2 roky',
       note: 'Prvá STK po 4 rokoch od výroby'
     },
     {
       type: 'Nákladné vozidlá',
       icon: Truck,
-      description: 'Vozidlá kategórie N nad 3,5t',
       frequency: 'Každý rok',
       note: 'Prvá STK po 1 roku od výroby'
     },
     {
       type: 'Motocykle',
       icon: Bike,
-      description: 'Vozidlá kategórie L',
-      frequency: 'Každé 2 roky',
+      frequency: 'Každé 4 roky',
       note: 'Prvá STK po 4 rokoch od výroby'
     },
     {
       type: 'Traktor',
       icon: Tractor,
-      description: 'Vozidlá kategórie T',
-      frequency: 'Podľa použitia (často každý rok)',
+      frequency: 'Každé 4 roky',
       note: 'Platí pre traktory zaradené do premávky na pozemných komunikáciách.'
     },
     {
       type: 'Autobus',
       icon: Bus,
-      description: 'Autobusy kategórií M2 a M3',
       frequency: 'Každý rok',
       note: 'Prvá STK po 1 roku od výroby'
     },
     {
       type: 'Príves/Náves',
       icon: Container,
-      description: 'Prípojné vozidlá kategórie O',
       frequency: 'Každé 2 roky (bežné prívesy)',
       note: 'Interval podľa celkovej hmotnostnej kategórie prívesu alebo návesu.'
     }
   ];
+
+  const lehotyKontrolHref = '/namestovo#nase-sluzby';
 
   const vehiclesWithoutEk = [
     {
@@ -358,7 +359,9 @@ export default function ServicesPage() {
                 >
                   <IconComp className="h-5 w-5" />
                   <span className="hidden sm:inline">{service.title}</span>
-                  <span className="sm:hidden">{key.toUpperCase()}</span>
+                  <span className="sm:hidden">
+                    {key === 'recheck' ? 'Ostatné' : key === 'additional' ? 'Doplnkové' : key.toUpperCase()}
+                  </span>
                 </button>
               );
             })}
@@ -392,12 +395,44 @@ export default function ServicesPage() {
                       </p>
                     </div>
 
-                    {/* VIN číslo */}
+                    {/* Vyrážanie VIN čísla */}
                     <div className="bg-blue-50 border border-blue-200 rounded-xl p-6">
-                      <h3 className="text-xl font-bold text-blue-900 mb-3">Umiestnenie a upevnenie VIN čísla</h3>
-                      <p className="text-blue-800 leading-relaxed">
-                        Tzv. razenie VIN čísla pre všetky kategórie vozidiel.
+                      <h3 className="text-xl font-bold text-blue-900 mb-3">Vyrážanie VIN čísla</h3>
+                      <p className="text-blue-800 leading-relaxed mb-3">
+                        Vyrážame pridelené náhradné identifikačné čísla vozidiel (VIN čísla) pre všetky kategórie vozidiel.
                       </p>
+                      <div className="bg-blue-100 p-3 rounded-lg">
+                        <p className="text-blue-900 font-semibold text-sm">
+                          Cena služby: 140,00 € s DPH<br />
+                          <span className="text-blue-700 font-normal">(nezahŕňa cenu za výkon kontroly)</span>
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Predkontrola */}
+                    <div className="rounded-xl border border-blue-200 bg-blue-50 p-6 md:col-span-2">
+                      <h3 className="mb-3 text-xl font-bold text-blue-900">Predkontrola</h3>
+                      <p className="mb-3 text-sm font-semibold text-blue-900">Hlavné benefity predkontroly</p>
+                      <ol className="mb-4 list-decimal space-y-3 pl-5 text-sm leading-relaxed text-blue-800">
+                        <li>
+                          <span className="font-semibold text-blue-900">Úspora času a peňazí:</span>{' '}
+                          Vyhnete sa poplatkom za opakované kontroly a zbytočným servisným úkonom navyše.
+                        </li>
+                        <li>
+                          <span className="font-semibold text-blue-900">Čistá história vozidla:</span>{' '}
+                          Predídete záznamom o „dočasnej spôsobilosti“ alebo „nespôsobilosti“ v systéme, čo priaznivo ovplyvňuje hodnotu vášho vozidla pri budúcom predaji.
+                        </li>
+                        <li>
+                          <span className="font-semibold text-blue-900">Okamžitý prechod na STK:</span>{' '}
+                          Ak je vozidlo v stopercentnom stave, vybavíte oficiálnu kontrolu ihneď na mieste.
+                        </li>
+                      </ol>
+                      <div className="rounded-lg bg-blue-100 p-3">
+                        <p className="text-sm font-semibold text-blue-900">
+                          od 19,90 € s DPH (podľa cenníka)<br />
+                          <span className="text-xs font-normal text-blue-700">(nezahŕňa cenu za riadnu STK/EK)</span>
+                        </p>
+                      </div>
                     </div>
 
                     {/* STK Parking */}
@@ -496,7 +531,7 @@ export default function ServicesPage() {
                 </div>
               ) : (
                 <>
-                  <div className="lg:col-span-2">
+                  <div className={activeTab === 'recheck' ? 'lg:col-span-3' : 'lg:col-span-2'}>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                       <div className="bg-gray-50 p-6 rounded-xl">
                         <div className="flex items-center space-x-2 mb-3">
@@ -517,7 +552,9 @@ export default function ServicesPage() {
                     </div>
 
                     <div className="mb-8">
-                      <h3 className="text-xl font-bold text-gray-900 mb-4">Čo kontrolujeme</h3>
+                      <h3 className="text-xl font-bold text-gray-900 mb-4">
+                        {activeTab === 'recheck' ? 'Typy kontrol' : 'Čo kontrolujeme'}
+                      </h3>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                         {currentService.checks.map((check, index) => (
                           <div key={index} className="flex items-center space-x-3">
@@ -529,7 +566,8 @@ export default function ServicesPage() {
                     </div>
                   </div>
 
-                  {/* Requirements */}
+                  {/* Requirements (STK/EK: sidebar; Ostatné: full width below cards) */}
+                  {activeTab !== 'recheck' && (
                   <div>
                     <div className="bg-orange-50 border border-orange-200 rounded-xl p-6">
                       <div className="flex items-center space-x-2 mb-4">
@@ -546,6 +584,7 @@ export default function ServicesPage() {
                       </ul>
                     </div>
                   </div>
+                  )}
                 </>
               )}
 
@@ -586,16 +625,58 @@ export default function ServicesPage() {
               )}
 
               {activeTab === 'recheck' && (
-              <div className="bg-red-100 border border-red-200 p-4 rounded-lg">
-                <div className="flex items-start space-x-3">
-                  <AlertTriangle className="h-5 w-5 text-red-600 flex-shrink-0 mt-0.5" />
-                  <div>
-                    <h4 className="font-semibold text-red-800 mb-2">
-                      Dôležité upozornenie
-                    </h4>
-                    <p className="text-red-800 text-sm">
-                      Treba ju vykonať do 60 kalendárnych dní.
+              <div className="space-y-4">
+                <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
+                  <div className="rounded-lg border border-blue-200 bg-blue-50 p-4">
+                    <h4 className="mb-2 font-semibold text-blue-900">Opakovaná kontrola</h4>
+                    <p className="text-sm leading-relaxed text-blue-900">
+                      Overenie odstránenia závad zistených pri predchádzajúcej STK. Pri určitých závadách ju treba stihnúť do{' '}
+                      <strong>60 kalendárnych dní</strong> podľa oznámenia.
                     </p>
+                  </div>
+                  <div className="rounded-lg border border-brand-gray-200 bg-brand-gray-50 p-4">
+                    <h4 className="mb-2 font-semibold text-brand-gray-900">Administratívna kontrola</h4>
+                    <p className="text-sm leading-relaxed text-brand-gray-700">
+                      Kontrola podľa dohodnutého administratívneho alebo technického rozsahu — vhodná pri zmene údajov, dovezených vozidlách alebo podľa pokynov orgánov.
+                    </p>
+                  </div>
+                  <div className="rounded-lg border border-green-200 bg-green-50 p-4">
+                    <h4 className="mb-2 font-semibold text-green-900">Predkontrola</h4>
+                    <p className="text-sm leading-relaxed text-green-900">
+                      Prípravná kontrola pred riadnou STK a/alebo EK v dohodnutom rozsahu (technická časť, emisná časť alebo oboje). Ceny nájdete v cenníku.
+                    </p>
+                  </div>
+                  <div className="rounded-lg border border-brand-red-200 bg-gradient-to-br from-brand-red-50 to-brand-red-100/80 p-4">
+                    <div className="mb-2 flex items-center gap-2">
+                      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-brand-red-600">
+                        <Fingerprint className="h-5 w-5 text-white" aria-hidden />
+                      </div>
+                      <h4 className="font-semibold text-brand-gray-900">Kontrola originality</h4>
+                    </div>
+                    <p className="text-sm leading-relaxed text-brand-gray-800">
+                      Overenie originality vozidla podľa platných predpisov — zhodu VIN a ďalších identifikačných údajov s technickým preukazom, prítomnosť vozidla. Vydáme protokol s platnosťou{' '}
+                      <strong>3 mesiace</strong> (spravidla <strong>15–20 minút</strong>).
+                    </p>
+                    <p className="mt-2 text-xs text-brand-gray-600">
+                      Najčastejšie pri prvej registrácii v SR, zmene majiteľa alebo pri pochybnostiach o vozidle.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="mt-8 w-full border-t border-gray-100 pt-8">
+                  <div className="rounded-xl border border-orange-200 bg-orange-50 p-6 md:p-8">
+                    <div className="mb-5 flex items-center gap-2">
+                      <FileText className="h-6 w-6 text-orange-600" />
+                      <h3 className="text-lg font-semibold text-gray-900 md:text-xl">Potrebné doklady</h3>
+                    </div>
+                    <ul className="grid grid-cols-1 gap-x-10 gap-y-3 md:grid-cols-2">
+                      {currentService.requirements.map((req, index) => (
+                        <li key={index} className="flex items-start gap-3">
+                          <div className="mt-2 h-2 w-2 shrink-0 rounded-full bg-orange-500" />
+                          <span className="text-sm leading-relaxed text-gray-700 md:text-base">{req}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
               </div>
@@ -642,20 +723,30 @@ export default function ServicesPage() {
             {vehicleTypes.map((vehicle, index) => {
               const VehicleIcon = vehicle.icon;
               return (
-                <div key={index} className="bg-white rounded-xl shadow-lg p-8 text-center hover:shadow-xl transition-shadow">
-                  <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <VehicleIcon className="h-8 w-8 text-blue-600" />
+                <Link
+                  key={index}
+                  href={lehotyKontrolHref}
+                  className="group flex flex-col rounded-xl bg-white p-8 text-center shadow-lg transition-shadow hover:shadow-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-red-600"
+                >
+                  <div className="flex flex-1 flex-col">
+                    <div className="bg-blue-100 mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full">
+                      <VehicleIcon className="h-8 w-8 text-blue-600" />
+                    </div>
+                    <h3 className="mb-3 text-xl font-bold text-gray-900">{vehicle.type}</h3>
+                    <div className="mb-4 rounded-lg bg-gray-50 p-4">
+                      <p className="font-semibold text-gray-900">{vehicle.frequency}</p>
+                    </div>
+                    <div className="flex items-start space-x-2">
+                      <Info className="mt-1 h-4 w-4 flex-shrink-0 text-blue-500" />
+                      <p className="text-left text-sm text-gray-600">{vehicle.note}</p>
+                    </div>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">{vehicle.type}</h3>
-                  <p className="text-gray-600 mb-4">{vehicle.description}</p>
-                  <div className="bg-gray-50 rounded-lg p-4 mb-4">
-                    <p className="font-semibold text-gray-900">{vehicle.frequency}</p>
+                  <div className="mt-0 max-h-0 overflow-hidden opacity-0 transition-[max-height,margin-top,opacity] duration-200 group-hover:mt-4 group-hover:max-h-16 group-hover:opacity-100 group-focus-visible:mt-4 group-focus-visible:max-h-16 group-focus-visible:opacity-100">
+                    <span className="block border-t border-gray-100 pt-3 text-sm font-semibold text-blue-600 underline decoration-2 underline-offset-4">
+                      Všetky kategórie
+                    </span>
                   </div>
-                  <div className="flex items-start space-x-2">
-                    <Info className="h-4 w-4 text-blue-500 mt-1 flex-shrink-0" />
-                    <p className="text-sm text-gray-600 text-left">{vehicle.note}</p>
-                  </div>
-                </div>
+                </Link>
               );
             })}
           </div>

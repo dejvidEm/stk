@@ -1,5 +1,6 @@
 import { Car } from 'lucide-react';
 import Link from 'next/link';
+import PredkontrolaCennikFaq from '@/components/PredkontrolaCennikFaq';
 
 export default function PricingPage() {
   return (
@@ -50,6 +51,12 @@ export default function PricingPage() {
                     <td className="px-6 py-4 text-center text-gray-700">L3, L4, L6</td>
                     <td className="px-6 py-4 text-center text-gray-900 font-semibold">39,90 €</td>
                     <td className="px-6 py-4 text-center text-gray-900 font-semibold">20,90 €</td>
+                  </tr>
+                  <tr className="hover:bg-gray-50">
+                    <td className="px-6 py-4 font-medium text-gray-900">Predkontrola</td>
+                    <td className="px-6 py-4 text-center text-gray-700">Všetky kategórie</td>
+                    <td className="px-6 py-4 text-center text-gray-900 font-semibold">19,90 €</td>
+                    <td className="px-6 py-4 text-center text-gray-900 font-semibold">-</td>
                   </tr>
                   <tr className="hover:bg-gray-50 bg-red-50">
                     <td className="px-6 py-4 font-medium text-gray-900">Osobné motorové vozidlo, štvorkolky</td>
@@ -179,6 +186,12 @@ export default function PricingPage() {
                 </thead>
                 <tbody className="divide-y divide-gray-200">
                   <tr className="hover:bg-gray-50">
+                    <td className="px-6 py-4 font-medium text-gray-900">Predkontrola</td>
+                    <td className="px-6 py-4 text-center text-gray-700">Všetky kategórie</td>
+                    <td className="px-6 py-4 text-center text-gray-900 font-semibold">19,90 €</td>
+                    <td className="px-6 py-4 text-center text-gray-900 font-semibold">-</td>
+                  </tr>
+                  <tr className="hover:bg-gray-50">
                     <td className="px-6 py-4 font-medium text-gray-900">Osobné vozidlo benzín bez katalyzátora, s RKAT, OBD, Diesel</td>
                     <td className="px-6 py-4 text-center text-gray-700">M1, N1</td>
                     <td className="px-6 py-4 text-center text-gray-900 font-semibold">46,90 €</td>
@@ -265,6 +278,12 @@ export default function PricingPage() {
         </div>
       </section>
 
+      <section className="py-12 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <PredkontrolaCennikFaq />
+        </div>
+      </section>
+
       {/* Additional Services Section */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -283,10 +302,10 @@ export default function PricingPage() {
                 <div className="bg-brand-red-100 p-2 rounded-lg">
                   <Car className="h-6 w-6 text-brand-red-600" />
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900">Razenie VIN čísla</h3>
+                <h3 className="text-xl font-semibold text-gray-900">Vyrážanie VIN čísla</h3>
               </div>
               <p className="text-gray-600 mb-4">
-                Odborné razenie identifikačného čísla vozidla (VIN).
+                Vyrážame pridelené náhradné identifikačné čísla vozidiel (VIN čísla) pre všetky kategórie vozidiel.
               </p>
               <div className="text-2xl font-bold text-brand-red-600">140,00 €</div>
             </div>
@@ -328,6 +347,31 @@ export default function PricingPage() {
                 Kompletné umytie vozidla počas kontroly.
               </p>
               <div className="text-2xl font-bold text-brand-red-600">Na vyžiadanie</div>
+            </div>
+
+            <div className="bg-gray-50 rounded-xl p-6 hover:shadow-lg transition-shadow md:col-span-2 lg:col-span-3">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="bg-brand-red-100 p-2 rounded-lg">
+                  <Car className="h-6 w-6 text-brand-red-600" />
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900">Predkontrola</h3>
+              </div>
+              <p className="mb-3 text-sm font-semibold text-gray-900">Hlavné benefity predkontroly</p>
+              <ol className="mb-4 list-decimal space-y-3 pl-5 text-sm leading-relaxed text-gray-600">
+                <li>
+                  <span className="font-medium text-gray-800">Úspora času a peňazí:</span>{' '}
+                  Vyhnete sa poplatkom za opakované kontroly a zbytočným servisným úkonom navyše.
+                </li>
+                <li>
+                  <span className="font-medium text-gray-800">Čistá história vozidla:</span>{' '}
+                  Predídete záznamom o „dočasnej spôsobilosti“ alebo „nespôsobilosti“ v systéme, čo priaznivo ovplyvňuje hodnotu vášho vozidla pri budúcom predaji.
+                </li>
+                <li>
+                  <span className="font-medium text-gray-800">Okamžitý prechod na STK:</span>{' '}
+                  Ak je vozidlo v stopercentnom stave, vybavíte oficiálnu kontrolu ihneď na mieste.
+                </li>
+              </ol>
+              <div className="text-2xl font-bold text-brand-red-600">od 19,90 €</div>
             </div>
           </div>
         </div>
