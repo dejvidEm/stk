@@ -61,7 +61,7 @@ export default function DemoPage() {
         <div 
           className="absolute inset-0 bg-cover bg-center opacity-20"
           style={{
-            backgroundImage: 'url("/images/namestovo.webp")',
+            backgroundImage: 'url("/images/namestovo/uvod-karta.png")',
           }}
         ></div>
         
@@ -173,6 +173,84 @@ export default function DemoPage() {
         </div>
       </section>
 
+      {/* Prevádzka — exteriér */}
+      <section className="border-b border-brand-gray-100 bg-white py-14">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <h2 className="text-lg font-semibold tracking-tight text-brand-gray-900">
+                Naša prevádzka v Námestove
+              </h2>
+              <p className="mt-1 text-sm text-brand-gray-500">
+                STK, kontrola originality a zázemie pre zákazníkov.
+              </p>
+            </div>
+            <Link
+              href="/namestovo/galeria"
+              className="shrink-0 text-sm font-medium text-brand-red-600 transition-colors hover:text-brand-red-700"
+            >
+              Viac fotografií →
+            </Link>
+          </div>
+          <figure className="overflow-hidden rounded-xl bg-brand-gray-100">
+            <img
+              src="/images/namestovo/exterier.png"
+              alt="Exteriér STK Námestovo — haly kontroly a originality"
+              className="h-auto max-h-[380px] w-full object-cover object-center sm:max-h-[460px]"
+              loading="lazy"
+            />
+          </figure>
+        </div>
+      </section>
+
+      {/* Kríž pri prevádzke */}
+      <section className="border-b border-brand-gray-100 bg-brand-gray-50/70 py-14">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <h2 className="text-lg font-semibold tracking-tight text-brand-gray-900">
+                Kríž pri našej prevádzke
+              </h2>
+              <p className="mt-1 max-w-2xl text-sm text-brand-gray-500">
+                Pamätník na hranici pozemku — obnova z roku 2023. Krátky príbeh nájdete v často kladených otázkach.
+              </p>
+            </div>
+            <Link
+              href="/namestovo/caste-otazky"
+              className="shrink-0 text-sm font-medium text-brand-red-600 transition-colors hover:text-brand-red-700"
+            >
+              FAQ o kríži →
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-5 lg:gap-6">
+            <figure className="aspect-[4/3] overflow-hidden rounded-xl bg-brand-gray-100">
+              <img
+                src="/images/namestovo/kriz-pohlad.png"
+                alt="Kríž a zázemie revitalizovaného priestoru pri STK Námestovo"
+                className="h-full w-full object-cover"
+                loading="lazy"
+              />
+            </figure>
+            <figure className="aspect-[4/3] overflow-hidden rounded-xl bg-brand-gray-100">
+              <img
+                src="/images/namestovo/kriz-detail.png"
+                alt="Detail kríža s nápisom z roku 1889"
+                className="h-full w-full object-cover"
+                loading="lazy"
+              />
+            </figure>
+            <figure className="aspect-[4/3] overflow-hidden rounded-xl bg-brand-gray-100">
+              <img
+                src="/images/namestovo/kriz-letecky.png"
+                alt="Letecký pohľad na pamätník a okolie"
+                className="h-full w-full object-cover"
+                loading="lazy"
+              />
+            </figure>
+          </div>
+        </div>
+      </section>
+
       {/* Services Preview */}
       <section id="nase-sluzby" className="scroll-mt-24 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -264,7 +342,7 @@ export default function DemoPage() {
               <ul className="space-y-2 mb-6">
                 <li className="flex items-center text-brand-gray-600">
                   <CheckCircle className="h-5 w-5 text-brand-green-500 mr-2" />
-                  Bez čakania v rade
+                  Kontrola chýb z predchádzajúcej kontroly
                 </li>
                 <li className="flex items-center text-brand-gray-600">
                   <CheckCircle className="h-5 w-5 text-brand-green-500 mr-2" />

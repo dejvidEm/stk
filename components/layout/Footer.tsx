@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Car, Phone, Mail, MapPin, Clock, Facebook, Instagram, ExternalLink, Globe } from 'lucide-react';
+import { Iso37001AllLocationsBar, Iso37001CenterLink, type Iso37001LocationId } from './FooterIso37001';
 
 /** Display email without @ to reduce bot harvesting; mailto is built on click. */
 function ObfuscatedEmail({ user, domain }: { user: string; domain: string }) {
@@ -53,9 +54,20 @@ export default function Footer() {
     }
   };
 
-  const centers = [
+  const centers: Array<{
+    name: string;
+    locationId: Iso37001LocationId;
+    address: string;
+    phone: string;
+    emailUser: string;
+    emailDomain: string;
+    hours: string;
+    url: string;
+    isExternal: boolean;
+  }> = [
     {
       name: 'STK Námestovo',
+      locationId: 'namestovo',
       address: 'Za vodou 1068, 029 01 Námestovo',
       phone: '043 5520390, 0904 386146',
       emailUser: 'info',
@@ -66,6 +78,7 @@ export default function Footer() {
     },
     {
       name: 'STK Tvrdošín',
+      locationId: 'tvrdosin',
       address: 'Vojtaššákova 908, 027 44 Tvrdošín',
       phone: '043 5323499, 0948 032189',
       emailUser: 'info',
@@ -76,6 +89,7 @@ export default function Footer() {
     },
     {
       name: 'STK Lokca',
+      locationId: 'lokca',
       address: 'Polianka 753, 029 51 Lokca',
       phone: '0948 422333',
       emailUser: 'info',
@@ -148,6 +162,8 @@ export default function Footer() {
                       <Clock className="h-5 w-5 text-brand-green-400 flex-shrink-0" />
                       <span className="text-brand-gray-300 text-sm">{center.hours}</span>
                     </div>
+
+                    <Iso37001CenterLink locationId={center.locationId} />
                   </div>
                 </div>
               ))}
@@ -312,6 +328,10 @@ export default function Footer() {
               <Link href="#" className="text-brand-gray-400 hover:text-white transition-colors">
                 Obchodné podmienky
               </Link>
+            </div>
+
+            <div className="order-3 w-full pt-6 mt-2 border-t border-brand-gray-800">
+              <Iso37001AllLocationsBar />
             </div>
           </div>
         </div>

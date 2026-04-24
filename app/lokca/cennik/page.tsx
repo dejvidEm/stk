@@ -10,7 +10,7 @@ export default function PricingPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Cenník služieb
+              Cenník našich služieb
             </h1>
             <p className="text-xl md:text-2xl opacity-90 max-w-3xl mx-auto">
               Prehľadný cenník všetkých našich služieb a typov vozidiel pre STK v Lokci
@@ -304,6 +304,9 @@ export default function PricingPage() {
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900">Vyrážanie VIN čísla</h3>
               </div>
+              <p className="mb-3 rounded-lg border border-gray-200 bg-amber-50 px-3 py-2 text-sm font-semibold text-gray-900">
+                Vyrážanie VIN sa vykonáva len na kontrole originality (KO) — výhradne v prevádzke STK Námestovo.
+              </p>
               <p className="text-gray-600 mb-4">
                 Vyrážame pridelené náhradné identifikačné čísla vozidiel (VIN čísla) pre všetky kategórie vozidiel.
               </p>

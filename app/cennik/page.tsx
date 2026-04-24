@@ -31,7 +31,7 @@ export default function PricingPage() {
       'stk-ek': { price: 35, oldPrice: 45, description: 'Kombinovaná kontrola STK + EK', savings: 10 },
       recheck: { price: 10, oldPrice: 15, description: 'Opakovaná kontrola závad' },
       'extra-services': [
-        { name: 'Vyrážanie VIN čísla', price: 140, description: 'Vyrážame pridelené náhradné identifikačné čísla vozidiel (VIN čísla) pre všetky kategórie vozidiel' },
+        { name: 'Vyrážanie VIN čísla', price: 140, description: 'Len pri KO v STK Námestovo. Vyrážame pridelené náhradné identifikačné čísla vozidiel (VIN čísla) pre všetky kategórie vozidiel' },
         { name: 'Kontrola v sobotu', price: 5, description: 'Príplatok za víkendovú službu' },
         { name: 'Expresné vybavenie', price: 10, description: 'Prednostné vybavenie do 20 minút' },
         { name: 'Výjazd k zákazníkovi', price: 30, description: 'V rámci Tvrdošína a okolia' }
@@ -43,7 +43,7 @@ export default function PricingPage() {
       'stk-ek': { price: 60, oldPrice: 80, description: 'Kombinovaná kontrola STK + EK', savings: 20 },
       recheck: { price: 20, oldPrice: 25, description: 'Opakovaná kontrola závad' },
       'extra-services': [
-        { name: 'Vyrážanie VIN čísla', price: 140, description: 'Vyrážame pridelené náhradné identifikačné čísla vozidiel (VIN čísla) pre všetky kategórie vozidiel' },
+        { name: 'Vyrážanie VIN čísla', price: 140, description: 'Len pri KO v STK Námestovo. Vyrážame pridelené náhradné identifikačné čísla vozidiel (VIN čísla) pre všetky kategórie vozidiel' },
         { name: 'Kontrola v sobotu', price: 10, description: 'Príplatok za víkendovú službu' },
         { name: 'Kontrola návesov', price: 25, description: 'STK pre návesy a prívesy' },
         { name: 'Tahometrická kontrola', price: 35, description: 'Kontrola tachografu' }
@@ -55,7 +55,7 @@ export default function PricingPage() {
       'stk-ek': { price: 28, oldPrice: 35, description: 'Kombinovaná kontrola STK + EK', savings: 7 },
       recheck: { price: 8, oldPrice: 12, description: 'Opakovaná kontrola závad' },
       'extra-services': [
-        { name: 'Vyrážanie VIN čísla', price: 140, description: 'Vyrážame pridelené náhradné identifikačné čísla vozidiel (VIN čísla) pre všetky kategórie vozidiel' },
+        { name: 'Vyrážanie VIN čísla', price: 140, description: 'Len pri KO v STK Námestovo. Vyrážame pridelené náhradné identifikačné čísla vozidiel (VIN čísla) pre všetky kategórie vozidiel' },
         { name: 'Kontrola v sobotu', price: 3, description: 'Príplatok za víkendovú službu' },
         { name: 'Kontrola skútra', price: 15, description: 'STK pre skútre do 50ccm' },
         { name: 'Historické vozidlá', price: 25, description: 'Špeciálna kontrola veteránov' }
@@ -116,7 +116,7 @@ export default function PricingPage() {
       color: 'purple',
       includes: [
         'Kontrola odstránenia závad',
-        'Bez čakania v rade',
+        'Kontrola chýb z predchádzajúcej kontroly',
         'Do 30 dní od prvej kontroly',
         'Zľavnená cena',
         'Nový protokol',

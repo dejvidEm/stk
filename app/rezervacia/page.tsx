@@ -16,6 +16,8 @@ import {
   Leaf,
   RotateCcw
 } from 'lucide-react';
+import BookingPersonalDataConsent from '@/components/BookingPersonalDataConsent';
+import BookingSmsReminder from '@/components/BookingSmsReminder';
 
 interface BookingData {
   vehicleType: string;
@@ -50,6 +52,8 @@ export default function BookingPage() {
       emailConfirm: ''
     }
   });
+  const [consentPersonalData, setConsentPersonalData] = useState(false);
+  const [smsReminder, setSmsReminder] = useState(true);
 
   const vehicleTypes = [
     { id: 'personal', name: 'Osobné vozidlo', description: 'Kategória M1 do 3,5t', icon: Car },
@@ -138,7 +142,7 @@ export default function BookingPage() {
 
   const handleSubmit = () => {
     // Here you would typically send the booking data to your backend
-    console.log('Booking submitted:', bookingData);
+    console.log('Booking submitted:', { ...bookingData, consentPersonalData, smsReminder });
     setCurrentStep(5); // Show confirmation
   };
 
@@ -162,7 +166,8 @@ export default function BookingPage() {
       case 4: {
         const { fullName, phone, email, emailConfirm } = bookingData.customerInfo;
         if (!fullName.trim() || !phone.trim() || !email.trim() || !emailConfirm.trim()) return false;
-        return email.trim() === emailConfirm.trim();
+        if (email.trim() !== emailConfirm.trim()) return false;
+        return consentPersonalData;
       }
       default:
         return false;
@@ -437,6 +442,11 @@ export default function BookingPage() {
                   )}
               </div>
 
+              <div className="mb-6 max-w-xl space-y-4">
+                <BookingPersonalDataConsent checked={consentPersonalData} onChange={setConsentPersonalData} />
+                <BookingSmsReminder checked={smsReminder} onChange={setSmsReminder} />
+              </div>
+
               {/* Summary */}
               <div className="mt-8 rounded-xl bg-gray-50 p-6">
                 <h3 className="mb-4 text-lg font-semibold text-gray-900">Súhrn rezervácie</h3>
@@ -455,6 +465,9 @@ export default function BookingPage() {
                   </div>
                   <div className="md:col-span-2">
                     <strong>Meno:</strong> {bookingData.customerInfo.fullName}
+                  </div>
+                  <div className="md:col-span-2">
+                    <strong>Pripomienková SMS:</strong> {smsReminder ? 'áno' : 'nie'}
                   </div>
                 </div>
               </div>
@@ -511,6 +524,12 @@ export default function BookingPage() {
             </button>
           </div>
         )}
+
+        <div className="mt-8 rounded-lg border border-gray-200 bg-gray-50 p-4 text-center text-sm leading-relaxed text-gray-600 sm:px-6">
+          Rezerváciu môžete bezplatne zrušiť alebo zmeniť najneskôr{' '}
+          <span className="font-semibold text-gray-800">12 hodín</span> pred termínom cez náš online systém
+          kliknutím na odkaz v potvrdzujúcom emaili alebo telefonicky.
+        </div>
       </div>
     </div>
   );

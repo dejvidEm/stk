@@ -12,7 +12,7 @@ export default function SaturdayInfoBanner() {
           </div>
           <div className="flex-1 text-center md:text-left">
             <h2 className="text-2xl md:text-3xl font-bold mb-3 text-white">
-              Začíname pracovať v sobotu!
+              Sobota - otvorené
             </h2>
             <p className="text-lg md:text-xl font-semibold text-white mb-3">
               Váš čas je vzácny. Sme tu pre Vás aj v sobotu 07:00-11:00

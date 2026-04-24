@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { HelpCircle, ChevronDown, ChevronUp, MapPin } from 'lucide-react';
+import FaqStructuredAnswer from '@/components/FaqStructuredAnswer';
 
 interface FAQItem {
   question: string;
@@ -54,10 +55,13 @@ export default function LocationFAQ({ locationName, locationAddress, faqs }: Loc
             </button>
 
             {openFAQ === index && (
-              <div className="px-4 pb-3 border-t border-gray-100">
-                <p className="text-sm text-brand-gray-700 leading-relaxed pt-3">
-                  {faq.answer}
-                </p>
+              <div className="px-4 pb-3 border-t border-gray-100 pt-3">
+                <FaqStructuredAnswer
+                  text={faq.answer}
+                  className="text-sm"
+                  paragraphClassName="text-brand-gray-700"
+                  titleClassName="text-brand-gray-900"
+                />
               </div>
             )}
           </div>

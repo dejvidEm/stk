@@ -300,7 +300,7 @@ export default function DemoPage() {
               <ul className="space-y-2 mb-6">
                 <li className="flex items-center text-brand-gray-600">
                   <CheckCircle className="h-5 w-5 text-brand-green-500 mr-2" />
-                  Bez čakania v rade
+                  Kontrola chýb z predchádzajúcej kontroly
                 </li>
                 <li className="flex items-center text-brand-gray-600">
                   <CheckCircle className="h-5 w-5 text-brand-green-500 mr-2" />

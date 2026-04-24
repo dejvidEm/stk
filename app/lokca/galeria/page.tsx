@@ -9,7 +9,6 @@ import {
   ZoomIn,
   Building,
   Car,
-  Users,
   Wrench
 } from 'lucide-react';
 
@@ -20,89 +19,53 @@ export default function GalleryPage() {
   const galleryImages = [
     {
       id: 1,
-      src: '/images/lokca.webp',
-      title: 'Exteriér STK centra',
+      src: '/images/lokca/exterier.png',
+      title: 'Exteriér prevádzky',
       category: 'exterior',
-      description: 'Moderný exteriér nášho STK centra v Lokci'
+      description: 'Budova STK Lokca',
     },
     {
       id: 2,
-      src: '/images/lokca.webp',
-      title: 'Hlavný vchod',
-      category: 'exterior',
-      description: 'Hlavný vchod do STK centra s parkoviskom pre zákazníkov'
+      src: '/images/lokca/kontrolna-hala.png',
+      title: 'Kontrolná hala',
+      category: 'equipment',
+      description: 'Priestor technickej kontroly',
     },
     {
       id: 3,
-      src: '/images/lokca.webp',
-      title: 'Areál STK',
-      category: 'exterior',
-      description: 'Pohľad na celý areál STK s parkovacími miestami'
+      src: '/images/lokca/prijem-cakaren.png',
+      title: 'Recepcia a výhľad do haly',
+      category: 'services',
+      description: 'Čakareň s priamym pohľadom na kontrolnú linku',
     },
     {
       id: 4,
-      src: '/images/u5546862511_modern_car_inspection_station_building_exterior_S_a306ea55-3462-4e35-91bf-366d476c627e_2.png',
-      title: 'Moderné STK centrum',
-      category: 'exterior',
-      description: 'Moderné STK centrum s najnovším vybavením'
+      src: '/images/lokca/cakaren.png',
+      title: 'Čakareň',
+      category: 'services',
+      description: 'Pohodlné sedenie pre zákazníkov',
     },
     {
       id: 5,
-      src: '/images/u5546862511_modern_car_inspection_station_building_exterior_S_a306ea55-3462-4e35-91bf-366d476c627e_3.png',
-      title: 'STK budova',
-      category: 'exterior',
-      description: 'Profesionálna budova STK centra'
+      src: '/images/lokca/recepcia.png',
+      title: 'Recepcia',
+      category: 'services',
+      description: 'Vstup a výhľad do kontrolnej haly',
     },
     {
       id: 6,
-      src: '/images/i1.jpg',
-      title: 'Technické vybavenie',
-      category: 'equipment',
-      description: 'Moderne technické vybavenie pre kontroly vozidiel'
-    },
-    {
-      id: 7,
-      src: '/images/i2.jpg',
-      title: 'Diagnostické zariadenia',
-      category: 'equipment',
-      description: 'Profesionálne diagnostické zariadenia'
-    },
-    {
-      id: 8,
-      src: '/images/i3.jpg',
-      title: 'Kontrolná linka',
-      category: 'equipment',
-      description: 'Kontrolná linka pre technické kontroly'
-    },
-    {
-      id: 9,
-      src: '/images/i4.jpg',
-      title: 'Emisné meranie',
-      category: 'equipment',
-      description: 'Zariadenie pre emisné kontroly vozidiel'
-    },
-    {
-      id: 10,
-      src: '/images/i5.jpg',
-      title: 'Technická kontrola',
+      src: '/images/lokca/detail.png',
+      title: 'Priestory pre zákazníkov',
       category: 'services',
-      description: 'Proces technickej kontroly vozidla'
+      description: 'Detail interiéru čakárne',
     },
-    {
-      id: 11,
-      src: '/images/lokca.webp',
-      title: 'STK Lokca',
-      category: 'network',
-      description: 'Naše STK centrum v Lokci'
-    }
   ];
 
   const categories = [
     { id: 'all', name: 'Všetko', icon: Camera },
     { id: 'exterior', name: 'Exteriér', icon: Building },
-    { id: 'equipment', name: 'Vybavenie', icon: Wrench },
-    { id: 'services', name: 'Služby', icon: Car },
-    { id: 'network', name: 'Sieť', icon: Users }
+    { id: 'equipment', name: 'Hala', icon: Wrench },
+    { id: 'services', name: 'Čakareň', icon: Car },
   ];
 
   const filteredImages = selectedCategory === 'all' 

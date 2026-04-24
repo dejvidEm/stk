@@ -61,7 +61,7 @@ export default function DemoPage() {
         <div 
           className="absolute inset-0 bg-cover bg-center opacity-20"
           style={{
-            backgroundImage: 'url("/images/lokca.webp")',
+            backgroundImage: 'url("/images/lokca/exterier.png")',
           }}
         ></div>
         
@@ -133,6 +133,54 @@ export default function DemoPage() {
             </div>
           </div>
           <STKAverageTimeDisclaimer />
+        </div>
+      </section>
+
+      {/* Prevádzka — minimalistické fotky */}
+      <section className="border-b border-brand-gray-100 bg-white py-14">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <h2 className="text-lg font-semibold tracking-tight text-brand-gray-900">
+                Naša prevádzka v Lokci
+              </h2>
+              <p className="mt-1 text-sm text-brand-gray-500">
+                Nové priestory, priamy pohľad do kontrolnej haly a pohodlné čakanie.
+              </p>
+            </div>
+            <Link
+              href="/lokca/galeria"
+              className="shrink-0 text-sm font-medium text-brand-red-600 transition-colors hover:text-brand-red-700"
+            >
+              Viac fotografií →
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-5 lg:gap-6">
+            <figure className="aspect-[4/3] overflow-hidden rounded-xl bg-brand-gray-100">
+              <img
+                src="/images/lokca/exterier.png"
+                alt="Exteriér budovy STK Lokca"
+                className="h-full w-full object-cover"
+                loading="lazy"
+              />
+            </figure>
+            <figure className="aspect-[4/3] overflow-hidden rounded-xl bg-brand-gray-100">
+              <img
+                src="/images/lokca/kontrolna-hala.png"
+                alt="Kontrolná hala STK Lokca"
+                className="h-full w-full object-cover"
+                loading="lazy"
+              />
+            </figure>
+            <figure className="aspect-[4/3] overflow-hidden rounded-xl bg-brand-gray-100">
+              <img
+                src="/images/lokca/prijem-cakaren.png"
+                alt="Recepcia a čakareň STK Lokca"
+                className="h-full w-full object-cover"
+                loading="lazy"
+              />
+            </figure>
+          </div>
         </div>
       </section>
 
@@ -222,12 +270,12 @@ export default function DemoPage() {
               </div>
               <h3 className="text-2xl font-bold text-brand-gray-900 mb-4">Opakovaná kontrola</h3>
               <p className="text-brand-gray-600 mb-6">
-                Kontrola odstránenia závad do 30 dní od prvej kontroly.
+                Kontrola odstránenia závad do 60 dní od prvej kontroly.
               </p>
               <ul className="space-y-2 mb-6">
                 <li className="flex items-center text-brand-gray-600">
                   <CheckCircle className="h-5 w-5 text-brand-green-500 mr-2" />
-                  Bez čakania v rade
+                  Kontrola chýb z predchádzajúcej kontroly
                 </li>
                 <li className="flex items-center text-brand-gray-600">
                   <CheckCircle className="h-5 w-5 text-brand-green-500 mr-2" />

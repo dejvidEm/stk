@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { HelpCircle, ChevronDown, ChevronUp } from 'lucide-react';
+import FaqStructuredAnswer from '@/components/FaqStructuredAnswer';
 
 interface FAQItem {
   question: string;
@@ -58,9 +59,11 @@ export default function MainFAQ({ faqs }: MainFAQProps) {
                 {openFAQ === index && (
                   <div className="px-6 pb-5">
                     <div className="border-t border-gray-100 pt-4">
-                      <p className="text-gray-700 leading-relaxed">
-                        {faq.answer}
-                      </p>
+                      <FaqStructuredAnswer
+                        text={faq.answer}
+                        paragraphClassName="text-brand-gray-700"
+                        titleClassName="text-brand-gray-900"
+                      />
                     </div>
                   </div>
                 )}

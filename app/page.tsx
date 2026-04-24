@@ -27,8 +27,10 @@ import STKReminderLeadMagnet from '@/components/STKReminderLeadMagnet';
 import STKPriceCalculator from '@/components/STKPriceCalculator';
 import STKLehotyKontrolSection from '@/components/STKLehotyKontrolSection';
 import MainFAQ from '@/components/MainFAQ';
+import { FAQ_ANSWER_VOZIDLO_NEPREJDE_KONTROLOU } from '@/lib/faqVozidloNeprejdeKontrolou';
 import LocationFAQ from '@/components/LocationFAQ';
 import ReviewsSlider from '@/components/ReviewsSlider';
+import { Iso37001AllLocationsBar, Iso37001CenterLink } from '@/components/layout/FooterIso37001';
 import { format } from 'date-fns';
 import { sk } from 'date-fns/locale/sk';
 
@@ -67,7 +69,7 @@ export default function HomePage() {
       phone: '043 5520390, 0904 386146',
       email: 'info@emade.sk',
       hours: 'Po-Pia: 06:00-16:30',
-      image: '/images/namestovo.webp',
+      image: '/images/namestovo/uvod-karta.png',
       description: 'Moderné STK centrum v srdci Oravy s najnovším vybavením.',
       features: ['Technické kontroly', 'Emisné kontroly', 'Kontrola originality', 'Autoumyváreň', 'Automat portál 24/7', 'Kaviareň efCafé', 'ecoČistiareň a práčovňa']
     },
@@ -92,7 +94,7 @@ export default function HomePage() {
       phone: '0948 422333',
       email: 'info@stklokca.sk',
       hours: 'Po-Pia: 06:00-15:30',
-      image: '/images/lokca.webp',
+      image: '/images/lokca/exterier.png',
       description: 'Profesionálne centrum pre technické kontroly v Lokci.',
       features: ['Technické kontroly', 'Emisné kontroly']
     }
@@ -602,7 +604,7 @@ export default function HomePage() {
           },
           {
             question: 'Čo ak moje vozidlo neprejde kontrolou?',
-            answer: 'Spôsobilé: Ak sa technickou kontrolou nezistili žiadne chyby alebo sa zistili len ľahké chyby. Ak sa technickou kontrolou zistili ľahké chyby, prevádzkovateľ vozidla je povinný ich odstrániť. Ľahké chyby nemajú výrazný vplyv na bezpečnosť vozidla ani na životné prostredie, ako aj iné menej významné prípady nezhody. Dočasne spôsobilé: Ak sa technickou kontrolou zistila vážna chyba, prevádzkovateľ vozidla je povinný do 60 kalendárnych dní podrobiť vozidlo opakovanej technickej kontrole. Závažné chyby môžu ovplyvniť bezpečnosť vozidla alebo životné prostredie, alebo ohroziť iných účastníkov cestnej premávky. Nespôsobilé: Ak sa technickou kontrolou zistila nebezpečná chyba, do odstránenia chyby sa vozidlo nesmie používať na cestných komunikáciách. Nebezpečné chyby predstavujú priame a bezprostredné riziko pre bezpečnosť cestnej premávky alebo majú vplyv na životné prostredie a je potrebné zakázať používanie vozidla v cestnej premávke.'
+            answer: FAQ_ANSWER_VOZIDLO_NEPREJDE_KONTROLOU,
           },
           {
             question: 'Ako dlho trvá technická kontrola?',
@@ -760,6 +762,8 @@ export default function HomePage() {
                       <Clock className="h-5 w-5 text-brand-green-400 flex-shrink-0" />
                       <span className="text-brand-gray-300 text-sm">Po-Pia: 06:00-16:30</span>
                     </div>
+
+                    <Iso37001CenterLink locationId="namestovo" />
                     
                     <div className="mt-4 pt-3 border-t border-brand-gray-800">
                       <div className="flex items-start space-x-3 mb-2">
@@ -828,6 +832,8 @@ export default function HomePage() {
                       <Clock className="h-5 w-5 text-brand-green-400 flex-shrink-0" />
                       <span className="text-brand-gray-300 text-sm">Po-Pia: 07:00-15:30</span>
                     </div>
+
+                    <Iso37001CenterLink locationId="tvrdosin" />
                     
                     <div className="mt-4 pt-3 border-t border-brand-gray-800">
                       <div className="flex items-start space-x-3 mb-2">
@@ -898,6 +904,8 @@ export default function HomePage() {
                       <Clock className="h-5 w-5 text-brand-green-400 flex-shrink-0" />
                       <span className="text-brand-gray-300 text-sm">Po-Pia: 06:00-15:30</span>
                     </div>
+
+                    <Iso37001CenterLink locationId="lokca" />
                     
                     <div className="mt-4 pt-3 border-t border-brand-gray-800">
                       <div className="flex items-start space-x-3 mb-2">
@@ -1080,6 +1088,10 @@ export default function HomePage() {
                 <Link href="#" className="text-brand-gray-400 hover:text-white transition-colors">
                   Obchodné podmienky
                 </Link>
+              </div>
+
+              <div className="order-3 w-full pt-6 mt-2 border-t border-brand-gray-800">
+                <Iso37001AllLocationsBar />
               </div>
             </div>
           </div>

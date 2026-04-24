@@ -1,7 +1,7 @@
 'use client';
 
-import Link from 'next/link';
 import { useState } from 'react';
+import { STKLehotyKontrolModal } from '@/components/STKLehotyKontrolSection';
 import { 
   Shield, 
   Leaf, 
@@ -38,6 +38,7 @@ import {
 export default function ServicesPage() {
   const [activeTab, setActiveTab] = useState('stk');
   const [isEquipmentModalOpen, setIsEquipmentModalOpen] = useState(false);
+  const [lehotyModalOpen, setLehotyModalOpen] = useState(false);
 
   const services = {
     stk: {
@@ -66,7 +67,7 @@ export default function ServicesPage() {
       icon: Leaf,
       description: 'Meranie množstva škodlivých látok v exhaláte vozidla',
       duration: '15-20 minút',
-      validity: '2 roky (benzínové motory), 1 rok (dieselové motory)',
+      validity: '2 roky (osobné motorové), 1 rok (nákladné), 4 roky (trakty)',
       checks: [
         'Meranie CO pre benzínové motory',
         'Kontrola funkčnosti katalyzátora',
@@ -78,6 +79,27 @@ export default function ServicesPage() {
         'Pri opakovanej emisnej kontrole prípadne protokol alebo oznámenie z predchádzajúcej EK podľa situácie',
       ]
     },
+    originality: {
+      title: 'Kontrola originality',
+      icon: Fingerprint,
+      description:
+        'Overenie originality vozidla podľa platných predpisov — zhodu VIN a ďalších identifikačných údajov s technickým preukazom, prítomnosť vozidla. Platnosť protokolu 15 dní. Dĺžka kontroly 60–90 minút.',
+      duration: '60–90 minút',
+      validity: 'Platnosť protokolu: 15 dní',
+      checks: [
+        'Overenie zhody VIN a identifikačných údajov s technickým preukazom',
+        'Kontrola originality vozidla podľa platných predpisov SR',
+        'Vydanie protokolu o kontrole originality',
+      ],
+      requirements: [
+        'Osvedčenie o technickom preukaze, časť I a II (papierový alebo kartička)',
+        'Občiansky preukaz majiteľa vozidla',
+        'Prítomné vozidlo na kontrole',
+        'Kúpno predajná zmluva',
+        'Preklad TP',
+        'Preklad kúpnej zmluvy',
+      ],
+    },
     recheck: {
       title: 'Ostatné kontroly',
       icon: RotateCcw,
@@ -88,13 +110,10 @@ export default function ServicesPage() {
         'Opakovaná kontrola',
         'Administratívna kontrola',
         'Predkontrola',
-        'Kontrola originality'
       ],
       requirements: [
         'Osvedčenie o technickom preukaze, časť I alebo časť II (papierový alebo kartička)',
-        'Pri opakovanej kontrole prípadne protokol alebo oznámenie z predchádzajúcej STK podľa situácie',
-        'Pri administratívnej kontrole a predkontrole odporúčame dohodnúť rozsah vopred (telefonicky alebo na mieste)',
-        'Pri kontrole originality: technický preukaz (časť I a II), občiansky preukaz majiteľa a prítomné vozidlo',
+        'Pri opakovanej kontrole + protokol z pravidelnej kontroly (pôvodnej).',
       ]
     },
     additional: {
@@ -105,7 +124,7 @@ export default function ServicesPage() {
       validity: 'Rôzne',
       checks: [
         'Expresné vybavenie - prednostné vybavenie nasledujúci kalendárny deň',
-        'Vyrážanie VIN čísla — vyrážame pridelené náhradné identifikačné čísla vozidiel (VIN čísla) pre všetky kategórie vozidiel',
+        'Vyrážanie VIN čísla — len pri kontrole originality (KO) v tejto prevádzke; vyrážame pridelené náhradné identifikačné čísla vozidiel (VIN čísla) pre všetky kategórie vozidiel',
         'Predkontrola pred STK a EK',
         'Meranie CO2',
         'Individuálne riešenia podľa požiadaviek zákazníka'
@@ -157,8 +176,6 @@ export default function ServicesPage() {
       note: 'Interval podľa celkovej hmotnostnej kategórie prívesu alebo návesu.'
     }
   ];
-
-  const lehotyKontrolHref = '/namestovo#nase-sluzby';
 
   const vehiclesWithoutEk = [
     {
@@ -360,7 +377,13 @@ export default function ServicesPage() {
                   <IconComp className="h-5 w-5" />
                   <span className="hidden sm:inline">{service.title}</span>
                   <span className="sm:hidden">
-                    {key === 'recheck' ? 'Ostatné' : key === 'additional' ? 'Doplnkové' : key.toUpperCase()}
+                    {key === 'recheck'
+                      ? 'Ostatné'
+                      : key === 'additional'
+                        ? 'Doplnkové'
+                        : key === 'originality'
+                          ? 'Originalita'
+                          : key.toUpperCase()}
                   </span>
                 </button>
               );
@@ -375,7 +398,20 @@ export default function ServicesPage() {
               </div>
               <div>
                 <h2 className="text-3xl font-bold text-gray-900">{currentService.title}</h2>
-                <p className="text-gray-600">{currentService.description}</p>
+                {activeTab === 'ek' ? (
+                  <div className="mt-4 space-y-3 rounded-xl border border-emerald-100 bg-emerald-50/70 p-5 text-gray-800 leading-relaxed">
+                    <p>
+                      Emisná kontrola (EK) meria množstvo škodlivých látok vo výfukových plynoch. Vyžaduje sa pre
+                      všetky vozidlá s motorom.
+                    </p>
+                    <p>
+                      Platnosť: 2 roky pre osobné motorové vozidlá, 1 rok pre nákladné vozidlá, 4 roky traktory.
+                      Prvá EK pre nové osobné motorové vozidlá sa vykonáva po 4 rokoch od prvej registrácie.
+                    </p>
+                  </div>
+                ) : (
+                  <p className="text-gray-600">{currentService.description}</p>
+                )}
               </div>
             </div>
 
@@ -398,6 +434,9 @@ export default function ServicesPage() {
                     {/* Vyrážanie VIN čísla */}
                     <div className="bg-blue-50 border border-blue-200 rounded-xl p-6">
                       <h3 className="text-xl font-bold text-blue-900 mb-3">Vyrážanie VIN čísla</h3>
+                      <p className="mb-3 rounded-lg border border-blue-200 bg-blue-100/90 px-3 py-2 text-sm font-semibold text-blue-900">
+                        Vyrážanie VIN sa vykonáva len na kontrole originality (KO) — výhradne v tejto prevádzke STK Námestovo.
+                      </p>
                       <p className="text-blue-800 leading-relaxed mb-3">
                         Vyrážame pridelené náhradné identifikačné čísla vozidiel (VIN čísla) pre všetky kategórie vozidiel.
                       </p>
@@ -624,9 +663,28 @@ export default function ServicesPage() {
               </div>
               )}
 
+              {activeTab === 'originality' && (
+              <div className="rounded-xl border border-brand-red-200 bg-gradient-to-br from-brand-red-50 to-brand-red-100/80 p-6">
+                <div className="mb-3 flex items-center gap-2">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-red-600">
+                    <Fingerprint className="h-5 w-5 text-white" aria-hidden />
+                  </div>
+                  <h4 className="text-lg font-semibold text-brand-gray-900">Kontrola originality</h4>
+                </div>
+                <p className="text-sm leading-relaxed text-brand-gray-800">
+                  Overenie originality vozidla podľa platných predpisov — zhodu VIN a ďalších identifikačných údajov s
+                  technickým preukazom, prítomnosť vozidla. <strong>Platnosť protokolu</strong> — 15 dní.{' '}
+                  <strong>Dĺžka kontroly</strong> 60–90 minút.
+                </p>
+                <p className="mt-3 text-sm text-brand-gray-600">
+                  Najčastejšie pri prvej registrácii v SR, zmene majiteľa alebo pri pochybnostiach o vozidle.
+                </p>
+              </div>
+              )}
+
               {activeTab === 'recheck' && (
               <div className="space-y-4">
-                <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
+                <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
                   <div className="rounded-lg border border-blue-200 bg-blue-50 p-4">
                     <h4 className="mb-2 font-semibold text-blue-900">Opakovaná kontrola</h4>
                     <p className="text-sm leading-relaxed text-blue-900">
@@ -644,21 +702,6 @@ export default function ServicesPage() {
                     <h4 className="mb-2 font-semibold text-green-900">Predkontrola</h4>
                     <p className="text-sm leading-relaxed text-green-900">
                       Prípravná kontrola pred riadnou STK a/alebo EK v dohodnutom rozsahu (technická časť, emisná časť alebo oboje). Ceny nájdete v cenníku.
-                    </p>
-                  </div>
-                  <div className="rounded-lg border border-brand-red-200 bg-gradient-to-br from-brand-red-50 to-brand-red-100/80 p-4">
-                    <div className="mb-2 flex items-center gap-2">
-                      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-brand-red-600">
-                        <Fingerprint className="h-5 w-5 text-white" aria-hidden />
-                      </div>
-                      <h4 className="font-semibold text-brand-gray-900">Kontrola originality</h4>
-                    </div>
-                    <p className="text-sm leading-relaxed text-brand-gray-800">
-                      Overenie originality vozidla podľa platných predpisov — zhodu VIN a ďalších identifikačných údajov s technickým preukazom, prítomnosť vozidla. Vydáme protokol s platnosťou{' '}
-                      <strong>3 mesiace</strong> (spravidla <strong>15–20 minút</strong>).
-                    </p>
-                    <p className="mt-2 text-xs text-brand-gray-600">
-                      Najčastejšie pri prvej registrácii v SR, zmene majiteľa alebo pri pochybnostiach o vozidle.
                     </p>
                   </div>
                 </div>
@@ -723,10 +766,9 @@ export default function ServicesPage() {
             {vehicleTypes.map((vehicle, index) => {
               const VehicleIcon = vehicle.icon;
               return (
-                <Link
+                <div
                   key={index}
-                  href={lehotyKontrolHref}
-                  className="group flex flex-col rounded-xl bg-white p-8 text-center shadow-lg transition-shadow hover:shadow-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-red-600"
+                  className="flex flex-col rounded-xl bg-white p-8 text-center shadow-lg transition-shadow hover:shadow-xl"
                 >
                   <div className="flex flex-1 flex-col">
                     <div className="bg-blue-100 mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full">
@@ -741,15 +783,19 @@ export default function ServicesPage() {
                       <p className="text-left text-sm text-gray-600">{vehicle.note}</p>
                     </div>
                   </div>
-                  <div className="mt-0 max-h-0 overflow-hidden opacity-0 transition-[max-height,margin-top,opacity] duration-200 group-hover:mt-4 group-hover:max-h-16 group-hover:opacity-100 group-focus-visible:mt-4 group-focus-visible:max-h-16 group-focus-visible:opacity-100">
-                    <span className="block border-t border-gray-100 pt-3 text-sm font-semibold text-blue-600 underline decoration-2 underline-offset-4">
-                      Všetky kategórie
-                    </span>
-                  </div>
-                </Link>
+                  <button
+                    type="button"
+                    onClick={() => setLehotyModalOpen(true)}
+                    className="mt-4 w-full border-t border-gray-100 pt-3 text-sm font-semibold text-blue-600 underline decoration-2 underline-offset-4 transition-colors hover:text-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-red-600"
+                  >
+                    Všetky kategórie
+                  </button>
+                </div>
               );
             })}
           </div>
+
+          <STKLehotyKontrolModal open={lehotyModalOpen} onOpenChange={setLehotyModalOpen} />
 
           <div className="mt-16 text-center mb-12">
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">

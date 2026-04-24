@@ -304,6 +304,9 @@ export default function PricingPage() {
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900">Vyrážanie VIN čísla</h3>
               </div>
+              <p className="mb-3 rounded-lg border border-gray-200 bg-amber-50 px-3 py-2 text-sm font-semibold text-gray-900">
+                Vyrážanie VIN sa vykonáva len na kontrole originality (KO) — výhradne v tejto prevádzke STK Námestovo.
+              </p>
               <p className="text-gray-600 mb-4">
                 Vyrážame pridelené náhradné identifikačné čísla vozidiel (VIN čísla) pre všetky kategórie vozidiel.
               </p>

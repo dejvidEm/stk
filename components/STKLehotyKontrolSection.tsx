@@ -1,6 +1,11 @@
 'use client';
 
 import { CalendarRange } from 'lucide-react';
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+} from '@/components/ui/dialog';
 
 const INTERVALS = [
   {
@@ -30,50 +35,74 @@ const INTERVALS = [
       'Osobné motorové vozidlá nad 9 osôb',
       'Nákladné motorové vozidlá nad 3,5 t',
       'Prípojné vozidlá',
-      'Vozidlá taxislužby a s právom prednostnej jazdy',
+      'Vozidlá taxislužby, vozidlá autoškôl a vozidlá s právom prednostnej jazdy',
     ],
   },
 ] as const;
 
+/** Obsah bloku „Lehoty kontrol STK“ (použitie v sekcii na stránke alebo v modale). */
+export function STKLehotyKontrolInner() {
+  return (
+    <div className="rounded-2xl border border-brand-gray-200 bg-brand-gray-50/90 p-6 md:p-8">
+      <div className="mb-6 flex flex-wrap items-center gap-3 md:mb-8">
+        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-brand-red-100">
+          <CalendarRange className="h-6 w-6 text-brand-red-600" aria-hidden />
+        </div>
+        <h3 className="text-xl font-bold uppercase tracking-wide text-brand-gray-900 md:text-2xl">
+          Lehoty kontrol STK
+        </h3>
+      </div>
+      <div className="grid grid-cols-1 gap-6 md:gap-8 lg:grid-cols-3">
+        {INTERVALS.map((block) => (
+          <div
+            key={block.period}
+            className="rounded-xl border border-brand-gray-100 bg-white p-5 shadow-sm md:p-6"
+          >
+            <p className="mb-3 text-lg font-bold uppercase tracking-wide text-brand-red-600 md:text-xl">
+              {block.period}
+            </p>
+            <p className="mb-3 text-sm leading-snug text-brand-gray-700">
+              <span className="font-semibold text-brand-gray-900">Kategórie: </span>
+              {block.categories}
+            </p>
+            <ul className="m-0 list-none space-y-2 pl-0 text-sm leading-snug text-brand-gray-600">
+              {block.items.map((text) => (
+                <li key={text} className="flex gap-2">
+                  <span className="shrink-0 font-bold text-brand-green-600" aria-hidden>
+                    •
+                  </span>
+                  <span>{text}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export function STKLehotyKontrolModal({
+  open,
+  onOpenChange,
+}: {
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+}) {
+  return (
+    <Dialog open={open} onOpenChange={onOpenChange}>
+      <DialogContent className="max-h-[90vh] max-w-5xl overflow-y-auto sm:max-w-5xl">
+        <DialogTitle className="sr-only">Lehoty kontrol STK</DialogTitle>
+        <STKLehotyKontrolInner />
+      </DialogContent>
+    </Dialog>
+  );
+}
+
 export default function STKLehotyKontrolSection() {
   return (
     <div className="mt-12 md:mt-14" id="lehoty-kontrol-stk">
-      <div className="rounded-2xl border border-brand-gray-200 bg-brand-gray-50/90 p-6 md:p-8">
-        <div className="flex flex-wrap items-center gap-3 mb-6 md:mb-8">
-          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-brand-red-100">
-            <CalendarRange className="h-6 w-6 text-brand-red-600" aria-hidden />
-          </div>
-          <h3 className="text-xl md:text-2xl font-bold text-brand-gray-900 uppercase tracking-wide">
-            Lehoty kontrol STK
-          </h3>
-        </div>
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
-          {INTERVALS.map((block) => (
-            <div
-              key={block.period}
-              className="rounded-xl border border-brand-gray-100 bg-white p-5 md:p-6 shadow-sm"
-            >
-              <p className="mb-3 text-lg font-bold uppercase tracking-wide text-brand-red-600 md:text-xl">
-                {block.period}
-              </p>
-              <p className="mb-3 text-sm leading-snug text-brand-gray-700">
-                <span className="font-semibold text-brand-gray-900">Kategórie: </span>
-                {block.categories}
-              </p>
-              <ul className="m-0 list-none space-y-2 pl-0 text-sm text-brand-gray-600 leading-snug">
-                {block.items.map((text) => (
-                  <li key={text} className="flex gap-2">
-                    <span className="shrink-0 font-bold text-brand-green-600" aria-hidden>
-                      •
-                    </span>
-                    <span>{text}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-      </div>
+      <STKLehotyKontrolInner />
     </div>
   );
 }

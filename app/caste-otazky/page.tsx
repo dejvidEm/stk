@@ -17,6 +17,9 @@ import {
 } from 'lucide-react';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import SaturdayCalendarBanner from '@/components/SaturdayCalendarBanner';
+import FaqStructuredAnswer from '@/components/FaqStructuredAnswer';
+import { FAQ_ANSWER_VOZIDLO_NEPREJDE_KONTROLOU } from '@/lib/faqVozidloNeprejdeKontrolou';
+import { FAQ_ANSWER_KRIZ_STK } from '@/lib/faqKrizStk';
 
 const CALENDAR_LOCATIONS = [
   { id: 'namestovo', name: 'STK Námestovo', shortName: 'Námestovo' },
@@ -80,7 +83,7 @@ export default function FAQPage() {
     {
       id: 5,
       question: 'Čo ak moje vozidlo neprejde kontrolou?',
-      answer: 'Spôsobilé: Ak sa technickou kontrolou nezistili žiadne chyby alebo sa zistili len ľahké chyby. Ak sa technickou kontrolou zistili ľahké chyby, prevádzkovateľ vozidla je povinný ich odstrániť. Ľahké chyby nemajú výrazný vplyv na bezpečnosť vozidla ani na životné prostredie, ako aj iné menej významné prípady nezhody. Dočasne spôsobilé: Ak sa technickou kontrolou zistila vážna chyba, prevádzkovateľ vozidla je povinný do 60 kalendárnych dní podrobiť vozidlo opakovanej technickej kontrole. Závažné chyby môžu ovplyvniť bezpečnosť vozidla alebo životné prostredie, alebo ohroziť iných účastníkov cestnej premávky. Nespôsobilé: Ak sa technickou kontrolou zistila nebezpečná chyba, do odstránenia chyby sa vozidlo nesmie používať na cestných komunikáciách. Nebezpečné chyby predstavujú priame a bezprostredné riziko pre bezpečnosť cestnej premávky alebo majú vplyv na životné prostredie a je potrebné zakázať používanie vozidla v cestnej premávke.',
+      answer: FAQ_ANSWER_VOZIDLO_NEPREJDE_KONTROLOU,
       category: 'stk',
       tags: ['neúspešná', 'závady', 'opakovaná kontrola', 'oprava']
     },
@@ -101,9 +104,10 @@ export default function FAQPage() {
     {
       id: 8,
       question: 'Pracujete aj cez víkendy?',
-      answer: 'Pracujeme v sobotu od 8:00 do 14:00. V nedeľu máme zatvorené. Sobotné termíny sú veľmi obľúbené, preto odporúčame rezerváciu vopred. Za sobotné služby sa účtuje príplatok 5€ pre osobné vozidlá.',
+      answer:
+        'Pracujeme v sobotu od 7:00 do 11:00. V nedeľu máme zatvorené.\n\n\nSobotné termíny sú veľmi obľúbené, preto odporúčame rezerváciu vopred.',
       category: 'other',
-      tags: ['víkend', 'sobota', 'nedeľa', 'príplatok']
+      tags: ['víkend', 'sobota', 'nedeľa']
     },
     {
       id: 9,
@@ -125,6 +129,13 @@ export default function FAQPage() {
       answer: 'Pred kontrolou skontrolujte: funkčnosť všetkých svetiel, stav pneumatík a hĺbku dezénu (min. 1,6mm), hladinu oleja a chladiacej kvapaliny, funkčnosť klaksónu a smeroviek. Vyčistite evidenčné čísla a odstráňte predmety z vozidla.',
       category: 'stk',
       tags: ['príprava', 'svetlá', 'pneumatiky', 'kontrola']
+    },
+    {
+      id: 12,
+      question: 'Kríž pri STK, ktorý sme rekonštruovali z vlastných zdrojov',
+      answer: FAQ_ANSWER_KRIZ_STK,
+      category: 'other',
+      tags: ['kríž', 'Námestovo', 'rekonštrukcia', 'pamiatka', 'história']
     }
   ];
 
@@ -244,9 +255,9 @@ export default function FAQPage() {
                 {openFAQ === faq.id && (
                   <div className="px-6 pb-5">
                     <div className="border-t border-gray-100 pt-4">
-                      <p className="text-gray-700 leading-relaxed mb-4">
-                        {faq.answer}
-                      </p>
+                      <div className="mb-4">
+                        <FaqStructuredAnswer text={faq.answer} />
+                      </div>
                       <div className="flex flex-wrap gap-2">
                         {faq.tags.map((tag, index) => (
                           <span
@@ -323,8 +334,8 @@ export default function FAQPage() {
               <h3 className="font-bold text-gray-900">Rezervácia v sobotu</h3>
             </div>
             <p className="text-gray-700 text-sm">
-              Sobotné termíny sú ideálne pre zaneprázdnených. Menej zákazníkov znamená rýchlejšie vybavenie. 
-              Nezabudnite na príplatok 5€ za víkendové služby.
+              Sobotné termíny sú ideálne pre zaneprázdnených. Menej zákazníkov znamená rýchlejšie vybavenie.
+              Odporúčame rezerváciu vopred.
             </p>
           </div>
         </div>

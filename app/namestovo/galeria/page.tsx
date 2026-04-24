@@ -20,10 +20,10 @@ export default function GalleryPage() {
   const galleryImages = [
     {
       id: 1,
-      src: '/images/namestovo.webp',
-      title: 'Exteriér STK centra',
+      src: '/images/namestovo/exterier.png',
+      title: 'Exteriér prevádzky',
       category: 'exterior',
-      description: 'Moderný exteriér nášho STK centra v Námestove'
+      description: 'Budova STK Námestovo — haly kontroly a originality',
     },
     {
       id: 2,
@@ -93,8 +93,29 @@ export default function GalleryPage() {
       src: '/images/namestovo.webp',
       title: 'STK Námestovo',
       category: 'network',
-      description: 'Naše STK centrum v Námestove'
-    }
+      description: 'Naše STK centrum v Námestove',
+    },
+    {
+      id: 12,
+      src: '/images/namestovo/kriz-pohlad.png',
+      title: 'Kríž pri prevádzke',
+      category: 'exterior',
+      description: 'Pamätník a moderné zázemie po revitalizácii',
+    },
+    {
+      id: 13,
+      src: '/images/namestovo/kriz-detail.png',
+      title: 'Detail kríža',
+      category: 'exterior',
+      description: 'Historický nápis na podstavci',
+    },
+    {
+      id: 14,
+      src: '/images/namestovo/kriz-letecky.png',
+      title: 'Letecký pohľad',
+      category: 'exterior',
+      description: 'Rozloženie pamätníka a okolia',
+    },
   ];
 
   const categories = [

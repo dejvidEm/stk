@@ -1,7 +1,7 @@
 'use client';
 
-import Link from 'next/link';
 import { useState } from 'react';
+import { STKLehotyKontrolModal } from '@/components/STKLehotyKontrolSection';
 import { 
   Shield, 
   Leaf, 
@@ -37,6 +37,7 @@ import {
 export default function ServicesPage() {
   const [activeTab, setActiveTab] = useState('stk');
   const [isEquipmentModalOpen, setIsEquipmentModalOpen] = useState(false);
+  const [lehotyModalOpen, setLehotyModalOpen] = useState(false);
 
   const services = {
     stk: {
@@ -65,7 +66,7 @@ export default function ServicesPage() {
       icon: Leaf,
       description: 'Meranie množstva škodlivých látok v exhaláte vozidla',
       duration: '15-20 minút',
-      validity: '2 roky (benzínové motory), 1 rok (dieselové motory)',
+      validity: '2 roky (osobné motorové), 1 rok (nákladné), 4 roky (trakty)',
       checks: [
         'Meranie CO pre benzínové motory',
         'Kontrola funkčnosti katalyzátora',
@@ -90,7 +91,7 @@ export default function ServicesPage() {
       ],
       requirements: [
         'Osvedčenie o technickom preukaze, časť I alebo časť II (papierový alebo kartička)',
-        'Pri opakovanej kontrole prípadne protokol alebo oznámenie z predchádzajúcej STK podľa situácie',
+        'Pri opakovanej kontrole + protokol z pravidelnej kontroly (pôvodnej).',
         'Pri administratívnej kontrole a predkontrole odporúčame dohodnúť rozsah vopred (telefonicky alebo na mieste)',
       ]
     },
@@ -102,7 +103,7 @@ export default function ServicesPage() {
       validity: 'Rôzne',
       checks: [
         'Expresné vybavenie - prednostné vybavenie nasledujúci kalendárny deň',
-        'Vyrážanie VIN čísla — vyrážame pridelené náhradné identifikačné čísla vozidiel (VIN čísla) pre všetky kategórie vozidiel',
+        'Vyrážanie VIN čísla — len pri KO v STK Námestovo; vyrážame pridelené náhradné identifikačné čísla vozidiel (VIN čísla) pre všetky kategórie vozidiel',
         'Predkontrola pred STK a EK',
         'Meranie CO2',
         'Individuálne riešenia podľa požiadaviek zákazníka'
@@ -154,8 +155,6 @@ export default function ServicesPage() {
       note: 'Interval podľa celkovej hmotnostnej kategórie prívesu alebo návesu.'
     }
   ];
-
-  const lehotyKontrolHref = '/lokca#nase-sluzby';
 
   const vehiclesWithoutEk = [
     {
@@ -372,7 +371,20 @@ export default function ServicesPage() {
               </div>
               <div>
                 <h2 className="text-3xl font-bold text-gray-900">{currentService.title}</h2>
-                <p className="text-gray-600">{currentService.description}</p>
+                {activeTab === 'ek' ? (
+                  <div className="mt-4 space-y-3 rounded-xl border border-emerald-100 bg-emerald-50/70 p-5 text-gray-800 leading-relaxed">
+                    <p>
+                      Emisná kontrola (EK) meria množstvo škodlivých látok vo výfukových plynoch. Vyžaduje sa pre
+                      všetky vozidlá s motorom.
+                    </p>
+                    <p>
+                      Platnosť: 2 roky pre osobné motorové vozidlá, 1 rok pre nákladné vozidlá, 4 roky traktory.
+                      Prvá EK pre nové osobné motorové vozidlá sa vykonáva po 4 rokoch od prvej registrácie.
+                    </p>
+                  </div>
+                ) : (
+                  <p className="text-gray-600">{currentService.description}</p>
+                )}
               </div>
             </div>
 
@@ -395,6 +407,9 @@ export default function ServicesPage() {
                     {/* Vyrážanie VIN čísla */}
                     <div className="bg-blue-50 border border-blue-200 rounded-xl p-6">
                       <h3 className="text-xl font-bold text-blue-900 mb-3">Vyrážanie VIN čísla</h3>
+                      <p className="mb-3 rounded-lg border border-blue-200 bg-blue-100/90 px-3 py-2 text-sm font-semibold text-blue-900">
+                        Vyrážanie VIN sa vykonáva len na kontrole originality (KO) — výhradne v prevádzke STK Námestovo.
+                      </p>
                       <p className="text-blue-800 leading-relaxed mb-3">
                         Vyrážame pridelené náhradné identifikačné čísla vozidiel (VIN čísla) pre všetky kategórie vozidiel.
                       </p>
@@ -686,10 +701,9 @@ export default function ServicesPage() {
             {vehicleTypes.map((vehicle, index) => {
               const VehicleIcon = vehicle.icon;
               return (
-                <Link
+                <div
                   key={index}
-                  href={lehotyKontrolHref}
-                  className="group flex flex-col rounded-xl bg-white p-8 text-center shadow-lg transition-shadow hover:shadow-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-red-600"
+                  className="flex flex-col rounded-xl bg-white p-8 text-center shadow-lg transition-shadow hover:shadow-xl"
                 >
                   <div className="flex flex-1 flex-col">
                     <div className="bg-blue-100 mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full">
@@ -704,15 +718,19 @@ export default function ServicesPage() {
                       <p className="text-left text-sm text-gray-600">{vehicle.note}</p>
                     </div>
                   </div>
-                  <div className="mt-0 max-h-0 overflow-hidden opacity-0 transition-[max-height,margin-top,opacity] duration-200 group-hover:mt-4 group-hover:max-h-16 group-hover:opacity-100 group-focus-visible:mt-4 group-focus-visible:max-h-16 group-focus-visible:opacity-100">
-                    <span className="block border-t border-gray-100 pt-3 text-sm font-semibold text-blue-600 underline decoration-2 underline-offset-4">
-                      Všetky kategórie
-                    </span>
-                  </div>
-                </Link>
+                  <button
+                    type="button"
+                    onClick={() => setLehotyModalOpen(true)}
+                    className="mt-4 w-full border-t border-gray-100 pt-3 text-sm font-semibold text-blue-600 underline decoration-2 underline-offset-4 transition-colors hover:text-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-red-600"
+                  >
+                    Všetky kategórie
+                  </button>
+                </div>
               );
             })}
           </div>
+
+          <STKLehotyKontrolModal open={lehotyModalOpen} onOpenChange={setLehotyModalOpen} />
 
           <div className="mt-16 text-center mb-12">
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
